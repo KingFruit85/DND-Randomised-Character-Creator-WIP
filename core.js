@@ -1,24 +1,8 @@
-
-//Returns a random number between the two given arguements, returns error message if incorrect arguements given
-function returnRandomNumberInRange(minValue, maxValue) {
-
-    if (minValue > maxValue || minValue === undefined || maxValue === undefined) {
-
-        return "Unexpected arguements, please provide minimum and maximum valuses in that order";
-
-    } else {
-
-        return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
-
-    }
-
-};
+const classes = require('./classes.js');
+const utils = require('./utils.js');
 
 
-//returns a floating point value between the given arguements
-function  returnRandomFloatInRange(minValue, maxValue) {
-  return Math.random() * (maxValue - minValue) + minValue;
-};
+
 
 //Takes a string representing a dice roll, such as "2d4" and returns a value in inches
 function returnHeightAndWeight(height, weight) {
@@ -35,7 +19,7 @@ function returnHeightAndWeight(height, weight) {
   let heightWeight =[];
 
   for (i = 1; i <= rollAmountHeight; i++){
-    sumOfRolls +=  returnRandomNumberInRange(1,diceTypeHeight);
+    sumOfRolls +=  utils.returnRandomNumberInRange(1,diceTypeHeight);
   };
 
   //conversion from feet to inches, had to do some ugly stuff to stop super long floats
@@ -48,10 +32,9 @@ function returnHeightAndWeight(height, weight) {
   sumOfRolls = null; //reset sumOfRolls
 
   for (j = 1; j <= rollAmountWeight; j++){
-    sumOfRolls +=  returnRandomNumberInRange(1,diceTypeWeight);
+    sumOfRolls +=  utils.returnRandomNumberInRange(1,diceTypeWeight);
 
   };
-
 
   heightWeight.push(heightWeight[0] * sumOfRolls);
 
@@ -61,7 +44,7 @@ function returnHeightAndWeight(height, weight) {
 
 //returns a random alignment // TODO: make the assigned alignments fall in line with the player hand book guide
 function returnRandomAlignment() {
-    return returnRandomArrayItem([
+    return utils.returnRandomArrayItem([
         "Lawful Good",
         "Neutral Good",
         "Chaotic Good",
@@ -74,27 +57,20 @@ function returnRandomAlignment() {
     ]);
 };
 
-//Returns a random element of the array provided as the arguement
-function returnRandomArrayItem(array){
-    return array[returnRandomNumberInRange(0, array.length - 1)]
-};
 
-function returnRandomRace() {
-    return returnRandomArrayItem(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfling", "Human", "Tiefling"])
-};
 
 function returnCharacterAge(character){
 
   switch (true) {
-    case character.race === "Dragonborn": character.age = returnRandomNumberInRange(15,80);break;
-    case character.race === "Dwarf": character.age = returnRandomNumberInRange(50,350);break;
-    case character.race === "Elf": character.age = returnRandomNumberInRange(100,750);break;
-    case character.race === "Gnome": character.age = returnRandomNumberInRange(40,450);break;
-    case character.race === "Half Elf": character.age = returnRandomNumberInRange(20,180);break;
-    case character.race === "Half Orc": character.age = returnRandomNumberInRange(14,75);break;
-    case character.race === "Halfling": character.age = returnRandomNumberInRange(20,250);break;
-    case character.race === "Human": character.age = returnRandomNumberInRange(16,100);break;
-    case character.race === "Tiefling": character.age = returnRandomNumberInRange(16,120);break;
+    case character.race === "Dragonborn": character.age = utils.returnRandomNumberInRange(15,80);break;
+    case character.race === "Dwarf": character.age = utils.returnRandomNumberInRange(50,350);break;
+    case character.race === "Elf": character.age = utils.returnRandomNumberInRange(100,750);break;
+    case character.race === "Gnome": character.age = utils.returnRandomNumberInRange(40,450);break;
+    case character.race === "Half Elf": character.age = utils.returnRandomNumberInRange(20,180);break;
+    case character.race === "Half Orc": character.age = utils.returnRandomNumberInRange(14,75);break;
+    case character.race === "Halfling": character.age = utils.returnRandomNumberInRange(20,250);break;
+    case character.race === "Human": character.age = utils.returnRandomNumberInRange(16,100);break;
+    case character.race === "Tiefling": character.age = utils.returnRandomNumberInRange(16,120);break;
     default:character.age = "Fell though switch case [returnCharacterAge()]"
 
   };
@@ -211,7 +187,7 @@ function applyDragonbornRaceBonuses() {
     character.abilityScores.str += 2;
     character.abilityScores.cha += 1;
     character.speed = 30;
-    character.draconicAncestry = returnRandomArrayItem(["Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"]);
+    character.draconicAncestry = utils.returnRandomArrayItem(["Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"]);
     character.resistances = returnDragonbornFeatures(character.draconicAncestry)[0].damageType;
     character.breathWeapon = returnDragonbornFeatures(character.draconicAncestry)[0].breathWeapon;
     character.racialAbilities = null // TODO: link to racial_traits.js
@@ -347,7 +323,7 @@ function roll4D6RemoveLowestAndSum() {
     var numbers = [];
 
     for (let i = 0; i < 4; i++) {
-        numbers.push(returnRandomNumberInRange(1, 6));
+        numbers.push(utils.returnRandomNumberInRange(1, 6));
     };
 
     numbers.sort().shift();
@@ -373,20 +349,7 @@ function returnSixNumbers() {
 
 //Returns a random character class as a string // TODO: add remaining character classes
 function returnRandomCharacterClass() {
-    return returnRandomArrayItem([
-        "Bard",
-        "Fighter",
-        "Barbarian",
-        "Cleric",
-        "Druid",
-        "Monk",
-        "Paladin",
-        "Ranger",
-        "Rogue",
-        "Sorcerer",
-        "Warlock",
-        "Wizard"
-    ]);
+    return utils.returnRandomArrayItem(classes.classList)
 };
 
 
@@ -395,43 +358,49 @@ const maleFirstNames = ["Chris", "Ed", "Ralph"];
 const femaleFirstNames = ["Magda", "Kelly", "Holly"];
 const surnames = ["Long", "Araniseli", "Stringer"];
 
-//Return a random name as a string based gender arguement value
-function returnRandomName(gender) {
 
-    if (gender === "Male") {
 
-        return returnRandomArrayItem(maleFirstNames).concat(" ", returnRandomArrayItem(surnames))
+function returnFirstName(gender) {
 
+    if (gender === "male") {
+        return utils.returnRandomArrayItem(maleFirstNames);
     } else {
+        return utils.returnRandomArrayItem(femaleFirstNames);
+    };
+};
 
-        return returnRandomArrayItem(femaleFirstNames).concat(" ", returnRandomArrayItem(surnames))
+function returnLastName() {
 
-    }
+    return utils.returnRandomArrayItem(surnames);
 
 };
+
 
 //Returns a random gender
 function returnRandomGender() {
-
-    return returnRandomArrayItem(["Male", "Female"]);
-
+    return utils.returnRandomArrayItem(["male", "female"]);
 };
 
 //Returns an array of ordered ability score prefrences based on the class supplied in the arguement
-// TODO: add remaining character class stat prefrences
 function returnAbilityScorePreference (characterClass) {
-
-    var barbarian = ["str", "con", "dex", "wis", "cha", "int"];
-    var bard      = ["cha", "dex", "con", "wis", "str", "int"];
-    var monk      = ["dex", "wis", "con", "str", "cha", "int"];
 
     switch (true) {
 
-        case characterClass === "barbarian": return barbarian; break;
-        case characterClass === "bard": return bard; break;
-        case characterClass === "monk": return monk; break;
+        case characterClass.name === "barbarian": return ["str", "con", "dex", "wis", "cha", "int"]; break;
+        case characterClass.name === "bard":      return ["cha", "dex", "con", "wis", "str", "int"]; break;
+        case characterClass.name === "monk":      return ["dex", "wis", "con", "str", "cha", "int"]; break;
+        case characterClass.name === "cleric":    return ["wis", "str", "con", "dex", "cha", "int"]; break;
+        case characterClass.name === "druid":     return ["wis", "dex", "con", "cha", "int", "str"]; break;
+        case characterClass.name === "paladin":   return ["str", "cha", "con", "wis", "dex", "int"]; break;
+        case characterClass.name === "ranger":    return ["dex", "con", "wis", "str", "cha", "int"]; break;
+        case characterClass.name === "rogue":     return ["dex", "con", "wis", "cha", "int", "str"]; break;
+        case characterClass.name === "sorcerer":  return ["cha", "con", "int", "wis", "dex", "str"]; break;
+        case characterClass.name === "warlock":   return ["cha", "con", "dex", "wis", "int", "str"]; break;
+        case characterClass.name === "wizard":    return ["int", "con", "dex", "wis", "cha", "str"]; break;
+        case characterClass.name === "fighter" && characterClass.primaryAbility === "str": return ["str", "con", "dex", "wis", "cha", "int"]; break;
+        case characterClass.name === "fighter" && characterClass.primaryAbility === "dex": return ["dex", "con", "str", "wis", "cha", "int"]; break;
 
-        default: return "invalid character class supplied as argument";
+        default: return "invalid character class supplied as argument [returnAbilityScorePreference()]";
 
     };
 
@@ -458,18 +427,27 @@ function returnAbilityScores(characterClass) {
 };
 
 
+function returnRandomRace() {
+
+    return utils.returnRandomArrayItem(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfling", "Human", "Tiefling"])
+
+};
+
+
 //NewCharacter Construtor
 function NewCharacter(){
 
   this.level = 1;// TODO: add level scaling
   this.gender = returnRandomGender();
-  this.name = returnRandomName(this.gender);
+  this.firstName = returnFirstName(this.gender);
+  this.lastName = returnLastName(this.gender);
   this.race = returnRandomRace();
   this.alignment = returnRandomAlignment();
-  this.characterClass = returnRandomCharacterClass();
+  this.characterClass = returnRandomCharacterClass()
   this.abilityScores = returnAbilityScores(this.characterClass);
   applySubraceBonuses(this);
   returnCharacterAge(this)
+
 
 };
 
