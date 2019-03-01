@@ -1,19 +1,59 @@
 const core = require('./core.js');
 const utils = require('./utils.js')
+const weapons = require('./weapons.js');
+const tools = require('./tools.js')
+
+const skillProficiencies = ["Athletics","Acrobatics","Sleight Of Hand","Stealth","Arcana","History",
+                    "Investigation","Nature","Religion","Animal Handling","Insight","Medicine",
+                    "Perception","Survival","Deception","Intimidation","Performance","Persuasion"];
+
+function returnRandomProficiencies(count) {
+
+    var proficiencies = [];
+
+    for (i = 0; i < count; i++) {
+
+        let pickedSkill = utils.returnRandomArrayItem(skillProficiencies);
+
+        if (proficiencies.includes(pickedSkill) === false) {
+            proficiencies.push(pickedSkill);
+        } else {
+            i--;
+        };
+
+    };
+
+	return proficiencies;
+
+};
+
+function populateEquipment(chaClass) {
+
+  switch (true) {
+    case chaClass === "bard":return this.equipment = "test weapon";
+
+      break;
+    default:
+
+  }
+
+}
+
+
 
 function createBard() {
 
-        this.name = "bard",
-        this.primaryAbility = "cha",
-        this.castingAbility = "cha",
-        this.hitDie = 8,
-        this.savingThrows = ["dex", "cha"],
+    this.name = "bard",
+    this.primaryAbility = "cha",
+    this.castingAbility = "cha",
+    this.hitDie = 8,
+    this.savingThrows = ["dex", "cha"],
 
-        this.equipment = [],
-        this.armorProficiencies = [],
-        this.weaponProficiencies = [],
-        this.toolProficiencies = [],
-        this.skillProficiencies = []
+    this.equipment = [populateEquipment("bard")],
+    this.armorProficiencies = ["Light armor"],
+    this.weaponProficiencies = ["simple weapons", "hand crossbows", "longswords", "rapiers", "shortswords"],
+    this.toolProficiencies = tools.returnRandomInstruments(2);
+    this.skillProficiencies = returnRandomProficiencies(3);
 
 };
 
@@ -183,20 +223,25 @@ function createWizard() {
 };
 
 
-classList = [
-             new createBard(),
-             new createBarbarian(),
-             new createMonk(),
-             new createCleric(),
-             new createDruid(),
-             new createFighter(),
-             new createPaladin(),
-             new createRanger(),
-             new createRogue(),
-             new createSorcerer(),
-             new createWarlock(),
-             new createWizard()
-           ];
+// classList = [
+//              new createBard(),
+//              new createBarbarian(),
+//              new createMonk(),
+//              new createCleric(),
+//              new createDruid(),
+//              new createFighter(),
+//              new createPaladin(),
+//              new createRanger(),
+//              new createRogue(),
+//              new createSorcerer(),
+//              new createWarlock(),
+//              new createWizard()
+//            ];
+
+           classList = [
+                        new createBard(),
+
+                      ];
 
 
 

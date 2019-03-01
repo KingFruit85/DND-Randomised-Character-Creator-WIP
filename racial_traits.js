@@ -1,3 +1,5 @@
+// TODO: some racial traits modify character attributes, need to go though these and apply
+
 dwarf_racial = {
 
     darkvision: {

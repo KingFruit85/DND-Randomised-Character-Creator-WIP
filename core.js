@@ -1,9 +1,11 @@
 const classes = require('./classes.js');
 const utils = require('./utils.js');
+const racial_traits =require('./racial_traits.js');
 
 
 
 
+// TODO: refactor, must be a cleaner way to do this
 //Takes a string representing a dice roll, such as "2d4" and returns a value in inches
 function returnHeightAndWeight(height, weight) {
 
@@ -190,7 +192,7 @@ function applyDragonbornRaceBonuses() {
     character.draconicAncestry = utils.returnRandomArrayItem(["Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"]);
     character.resistances = returnDragonbornFeatures(character.draconicAncestry)[0].damageType;
     character.breathWeapon = returnDragonbornFeatures(character.draconicAncestry)[0].breathWeapon;
-    character.racialAbilities = null // TODO: link to racial_traits.js
+    character.racialAbilities = racial_traits.dragonborn_racial;
     character.languages = ["Common", "Draconic"];
     character.sizeClass = "Medium";
     let heightWeight = returnCharacterHeight(character.race)
@@ -203,7 +205,7 @@ function applyDwarfRaceBonuses() {
 
     character.abilityScores.con += 2;
     character.speed = 25;
-    character.racialAbilities = null; // TODO: link to racial_traits.js
+    character.racialAbilities = racial_traits.dwarf_racial;
     character.languages = ["Common", "Dwarvish"];
     character.resistances = "Poison"
     character.sizeClass = "Medium";
@@ -212,11 +214,11 @@ function applyDwarfRaceBonuses() {
     character.weight = heightWeight[1];
 };
 
-function applyElfRaceBonuses(){
+function applyElfRaceBonuses() {
 
-    character.abilityScores.dex +=2;
+    character.abilityScores.dex += 2;
     character.speed = 30;
-    character.racialAbilities = null; // TODO: link to racial_traits.js
+    character.racialAbilities = racial_traits.elf_racial;
     character.languages = ["Common", "Elven"];
     character.resistances = null;
     character.sizeClass = "Medium";
@@ -228,9 +230,9 @@ function applyElfRaceBonuses(){
 
 function applyGnomeRaceBonuses() {
 
-    character.abilityScores.int +=2;
+    character.abilityScores.int += 2;
     character.speed = 25;
-    character.racialAbilities = null; // TODO: link to racial_traits.js
+    character.racialAbilities = racial_traits.gnome_racial;
     character.languages = ["Common", "Gnomish"];
     character.resistances = null;
     character.sizeClass = "Small";
@@ -242,9 +244,9 @@ function applyGnomeRaceBonuses() {
 
 function applyHalfElfRaceBonuses() {
 
-    character.abilityScores.cha +=2;
+    character.abilityScores.cha += 2;
     character.speed = 30;
-    character.racialAbilities = null; // TODO: link to racial_traits.js
+    character.racialAbilities = racial_traits.halfElf_racial;
     character.languages = ["Common", "Elven"]; // TODO: half elves can also speak one extra random language
     character.resistances = null;
     character.sizeClass = "Medium";
@@ -257,10 +259,10 @@ function applyHalfElfRaceBonuses() {
 
 function applyHalfOrcRaceBonuses() {
 
-    character.abilityScores.str +=2;
-    character.abilityScores.con +=1;
+    character.abilityScores.str += 2;
+    character.abilityScores.con += 1;
     character.speed = 30;
-    character.racialAbilities = null; // TODO: link to racial_traits.js
+    character.racialAbilities = racial_traits.halfOrc_racial;
     character.languages = ["Common", "Orcish"];
     character.resistances = null;
     character.sizeClass = "Medium";
@@ -272,9 +274,9 @@ function applyHalfOrcRaceBonuses() {
 
 function applyHalflingRaceBonuses() {
 
-    character.abilityScores.dex +=2;
+    character.abilityScores.dex += 2;
     character.speed = 25;
-    character.racialAbilities = null; // TODO: link to racial_traits.js
+    character.racialAbilities = racial_traits.halfElf_racial;
     character.languages = ["Common", "Halfling"];
     character.resistances = null;
     character.sizeClass = "Small";
@@ -286,15 +288,15 @@ function applyHalflingRaceBonuses() {
 
 function applyHumanRaceBonuses() {
 
-    character.abilityScores.str +=1;
-    character.abilityScores.con +=1;
-    character.abilityScores.dex +=1;
-    character.abilityScores.int +=1;
-    character.abilityScores.wis +=1;
-    character.abilityScores.cha +=1;
+    character.abilityScores.str += 1;
+    character.abilityScores.con += 1;
+    character.abilityScores.dex += 1;
+    character.abilityScores.int += 1;
+    character.abilityScores.wis += 1;
+    character.abilityScores.cha += 1;
     character.speed = 30;
-    character.racialAbilities = null; // TODO: link to racial_traits.js
-    character.languages = ["Common"]; //// TODO: add extra random language
+    character.racialAbilities = null; // TODO: Humans don't have racial traits but they do have vaiant rules.
+    character.languages = ["Common", returnRandomLanguage()];
     character.resistances = null;
     character.sizeClass = "Medium";
     let heightWeight = returnCharacterHeight(character.race)
@@ -305,16 +307,23 @@ function applyHumanRaceBonuses() {
 
 function applyTieflingRaceBonuses() {
 
-  character.abilityScores.str +=1; // TODO: also need to add a randome +1 to cha or dex, perhaps decided based on class stat preference
-  character.speed = 30;
-  character.racialAbilities = null; // TODO: link to racial_traits.js
-  character.languages = ["Common", "Infernal"]; //// TODO: add extra random language
-  character.resistances = "Fire";
-  character.sizeClass = "Medium";
-  let heightWeight = returnCharacterHeight(character.race)
-  character.height = heightWeight[0];
-  character.weight = heightWeight[1];
+    character.abilityScores.str += 1; // TODO: also need to add a randome +1 to cha or dex, perhaps decided based on class stat preference
+    character.speed = 30;
+    character.racialAbilities = racial_traits.tiefling_racial;
+    character.languages = ["Common", "Infernal"];
+    character.resistances = "Fire";
+    character.sizeClass = "Medium";
+    let heightWeight = returnCharacterHeight(character.race)
+    character.height = heightWeight[0];
+    character.weight = heightWeight[1];
 
+};
+
+function returnRandomLanguage() {
+    return utils.returnRandomArrayItem(["Abyssal", "Aquan", "Auran", "Celestial", "Deep Speech", "Draconic", "Dwarvish", "Elvish",
+        "Giant", "Gnomish", "Goblin", "Gnoll", "Halfling", "Ignan", "Infernal", "Orc", "Primordial",
+        "Sylvan", "Terran", "Undercommon"
+    ]);
 };
 
 //Simulates the rolling of 4D6, removing the lowest value die and returns the sum of the remainder
@@ -437,21 +446,28 @@ function returnRandomRace() {
 //NewCharacter Construtor
 function NewCharacter(){
 
+  this.characterClass = returnRandomCharacterClass();
   this.level = 1;// TODO: add level scaling
   this.gender = returnRandomGender();
   this.firstName = returnFirstName(this.gender);
   this.lastName = returnLastName(this.gender);
   this.race = returnRandomRace();
   this.alignment = returnRandomAlignment();
-  this.characterClass = returnRandomCharacterClass()
   this.abilityScores = returnAbilityScores(this.characterClass);
   applySubraceBonuses(this);
   returnCharacterAge(this)
+
+  return this
 
 
 };
 
 
 
-console.log(JSON.stringify(new NewCharacter(), undefined, 2))
+
+
+
+
+
+console.log(JSON.stringify(new NewCharacter(), undefined, 2));
 // console.log(returnHeightAndWeight("1d4", "2d4"))
