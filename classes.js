@@ -1,7 +1,8 @@
 const core = require('./core.js');
 const utils = require('./utils.js')
-const weapons = require('./weapons.js');
-const tools = require('./tools.js')
+const weaponsAndShields = require('./weapons.js');
+const toolsAndEquipment = require('./tools.js');
+const armors = require('./armor');
 
 const skillProficiencies = ["Athletics","Acrobatics","Sleight Of Hand","Stealth","Arcana","History",
                     "Investigation","Nature","Religion","Animal Handling","Insight","Medicine",
@@ -27,32 +28,53 @@ function returnRandomProficiencies(count) {
 
 };
 
+
 function populateEquipment(chaClass) {
 
-  switch (true) {
-    case chaClass === "bard":return this.equipment = "test weapon";
+    let equipment = {
+        weapons: [],
+        tools: [],
+        armor: []
+    };
 
-      break;
-    default:
 
-  }
 
-}
+    switch (true) {
+        case chaClass === "bard":
+            equipment.armor = armors.lightArmor.leather;
+            equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.diplomatsPack, toolsAndEquipment.equipmentPacks.entertainersPack]);
+            equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger;
+            equipment.weapons[1] = utils.returnRandomArrayItem([weaponsAndShields.martialMeleeWeapons.rapier, weaponsAndShields.martialMeleeWeapons.longsword]);
+
+            break;
+        default:
+
+    }
+
+
+    return equipment;
+
+};
+
+
+
+
 
 
 
 function createBard() {
 
     this.name = "bard",
+
     this.primaryAbility = "cha",
     this.castingAbility = "cha",
     this.hitDie = 8,
     this.savingThrows = ["dex", "cha"],
 
-    this.equipment = [populateEquipment("bard")],
+    this.equipment = populateEquipment(this.name),
     this.armorProficiencies = ["Light armor"],
     this.weaponProficiencies = ["simple weapons", "hand crossbows", "longswords", "rapiers", "shortswords"],
-    this.toolProficiencies = tools.returnRandomInstruments(2);
+    this.toolProficiencies = toolsAndEquipment.returnRandomInstruments(2);
     this.skillProficiencies = returnRandomProficiencies(3);
 
 };

@@ -443,6 +443,17 @@ function returnRandomRace() {
 };
 
 
+function returnHitpoints(chaClass){
+  switch (true) {
+    case chaClass === "bard": return (8 + this.abilityScores.con);
+
+      break;
+    default:
+
+  }
+}
+
+
 //NewCharacter Construtor
 function NewCharacter(){
 
@@ -456,6 +467,8 @@ function NewCharacter(){
   this.abilityScores = returnAbilityScores(this.characterClass);
   applySubraceBonuses(this);
   returnCharacterAge(this)
+  returnHitpoints("bard")
+
 
   return this
 
@@ -470,4 +483,4 @@ function NewCharacter(){
 
 
 console.log(JSON.stringify(new NewCharacter(), undefined, 2));
-// console.log(returnHeightAndWeight("1d4", "2d4"))
+// console.log(new NewCharacter())
