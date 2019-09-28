@@ -1,3 +1,8 @@
+const utils = require('./utils.js')
+
+
+
+
 const simpleWeapons = {
 
 
@@ -267,7 +272,7 @@ const martialRangedWeapons = {
     longbow: {
         name: "Longbow",
         cost: "50 gp",
-        damage: "1d8 piercing	weight:2 lb",
+        damage: "1d8 piercing weight:2 lb",
         properties: "Ammunition (range 150/600), heavy, two-handed"
     },
     net: {
@@ -282,7 +287,43 @@ const martialRangedWeapons = {
 
 }
 
+function returnRandomWeaponFromCollection(collection){
+
+  let collectionLength = Object.values(collection).length;
+  collectionLength -- ;
+  let randomNumber = utils.returnRandomNumberInRange(0, collectionLength);
+
+  return Object.values(collection)[randomNumber];
+
+}
+
+
+function returnRandomWeaponsFromCollection(collection, ammount){
+
+  let weapons = [];
+
+  for (i = 0; i < ammount; i++){
+    weapons.push(returnRandomWeaponFromCollection(collection))
+  }
+
+  return weapons;
+
+}
+
+
+
+// console.log(returnRandomWeaponFromCollection(martialRangedWeapons))
+
+
+
+
+
+
+
+
 exports.simpleWeapons = simpleWeapons;
 exports.simpleRangedWeapons = simpleRangedWeapons;
 exports.martialMeleeWeapons = martialMeleeWeapons;
 exports.martialRangedWeapons = martialRangedWeapons;
+exports.returnRandomWeaponFromCollection = returnRandomWeaponFromCollection;
+exports.returnRandomWeaponsFromCollection = returnRandomWeaponsFromCollection;

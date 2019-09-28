@@ -1,6 +1,8 @@
 const classes = require('./classes.js');
 const utils = require('./utils.js');
 const racial_traits =require('./racial_traits.js');
+const spells =require('./spells.js');
+const fs = require('fs');
 
 
 
@@ -61,22 +63,22 @@ function returnRandomAlignment() {
 
 
 
-function returnCharacterAge(character){
+function returnCharacterAge(race){
 
   switch (true) {
-    case character.race === "Dragonborn": character.age = utils.returnRandomNumberInRange(15,80);break;
-    case character.race === "Dwarf": character.age = utils.returnRandomNumberInRange(50,350);break;
-    case character.race === "Elf": character.age = utils.returnRandomNumberInRange(100,750);break;
-    case character.race === "Gnome": character.age = utils.returnRandomNumberInRange(40,450);break;
-    case character.race === "Half Elf": character.age = utils.returnRandomNumberInRange(20,180);break;
-    case character.race === "Half Orc": character.age = utils.returnRandomNumberInRange(14,75);break;
-    case character.race === "Halfling": character.age = utils.returnRandomNumberInRange(20,250);break;
-    case character.race === "Human": character.age = utils.returnRandomNumberInRange(16,100);break;
-    case character.race === "Tiefling": character.age = utils.returnRandomNumberInRange(16,120);break;
-    default:character.age = "Fell though switch case [returnCharacterAge()]"
+    case race === "Dragonborn": return utils.returnRandomNumberInRange(15,80);break;
+    case race === "Dwarf":      return utils.returnRandomNumberInRange(50,350);break;
+    case race === "Elf":        return utils.returnRandomNumberInRange(100,750);break;
+    case race === "Gnome":      return utils.returnRandomNumberInRange(40,450);break;
+    case race === "Half Elf":   return utils.returnRandomNumberInRange(20,180);break;
+    case race === "Half Orc":   return utils.returnRandomNumberInRange(14,75);break;
+    case race === "Halfling":   return utils.returnRandomNumberInRange(20,250);break;
+    case race === "Human":      return utils.returnRandomNumberInRange(16,100);break;
+    case race === "Tiefling":   return utils.returnRandomNumberInRange(16,120);break;
+    default:return "Fell though switch case [returnCharacterAge()]"
 
   };
-  return character;
+
 };
 
 function applySubraceBonuses(char){
@@ -276,7 +278,7 @@ function applyHalflingRaceBonuses() {
 
     character.abilityScores.dex += 2;
     character.speed = 25;
-    character.racialAbilities = racial_traits.halfElf_racial;
+    character.racialAbilities = racial_traits.halfling_racial;
     character.languages = ["Common", "Halfling"];
     character.resistances = null;
     character.sizeClass = "Small";
@@ -363,9 +365,9 @@ function returnRandomCharacterClass() {
 
 
 // TODO: pull from bigger list in new js file
-const maleFirstNames = ["Chris", "Ed", "Ralph"];
-const femaleFirstNames = ["Magda", "Kelly", "Holly"];
-const surnames = ["Long", "Araniseli", "Stringer"];
+const maleFirstNames = ["Chris", "Adam", "Wim", "Ali"];
+const femaleFirstNames = ["Magda", "Kelly", "Holly", "Zifa"];
+const surnames = ["Long", "Mistiaen", "Abildgaard", "Halil", "C.O.C.A.I.N.E"];
 
 
 
@@ -415,6 +417,14 @@ function returnAbilityScorePreference (characterClass) {
 
 };
 
+
+//calculates an ability score's modifier
+function returnAbilityScoreModifier(stat){
+
+  return Math.floor( ( stat - 10 ) / 2 );
+
+}
+
 //Returns an array of abilityscores reordered in prefrence on the class argument
 
 function returnAbilityScores(characterClass) {
@@ -425,11 +435,22 @@ function returnAbilityScores(characterClass) {
     let characterAbilityScores = {};
 
     characterAbilityScores.str = abilityScores[abilityScoreOrder.indexOf("str")];
+    characterAbilityScores.strMod = returnAbilityScoreModifier(characterAbilityScores.str);
+
     characterAbilityScores.con = abilityScores[abilityScoreOrder.indexOf("con")];
+    characterAbilityScores.conMod = returnAbilityScoreModifier(characterAbilityScores.con);
+
     characterAbilityScores.dex = abilityScores[abilityScoreOrder.indexOf("dex")];
+    characterAbilityScores.dexMod = returnAbilityScoreModifier(characterAbilityScores.dex);
+
     characterAbilityScores.int = abilityScores[abilityScoreOrder.indexOf("int")];
+    characterAbilityScores.intMod = returnAbilityScoreModifier(characterAbilityScores.int);
+
     characterAbilityScores.wis = abilityScores[abilityScoreOrder.indexOf("wis")];
+    characterAbilityScores.wisMod = returnAbilityScoreModifier(characterAbilityScores.wis);
+
     characterAbilityScores.cha = abilityScores[abilityScoreOrder.indexOf("cha")];
+    characterAbilityScores.chaMod = returnAbilityScoreModifier(characterAbilityScores.cha);
 
     return characterAbilityScores;
 
@@ -443,31 +464,230 @@ function returnRandomRace() {
 };
 
 
-function returnHitpoints(chaClass){
+
+function calculateModifier(abilityScores) {
+  for (var key in abilityScores) {
+
+    console.log("score" + abilityScores[key] + "Modifier" + returnAbilityScoreModifier(abilityScores[key]));
+  }
+};
+
+function calculateFirstLevelHitPoints(characterClassName, conModifier){
+
   switch (true) {
-    case chaClass === "bard": return (8 + this.abilityScores.con);
+    case characterClassName === "bard":  return 8 + conModifier;
+    case characterClassName === "barbarian": return 12 + conModifier;
+    case characterClassName === "cleric":  return 8 + conModifier;
+    case characterClassName === "fighter": return 10 + conModifier;
+    case characterClassName === "monk":  return 8 + conModifier;
+    case characterClassName === "paladin": return 10 + conModifier;
+    case characterClassName === "ranger":  return 10 + conModifier;
+    case characterClassName === "rogue": return 8 + conModifier;
+    case characterClassName === "sorcerer":  return 6 + conModifier;
+    case characterClassName === "warlock": return 8 + conModifier;
+    case characterClassName === "wizard":  return 6 + conModifier;
 
       break;
-    default:
+    default:return "fell though switch case"
 
   }
+
+};
+
+function calculateSavingThrowScores(abilityScores, savingThrowProficiencies, proficiencyModifier){
+
+  let savingThrows = {
+
+    strength:    {modifier:abilityScores.strMod, proficient: savingThrowProficiencies.includes("str")},
+    dexterity:   {modifier:abilityScores.dexMod, proficient: savingThrowProficiencies.includes("dex")},
+    constitution:{modifier:abilityScores.conMod, proficient: savingThrowProficiencies.includes("con")},
+    intelligence:{modifier:abilityScores.intMod, proficient: savingThrowProficiencies.includes("int")},
+    wisdom:      {modifier:abilityScores.wisMod, proficient: savingThrowProficiencies.includes("wis")},
+    charasma:    {modifier:abilityScores.chaMod, proficient: savingThrowProficiencies.includes("cha")}
+
+  };
+
+  if (savingThrows.strength.proficient     === true){savingThrows.strength.modifier     += proficiencyModifier};
+  if (savingThrows.dexterity.proficient    === true){savingThrows.dexterity.modifier    += proficiencyModifier};
+  if (savingThrows.constitution.proficient === true){savingThrows.constitution.modifier += proficiencyModifier};
+  if (savingThrows.intelligence.proficient === true){savingThrows.intelligence.modifier += proficiencyModifier};
+  if (savingThrows.wisdom.proficient       === true){savingThrows.wisdom.modifier       += proficiencyModifier};
+  if (savingThrows.charasma.proficient     === true){savingThrows.charasma.modifier     += proficiencyModifier};
+
+  return savingThrows;
+
+}
+
+function calculateSkillScores(abilityScores, skillProficiencies, proficiencyModifier){
+
+  let skillScores = {
+
+    athletics:     {modifier:abilityScores.strMod, proficient:skillProficiencies.includes("athletics")},
+    acrobatics:    {modifier:abilityScores.dexMod, proficient:skillProficiencies.includes("acrobatics")},
+    sleightOfHand: {modifier:abilityScores.dexMod, proficient:skillProficiencies.includes("sleight of hand")},
+    arcana:        {modifier:abilityScores.intMod, proficient:skillProficiencies.includes("arcana")},
+    stealth:       {modifier:abilityScores.dexMod, proficient:skillProficiencies.includes("stealth")},
+    history:       {modifier:abilityScores.wisMod, proficient:skillProficiencies.includes("history")},
+    nature:        {modifier:abilityScores.intMod, proficient:skillProficiencies.includes("nature")},
+    religion:      {modifier:abilityScores.wisMod, proficient:skillProficiencies.includes("religion")},
+    animalHandling:{modifier:abilityScores.wisMod, proficient:skillProficiencies.includes("animal handling")},
+    insight:       {modifier:abilityScores.wisMod, proficient:skillProficiencies.includes("insight")},
+    medicine:      {modifier:abilityScores.wisMod, proficient:skillProficiencies.includes("medicine")},
+    perception:    {modifier:abilityScores.wisMod, proficient:skillProficiencies.includes("perception")},
+    survival:      {modifier:abilityScores.wisMod, proficient:skillProficiencies.includes("survival")},
+    deception:     {modifier:abilityScores.chaMod, proficient:skillProficiencies.includes("deception")},
+    intimidation:  {modifier:abilityScores.chaMod, proficient:skillProficiencies.includes("intimidation")},
+    performance:   {modifier:abilityScores.chaMod, proficient:skillProficiencies.includes("performance")},
+    persuasion:    {modifier:abilityScores.chaMod, proficient:skillProficiencies.includes("persuasion")}
+
+  };
+
+
+  if (skillScores.athletics.proficient === true){skillScores.athletics.modifier += proficiencyModifier};
+  if (skillScores.acrobatics.proficient === true){skillScores.acrobatics.modifier += proficiencyModifier};
+  if (skillScores.sleightOfHand.proficient === true){skillScores.sleightOfHand.modifier += proficiencyModifier};
+  if (skillScores.arcana.proficient === true){skillScores.arcana.modifier += proficiencyModifier};
+  if (skillScores.stealth.proficient === true){skillScores.stealth.modifier += proficiencyModifier};
+  if (skillScores.history.proficient === true){skillScores.history.modifier += proficiencyModifier};
+  if (skillScores.nature.proficient === true){skillScores.nature.modifier += proficiencyModifier};
+  if (skillScores.religion.proficient === true){skillScores.religion.modifier += proficiencyModifier};
+  if (skillScores.animalHandling.proficient === true){skillScores.animalHandling.modifier += proficiencyModifier};
+  if (skillScores.insight.proficient === true){skillScores.insight.modifier += proficiencyModifier};
+  if (skillScores.medicine.proficient === true){skillScores.medicine.modifier += proficiencyModifier};
+  if (skillScores.perception.proficient === true){skillScores.perception.modifier += proficiencyModifier};
+  if (skillScores.survival.proficient === true){skillScores.survival.modifier += proficiencyModifier};
+  if (skillScores.deception.proficient === true){skillScores.deception.modifier += proficiencyModifier};
+  if (skillScores.intimidation.proficient === true){skillScores.intimidation.modifier += proficiencyModifier};
+  if (skillScores.performance.proficient === true){skillScores.performance.modifier += proficiencyModifier};
+  if (skillScores.persuasion.proficient === true){skillScores.persuasion.modifier += proficiencyModifier};
+
+  return skillScores;
+
+};
+
+//// TODO: refactor this beast
+function calculateSpellslots(characterClass){
+
+  let spellSlots = {
+    cantrips:    {avalible:0, spells:[]},
+    firstLevel:  {avalible:0, spells:[]},
+    secondLevel: {avalible:0, spells:[]},
+    thirdLevel:  {avalible:0, spells:[]},
+    forthLevel:  {avalible:0, spells:[]},
+    fifthLevel:  {avalible:0, spells:[]},
+    sixthLevel:  {avalible:0, spells:[]},
+    seventhLevel:{avalible:0, spells:[]},
+    eighthLevel: {avalible:0, spells:[]},
+    ninthLevel:  {avalible:0, spells:[]},
+  }
+
+  if (characterClass === "bard"){
+
+    spellSlots.cantrips.avalible = 2;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.bardCantrips, spellSlots.cantrips.avalible));
+
+    spellSlots.firstLevel.avalible = 2;
+    spellSlots.firstLevel.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.bardLevel1, spellSlots.firstLevel.avalible));
+
+    spellSlots.totalSpellsKnown = 4;
+
+  }
+
+  else if (characterClass === "cleric") {
+
+    spellSlots.cantrips.avalible = 3;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.clericCantrips, spellSlots.cantrips.avalible));
+
+    spellSlots.firstLevel.avalible = 2;
+    spellSlots.firstLevel.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.clericLevel1, spellSlots.firstLevel.avalible));
+
+  }
+
+  else if (characterClass === "druid") {
+
+    spellSlots.cantrips.avalible = 2;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.druidCantrips, spellSlots.cantrips.avalible));
+
+    spellSlots.firstLevel.avalible = 2;
+    spellSlots.firstLevel.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.druidLevel1, spellSlots.firstLevel.avalible));
+
+  }
+
+  else if (characterClass === "paladin") {
+
+    spellSlots.cantrips.avalible = 0;
+
+    spellSlots.firstLevel.avalible = 0;
+
+  }
+  else if (characterClass === "ranger") {
+    spellSlots.cantrips.avalible = 0;
+    spellSlots.firstLevel.avalible = 0;
+  }
+  else if (characterClass === "sorcerer") {
+
+    spellSlots.cantrips.avalible = 4;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.sorcererCantrips, spellSlots.cantrips.avalible));
+
+    spellSlots.firstLevel.avalible = 2;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.sorcererLevel1, spellSlots.cantrips.avalible));
+
+    spellSlots.totalSpellsKnown = 2;
+
+  }
+  else if (characterClass === "warlock") {
+
+    spellSlots.cantrips.avalible = 2;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.warlockCantrips, spellSlots.cantrips.avalible));
+
+    spellSlots.firstLevel.avalible = 1;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.warlockLevel1, spellSlots.cantrips.avalible));
+
+    spellSlots.totalSpellsKnown = 2;
+
+  }
+  else if (characterClass === "wizard") {
+
+    spellSlots.cantrips.avalible = 3;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.wizardCantrips, spellSlots.cantrips.avalible));
+
+    spellSlots.firstLevel.avalible = 2;
+    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.wizardLevel1, spellSlots.cantrips.avalible));
+
+
+  }
+
+  return spellSlots;
+
 }
 
 
 //NewCharacter Construtor
 function NewCharacter(){
 
-  this.characterClass = returnRandomCharacterClass();
   this.level = 1;// TODO: add level scaling
+  this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
+
+  this.characterClass = returnRandomCharacterClass();
+  this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
+
+  this.race = returnRandomRace();
   this.gender = returnRandomGender();
+
   this.firstName = returnFirstName(this.gender);
   this.lastName = returnLastName(this.gender);
-  this.race = returnRandomRace();
+
   this.alignment = returnRandomAlignment();
+
   this.abilityScores = returnAbilityScores(this.characterClass);
+  this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod)
+  returnCharacterAge(this);
   applySubraceBonuses(this);
-  returnCharacterAge(this)
-  returnHitpoints("bard")
+
+  this.savingThrowScores = calculateSavingThrowScores(this.abilityScores, this.characterClass.savingThrows, this.proficiencyModifier);
+  this.skillScores = calculateSkillScores(this.abilityScores, this.characterClass.skillProficiencies, this.proficiencyModifier);
+  this.spellSlots = calculateSpellslots(this.characterClass.name)
+  this.characterClass.initiative = this.abilityScores.dexMod
 
 
   return this
@@ -478,9 +698,17 @@ function NewCharacter(){
 
 
 
+x = new NewCharacter();
 
+// console.log(JSON.stringify(x.characterClass, undefined, 2))
 
+JsonExport = JSON.stringify(x, undefined, 2);
 
+fs.writeFile("C:/Users/Christopher/Desktop/D-D-V2-dev/export.txt", JsonExport, function(err) {
+    if(err) {
+        return console.log(err);
+    }
 
-console.log(JSON.stringify(new NewCharacter(), undefined, 2));
-// console.log(new NewCharacter())
+    console.log("The file was saved!");
+    console.log(JsonExport)
+});

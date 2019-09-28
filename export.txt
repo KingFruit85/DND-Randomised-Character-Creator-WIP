@@ -1,0 +1,236 @@
+{
+  "level": 1,
+  "proficiencyModifier": 2,
+  "characterClass": {
+    "name": "paladin",
+    "primaryAbility": [
+      "str",
+      "cha"
+    ],
+    "hitDie": 10,
+    "savingThrows": [
+      "wis",
+      "cha"
+    ],
+    "armorProficiencies": [
+      "light armor",
+      "medium armor",
+      "heavy armor",
+      "shields"
+    ],
+    "weaponProficiencies": [
+      "simple weapons",
+      "martial weapons"
+    ],
+    "toolProficiencies": [
+      "none"
+    ],
+    "skillProficiencies": [
+      "religion",
+      "athletics"
+    ],
+    "equipment": {
+      "weapons": [
+        {
+          "name": "Greataxe",
+          "cost": "30 gp",
+          "damage": "1d12 slashing",
+          "weight": "7 lb",
+          "properties": "Heavy, two-handed"
+        },
+        {
+          "name": "Shield",
+          "Cost": "10gp"
+        }
+      ],
+      "tools": {
+        "Name": "Priest's Pack ",
+        "Cost": "19 gp",
+        "Description": "Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin."
+      },
+      "armor": [
+        {
+          "name": "Chain Mail",
+          "Cost": "75 gp",
+          "ArmorClass": "16",
+          "StrengthRequirement": "STR 13",
+          "Stealth": "Disadvantage",
+          "Weight": "55 lb"
+        }
+      ]
+    },
+    "initiative": 0
+  },
+  "characterClassAbilities": [
+    "divine sense",
+    "lay on hands"
+  ],
+  "race": "Human",
+  "gender": "male",
+  "firstName": "Chris",
+  "lastName": "Abildgaard",
+  "alignment": "Neutral Good",
+  "abilityScores": {
+    "str": 15,
+    "strMod": 2,
+    "con": 13,
+    "conMod": 1,
+    "dex": 12,
+    "dexMod": 0,
+    "int": 10,
+    "intMod": -1,
+    "wis": 12,
+    "wisMod": 0,
+    "cha": 13,
+    "chaMod": 1
+  },
+  "hitPoints": 11,
+  "speed": 30,
+  "racialAbilities": null,
+  "languages": [
+    "Common",
+    "Giant"
+  ],
+  "resistances": null,
+  "sizeClass": "Medium",
+  "height": "4.8 ft",
+  "weight": "110 lbs",
+  "savingThrowScores": {
+    "strength": {
+      "modifier": 2,
+      "proficient": false
+    },
+    "dexterity": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "constitution": {
+      "modifier": 1,
+      "proficient": false
+    },
+    "intelligence": {
+      "modifier": -1,
+      "proficient": false
+    },
+    "wisdom": {
+      "modifier": 2,
+      "proficient": true
+    },
+    "charasma": {
+      "modifier": 3,
+      "proficient": true
+    }
+  },
+  "skillScores": {
+    "athletics": {
+      "modifier": 4,
+      "proficient": true
+    },
+    "acrobatics": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "sleightOfHand": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "arcana": {
+      "modifier": -1,
+      "proficient": false
+    },
+    "stealth": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "history": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "nature": {
+      "modifier": -1,
+      "proficient": false
+    },
+    "religion": {
+      "modifier": 2,
+      "proficient": true
+    },
+    "animalHandling": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "insight": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "medicine": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "perception": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "survival": {
+      "modifier": 0,
+      "proficient": false
+    },
+    "deception": {
+      "modifier": 1,
+      "proficient": false
+    },
+    "intimidation": {
+      "modifier": 1,
+      "proficient": false
+    },
+    "performance": {
+      "modifier": 1,
+      "proficient": false
+    },
+    "persuasion": {
+      "modifier": 1,
+      "proficient": false
+    }
+  },
+  "spellSlots": {
+    "cantrips": {
+      "avalible": 0,
+      "spells": []
+    },
+    "firstLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "secondLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "thirdLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "forthLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "fifthLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "sixthLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "seventhLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "eighthLevel": {
+      "avalible": 0,
+      "spells": []
+    },
+    "ninthLevel": {
+      "avalible": 0,
+      "spells": []
+    }
+  }
+}

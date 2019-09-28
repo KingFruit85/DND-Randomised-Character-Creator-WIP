@@ -44,7 +44,8 @@ const utils = require('./utils.js')
 
 	        if (instruments.includes(pickedInstrument) === false) {
 	            instruments.push(pickedInstrument);
-	        } else {
+	        }
+					else {
 	            i--;
 	        };
 

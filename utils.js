@@ -26,6 +26,19 @@ function returnRandomArrayItem(array){
 
 };
 
+function returnRandomObjectPropertiesAndValues(collection, ammount){
+
+  let spells = [];
+
+  for(i = 0; i < ammount; i++){
+    spells.push(Object.values(collection)[returnRandomNumberInRange(0, Object.values(collection).length)]);
+  }
+
+  return spells;
+
+}
+
 exports.returnRandomNumberInRange = returnRandomNumberInRange;
 exports.returnRandomFloatInRange = returnRandomFloatInRange;
 exports.returnRandomArrayItem = returnRandomArrayItem;
+exports.returnRandomObjectPropertiesAndValues = returnRandomObjectPropertiesAndValues;

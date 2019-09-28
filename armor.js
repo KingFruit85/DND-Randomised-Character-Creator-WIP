@@ -111,6 +111,11 @@ const shields = {
     shield: {
         name: "Shield",
         Cost: "10gp"
+    },
+
+    woodenShield:{
+      name:"Wooden Shield",
+      cost:"10gp"
     }
 
 };
