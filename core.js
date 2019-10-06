@@ -700,15 +700,15 @@ function NewCharacter(){
 
 x = new NewCharacter();
 
-// console.log(JSON.stringify(x.characterClass, undefined, 2))
+console.log(JSON.stringify(x, undefined, 2))
 
-JsonExport = JSON.stringify(x, undefined, 2);
+// JsonExport = JSON.stringify(x, undefined, 2);
 
-fs.writeFile("C:/Users/Christopher/Desktop/D-D-V2-dev/export.txt", JsonExport, function(err) {
-    if(err) {
-        return console.log(err);
-    }
-
-    console.log("The file was saved!");
-    console.log(JsonExport)
-});
+// fs.writeFile("C:/Users/Christopher/Desktop/D-D-V2-dev/export.txt", JsonExport, function(err) {
+//     if(err) {
+//         return console.log(err);
+//     }
+//
+//     console.log("The file was saved!");
+//     console.log(JsonExport)
+// });
