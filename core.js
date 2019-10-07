@@ -2,6 +2,7 @@ const classes = require('./classes.js');
 const utils = require('./utils.js');
 const racial_traits =require('./racial_traits.js');
 const spells =require('./spells.js');
+const names =require('./names.js');
 const fs = require('fs');
 
 
