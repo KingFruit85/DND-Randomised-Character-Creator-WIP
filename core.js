@@ -675,8 +675,7 @@ function NewCharacter(){
   this.race = returnRandomRace();
   this.gender = returnRandomGender();
 
-  this.firstName = returnFirstName(this.gender);
-  this.lastName = returnLastName(this.gender);
+  this.name = names.returnRandomName(this.gender);
 
   this.alignment = returnRandomAlignment();
 
@@ -701,7 +700,7 @@ function NewCharacter(){
 
 x = new NewCharacter();
 
-console.log(JSON.stringify(x, undefined, 2))
+console.log(JSON.stringify(x.name, undefined, 2))
 
 // JsonExport = JSON.stringify(x, undefined, 2);
 

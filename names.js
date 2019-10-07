@@ -623,6 +623,6 @@ function returnRandomName(gender){
   return fullName;
 };
 
-console.log (returnRandomName("male"))
+
 
 exports.returnRandomName = returnRandomName;
