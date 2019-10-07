@@ -23,6 +23,14 @@ const paladinSkillProficiencies = ["athletics", "insight", "intimidation", "medi
 
 const rangerSkillProficiencies = ["acrobatics", "animal handling", "athletics", "history", "insight", "intimidation", "perception", "survival"];
 
+const rogueSkillProficiencies = ["acrobatics", "athletics", "deception", "insight", "intimidation", "investigation", "perception", "performance", "persuasion", "sleight of hand", "stealth"];
+
+const sorcererProficiencies = ["arcana", "deception", "insight", "intimidation", "persuasion", "religion"];
+
+const warlockProficiencies = ["arcana", "deception", "history", "intimidation", "investigation", "nature", "religion"];
+
+const wizardProficiencies = ["arcana", "history", "insight", "investigation", "medicine", "religion"];
+
 function returnRandomProficiencies(collection, count) {
 
     var proficiencies = [];
@@ -90,6 +98,7 @@ function addClassFeatures(className) {
 
 };
 
+//// TODO: ADD Ammunition TO EQUIPMENT AND MAKE PROJECTILES OBJECTS WITH THEIR OWN PROPERTIES
 
 function createBard() {
 
@@ -341,7 +350,7 @@ function createRanger() {
             weapons: [],
             tools: [],
             armor: []
-        }
+        };
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         this.equipment.armor = armors.mediumArmor.scaleMail;
@@ -373,11 +382,40 @@ function createRogue() {
         this.hitDie = 8,
         this.savingThrows = ["dex", "int"],
 
-        this.equipment = [],
-        this.armorProficiencies = [],
-        this.weaponProficiencies = [],
-        this.toolProficiencies = [],
-        this.skillProficiencies = []
+        this.armorProficiencies = ["light armor", "medium armor", "shields"],
+        this.weaponProficiencies = ["simple weapons", "hand crossbows", "longswords", "rapiers", "shortswords"],
+        this.toolProficiencies = ["thieves' tools"],
+        this.skillProficiencies = returnRandomProficiencies(rogueSkillProficiencies, 4),
+
+        this.equipment = {
+            weapons: [],
+            tools: [],
+            armor: []
+        };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.weapons[0] = weaponsAndShields.martialMeleeWeapons.shortsword;
+        this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+    } else {
+        this.equipment.weapons[0] = weaponsAndShields.martialMeleeWeapons.rapier;
+        this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+    };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.weapons[3] = weaponsAndShields.martialMeleeWeapons.shortsword;
+    } else {
+        this.equipment.weapons[3] = weaponsAndShields.simpleRangedWeapons.shortbow;
+        this.equipment.weapons[4] = "20 longbow arrows";
+    };
+
+    this.equipment.armor[0] = armors.lightArmor.leather;
+    this.equipment.tools[0] = "thieves tools";
+
+    this.equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.dungeoneersPack,
+        toolsAndEquipment.equipmentPacks.explorersPack, toolsAndEquipment.equipmentPacks.burglarsPack
+    ]);
 
 };
 
@@ -388,11 +426,38 @@ function createSorcerer() {
         this.hitDie = 8,
         this.savingThrows = ["con", "cha"],
 
-        this.equipment = [],
         this.armorProficiencies = [],
-        this.weaponProficiencies = [],
+        this.weaponProficiencies = ["daggers", "darts", "slings", "quarterstaffs", "light crossbows"],
         this.toolProficiencies = [],
-        this.skillProficiencies = []
+        this.skillProficiencies = returnRandomProficiencies(sorcererProficiencies, 2),
+
+        this.equipment = {
+            weapons: [],
+            tools: [],
+            armor: []
+        };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.weapons[0] = weaponsAndShields.simpleRangedWeapons.lightCrossbow;
+        this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[3] = "20 crossbow bolts";
+    } else {
+        this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
+        this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+    };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.tools[0] = "component pouch"
+    } else {
+        this.equipment.tools[0] = "arcane focus"
+    };
+
+    this.equipment.tools[1] = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.dungeoneersPack,
+        toolsAndEquipment.equipmentPacks.explorersPack
+    ]);
+
 
 };
 
@@ -403,11 +468,41 @@ function createWarlock() {
         this.hitDie = 8,
         this.savingThrows = ["wis", "cha"],
 
-        this.equipment = [],
-        this.armorProficiencies = [],
-        this.weaponProficiencies = [],
+        this.armorProficiencies = ["light armor"],
+        this.weaponProficiencies = ["simple weapons"],
         this.toolProficiencies = [],
-        this.skillProficiencies = []
+        this.skillProficiencies = returnRandomProficiencies(warlockProficiencies, 2),
+
+        this.equipment = {
+            weapons: [],
+            tools: [],
+            armor: []
+        };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.weapons[0] = weaponsAndShields.simpleRangedWeapons.lightCrossbow;
+        this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[3] = "20 crossbow bolts";
+        this.equipment.weapons[4] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
+    } else {
+        this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
+        this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+        this.equipment.weapons[3] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
+    };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.tools[0] = "component pouch"
+    } else {
+        this.equipment.tools[0] = "arcane focus"
+    };
+
+    this.equipment.armor[0] = armors.lightArmor.leather;
+
+    this.equipment.tools[1] = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.dungeoneersPack,
+        toolsAndEquipment.equipmentPacks.scholarsPack
+    ]);
 
 };
 
@@ -418,23 +513,50 @@ function createWizard() {
         this.hitDie = 6,
         this.savingThrows = ["int", "wis"],
 
-        this.equipment = [],
         this.armorProficiencies = [],
-        this.weaponProficiencies = [],
+        this.weaponProficiencies = ["daggers", "darts", "slings", "quarterstaffs", "light crossbows"],
         this.toolProficiencies = [],
-        this.skillProficiencies = []
+        this.skillProficiencies = returnRandomProficiencies(wizardProficiencies, 2),
+
+        this.equipment = {
+            weapons: [],
+            tools: [],
+            armor: []
+        };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.quarterstaff;
+    } else {
+        this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger;
+    };
+
+    if (utils.returnRandomNumberInRange(0, 1) === 0) {
+        this.equipment.tools[0] = "component pouch"
+    } else {
+        this.equipment.tools[0] = "arcane focus"
+    };
+
+    this.equipment.tools[1] = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.explorersPack,
+        toolsAndEquipment.equipmentPacks.scholarsPack
+    ]);
+
+    this.equipment.tools[1] = "spellbook";
 
 };
 
 classList = [
-    // new createBard()
-    // new createBarbarian()
-    // new createMonk()
-    // new createCleric()
-    // new createDruid()
-    // new createFighter()
-    // new createPaladin()
-    new createRanger()
+    new createBard(),
+    new createBarbarian(),
+    new createMonk(),
+    new createCleric(),
+    new createDruid(),
+    new createFighter(),
+    new createPaladin(),
+    new createRanger(),
+    new createRogue(),
+    new createSorcerer(),
+    new createWarlock(),
+    new createWizard()
 
 ];
 
