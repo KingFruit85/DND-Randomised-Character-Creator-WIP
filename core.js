@@ -326,7 +326,8 @@ function applyHumanRaceBonuses() {
 
 function applyTieflingRaceBonuses() {
 
-    character.abilityScores.str += 1; // TODO: also need to add a randome +1 to cha or dex, perhaps decided based on class stat preference
+    character.abilityScores.int += 1;
+    character.abilityScores.cha += 2;
     character.speed = 30;
     character.racialAbilities = racial_traits.tiefling_racial;
     character.languages = ["Common", "Infernal"];
