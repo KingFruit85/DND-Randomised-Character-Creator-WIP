@@ -247,18 +247,30 @@ function applyGnomeRaceBonuses() {
 
 function applyHalfElfRaceBonuses() {
 
+    //Half-Elves get an extra +1 in two other ability scores of their choosing
+    //the +1 cannot be used in CHA or in the same ability score twice
+    let abilityScoreOptions = ["str", "con", "dex", "wis", "int"];
+    var returnedScores = [];
+    //Push one random value from abilityScoreOptions to returnedScores
+    returnedScores.push(utils.returnRandomArrayItem(abilityScoreOptions));
+    //then remove that ability score from abilityScoreOptions so we dont pick it twice
+    abilityScoreOptions.splice(abilityScoreOptions.indexOf(returnedScores[0]),1);
+    //Push the second score
+    returnedScores.push(utils.returnRandomArrayItem(abilityScoreOptions));
+    //Add the scores
     character.abilityScores.cha += 2;
+    character.abilityScores[returnedScores[0]] += 1;
+    character.abilityScores[returnedScores[1]] += 1;
     character.speed = 30;
     character.racialAbilities = racial_traits.halfElf_racial;
-    character.languages = ["Common", "Elven"]; // TODO: half elves can also speak one extra random language
+    character.languages = ["Common", "Elven", returnRandomLanguage()];
     character.resistances = null;
     character.sizeClass = "Medium";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
-    // TODO: half elves have a ton of other stuff that is applied
 
-};
+  }
 
 function applyHalfOrcRaceBonuses() {
 
@@ -655,7 +667,6 @@ function calculateSpellslots(characterClass){
     spellSlots.firstLevel.avalible = 2;
     spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.wizardLevel1, spellSlots.cantrips.avalible));
 
-
   }
 
   return spellSlots;
@@ -668,19 +679,15 @@ function NewCharacter(){
 
   this.level = 1;// TODO: add level scaling
   this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
-
   this.characterClass = returnRandomCharacterClass();
   this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
-
   this.race = returnRandomRace();
   this.gender = returnRandomGender();
-
   this.name = names.returnRandomName(this.gender);
-
   this.alignment = returnRandomAlignment();
-
   this.abilityScores = returnAbilityScores(this.characterClass);
   this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod)
+
   returnCharacterAge(this);
   applySubraceBonuses(this);
 
@@ -689,9 +696,7 @@ function NewCharacter(){
   this.spellSlots = calculateSpellslots(this.characterClass.name)
   this.characterClass.initiative = this.abilityScores.dexMod
 
-
   return this
-
 
 };
 
@@ -700,7 +705,6 @@ function NewCharacter(){
 
 x = new NewCharacter();
 console.log(JSON.stringify(x, undefined, 2))
-
 
 // JsonExport = JSON.stringify(x, undefined, 2);
 
