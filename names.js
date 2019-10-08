@@ -914,28 +914,201 @@ const dragonbornSurnames = [
 "Apitiris"
 ];
 
+const maleGnomeNames = [
+"Trutt",
+"Zod",
+"Cant",
+"Vriucdien",
+"Shmuakqa",
+"Puthatt",
+"Ivit",
+"Gobritan",
+"Kokruakrast",
+"Rarickembitt"
+];
+
+const femaleGnomeNames = [
+"Vock",
+"Huck",
+"Zuth",
+"Nus",
+"Haxis",
+"Rulbush",
+"Ikzuth",
+"Utrothraim",
+"Zosuffosh",
+"Sensannailzish"
+];
+
+const gnomeSurnames = [
+"Dodlawams",
+"Hasp",
+"Epswodnith",
+"Klippiesp",
+"Qrondiornficks",
+"Ter",
+"Pedomber",
+"Bems",
+"Uplizbiss",
+"Qagnom"
+];
+
+const maleHalflingNames = [
+"Lal",
+"Dar",
+"Dord",
+"Ximoth",
+"Morrith",
+"Vruraard",
+"Turind",
+"Trasgaantard",
+"Hedirrorn",
+"Sarromrir"
+];
+
+const femaleHalflingNames = [
+"Suseh",
+"Tavot",
+"Sira",
+"Wufo",
+"Wero",
+"Biolkalcul",
+"Fozulma",
+"Tulnurrath",
+"Vassezi",
+"Retiato"
+];
+
+const halflingSurnames = [
+"Featherheart",
+"Hogrirg",
+"Darkhelm",
+"Gnidliasrerd",
+"Softbranch",
+"Esiath",
+"Winterforce",
+"Kavu",
+"Humbleward",
+"Gliseanver"
+];
+
+const maleTieflingNames = [
+"Dokuc",
+"Yinry",
+"Adriath",
+"Yicor",
+"Zusuc",
+"Areci",
+"Agecus",
+"Elladrun",
+"Hilliardan",
+"Ertiallat"
+];
+
+const femaleTieflingNames = [
+"Stresral",
+"Lennel",
+"Shosith",
+"Valdin",
+"Thilah",
+"Thorzendes",
+"Khordradrel",
+"Savreimsen",
+"Lerototh",
+"Neneyin"
+];
+
+const tieflingSurnames =[
+"Gibon",
+"Dobramia",
+"Nende",
+"Zetedaand",
+"Harvo",
+"Pasrossa",
+"Abem",
+"Riavagrat",
+"Fommeld",
+"Drorhiki"
+];
+
+const maleHalfOrcNames = [
+"Gul",
+"Hrod",
+"Doch",
+"Purg",
+"Cer",
+"Patrul",
+"Zogdak",
+"Grubrol",
+"Crodhesk",
+"Botregrach"
+];
+
+const femaleHalfOrcNames = [
+"Ruogra",
+"Zoca",
+"Geltah",
+"Rzuotto",
+"Vuhguo",
+"Kahro",
+"Rahgai",
+"Nulnaith",
+"Mimriblai",
+"Shunloto"
+];
+
+const halfOrcSurnames =[
+"Gud",
+"Orkuv",
+"Bon",
+"Cirelkev",
+"Kuk",
+"Atrix",
+"Jex",
+"Cumkix",
+"Wev",
+"Gnighadir"
+];
 
 
+const maleHalfElfNames = [
+"Corrune",
+"Uldyr",
+"Iancraes",
+"Hilryn",
+"Urduin",
+"Nigemorn",
+"Eircraes",
+"Aalword",
+"Emeluin",
+"Dorlather"
+];
 
+const femaleHalfElfNames = [
+"Edecharis",
+"Narue",
+"Emfine",
+"Mylnee",
+"Jehafarrel",
+"Inmadia",
+"Magkaala",
+"Gablossa",
+"Ylllaurel",
+"Tifziar"
+];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const halfElfSurnames = [
+"Caiqirelle",
+"Wynleth",
+"Elafiel",
+"Ololana",
+"Beikalyn",
+"Elaren",
+"Sarqirelle",
+"Faekian",
+"Lianan",
+"Luralei"
+];
 
 
 

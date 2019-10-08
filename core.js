@@ -699,8 +699,8 @@ function NewCharacter(){
 
 
 x = new NewCharacter();
+console.log(JSON.stringify(x, undefined, 2))
 
-console.log(JSON.stringify(x.name, undefined, 2))
 
 // JsonExport = JSON.stringify(x, undefined, 2);
 
