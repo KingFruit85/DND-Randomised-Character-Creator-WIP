@@ -25,12 +25,12 @@ function returnHeightAndWeight(height, weight) {
 
   for (i = 1; i <= rollAmountHeight; i++){
     sumOfRolls +=  utils.returnRandomNumberInRange(1,diceTypeHeight);
-  };
+  }
 
   //conversion from feet to inches, had to do some ugly stuff to stop super long floats
-  heightPrep = parseFloat((sumOfRolls / 12).toFixed(1))
+  heightPrep = parseFloat((sumOfRolls / 12).toFixed(1));
   heightPrep = heightPrep.toString().substring(0,2);
-  heightPrep = parseFloat(heightPrep)
+  heightPrep = parseFloat(heightPrep);
   heightWeight.push(heightPrep);
 
 
@@ -39,7 +39,7 @@ function returnHeightAndWeight(height, weight) {
   for (j = 1; j <= rollAmountWeight; j++){
     sumOfRolls +=  utils.returnRandomNumberInRange(1,diceTypeWeight);
 
-  };
+  }
 
   heightWeight.push(heightWeight[0] * sumOfRolls);
 
@@ -60,27 +60,27 @@ function returnRandomAlignment() {
         "Neutral Evil",
         "Chaotic Evil"
     ]);
-};
+}
 
 
 
 function returnCharacterAge(race){
 
   switch (true) {
-    case race === "Dragonborn": return utils.returnRandomNumberInRange(15,80);break;
-    case race === "Dwarf":      return utils.returnRandomNumberInRange(50,350);break;
-    case race === "Elf":        return utils.returnRandomNumberInRange(100,750);break;
-    case race === "Gnome":      return utils.returnRandomNumberInRange(40,450);break;
-    case race === "Half Elf":   return utils.returnRandomNumberInRange(20,180);break;
-    case race === "Half Orc":   return utils.returnRandomNumberInRange(14,75);break;
-    case race === "Halfling":   return utils.returnRandomNumberInRange(20,250);break;
-    case race === "Human":      return utils.returnRandomNumberInRange(16,100);break;
-    case race === "Tiefling":   return utils.returnRandomNumberInRange(16,120);break;
-    default:return "Fell though switch case [returnCharacterAge()]"
+    case race === "Dragonborn": return utils.returnRandomNumberInRange(15,80);
+    case race === "Dwarf":      return utils.returnRandomNumberInRange(50,350);
+    case race === "Elf":        return utils.returnRandomNumberInRange(100,750);
+    case race === "Gnome":      return utils.returnRandomNumberInRange(40,450);
+    case race === "Half Elf":   return utils.returnRandomNumberInRange(20,180);
+    case race === "Half Orc":   return utils.returnRandomNumberInRange(14,75);
+    case race === "Halfling":   return utils.returnRandomNumberInRange(20,250);
+    case race === "Human":      return utils.returnRandomNumberInRange(16,100);
+    case race === "Tiefling":   return utils.returnRandomNumberInRange(16,120);
+    default:return "Fell though switch case [returnCharacterAge()]";
 
-  };
+  }
 
-};
+}
 
 function applySubraceBonuses(char){
 
@@ -90,17 +90,19 @@ function applySubraceBonuses(char){
     case character.race === "Dragonborn":applyDragonbornRaceBonuses(character);break;
     case character.race === "Dwarf":applyDwarfRaceBonuses(character);break;
     case character.race === "Elf":applyElfRaceBonuses(character);break;
-    case character.race === "Gnome":applyGnomeRaceBonuses(character);break
+    case character.race === "Gnome":applyGnomeRaceBonuses(character);break;
     case character.race === "Half Elf":applyHalfElfRaceBonuses(character);break;
     case character.race === "Half Orc":applyHalfOrcRaceBonuses(character);break;
     case character.race === "Halfling":applyHalflingRaceBonuses(character);break;
     case character.race === "Human":applyHumanRaceBonuses(character);break;
     case character.race === "Tiefling":applyTieflingRaceBonuses(character);break;
-    default:"Fell though switch case [applySubraceBonuses()]"
+    default: return "Fell though switch case [applySubraceBonuses()]";
 
-  };
+  }
+
   return character;
-};
+
+}
 
 // TODO: add subraces based on https://dnd5e.fandom.com/wiki/Character_Details
 // TODO: surely this can be refactored?
@@ -157,12 +159,14 @@ function returnCharacterHeight(race) {
             heightAndWeight[1] = additionalHeightAndWeight[1] + 110 + " lbs";
             break;
 
-        default:
-            return "invalid race provided as function arguement [returnCharacterHeight()]"
+        default: return "invalid race provided as function arguement [returnCharacterHeight()]";
 
-    };
+
+    }
+
     return heightAndWeight;
-};
+
+}
 
 function returnDragonbornFeatures(draconicAncestry){
 
@@ -185,7 +189,7 @@ function returnDragonbornFeatures(draconicAncestry){
 
   return ancestryDetails;
 
-};
+}
 
 function applyDragonbornRaceBonuses() {
 
@@ -198,11 +202,11 @@ function applyDragonbornRaceBonuses() {
     character.racialAbilities = racial_traits.dragonborn_racial;
     character.languages = ["Common", "Draconic"];
     character.sizeClass = "Medium";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
-};
+}
 
 function applyDwarfRaceBonuses() {
 
@@ -210,12 +214,12 @@ function applyDwarfRaceBonuses() {
     character.speed = 25;
     character.racialAbilities = racial_traits.dwarf_racial;
     character.languages = ["Common", "Dwarvish"];
-    character.resistances = "Poison"
+    character.resistances = "Poison";
     character.sizeClass = "Medium";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
-};
+}
 
 function applyElfRaceBonuses() {
 
@@ -225,11 +229,11 @@ function applyElfRaceBonuses() {
     character.languages = ["Common", "Elven"];
     character.resistances = null;
     character.sizeClass = "Medium";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
-};
+}
 
 function applyGnomeRaceBonuses() {
 
@@ -239,11 +243,11 @@ function applyGnomeRaceBonuses() {
     character.languages = ["Common", "Gnomish"];
     character.resistances = null;
     character.sizeClass = "Small";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
-};
+}
 
 function applyHalfElfRaceBonuses() {
 
@@ -281,11 +285,11 @@ function applyHalfOrcRaceBonuses() {
     character.languages = ["Common", "Orcish"];
     character.resistances = null;
     character.sizeClass = "Medium";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
-};
+}
 
 function applyHalflingRaceBonuses() {
 
@@ -295,7 +299,7 @@ function applyHalflingRaceBonuses() {
     character.languages = ["Common", "Halfling"];
     character.resistances = null;
     character.sizeClass = "Small";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
@@ -314,11 +318,11 @@ function applyHumanRaceBonuses() {
     character.languages = ["Common", returnRandomLanguage()];
     character.resistances = null;
     character.sizeClass = "Medium";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
     // TODO: Variant human
-};
+}
 
 function applyTieflingRaceBonuses() {
 
@@ -328,18 +332,18 @@ function applyTieflingRaceBonuses() {
     character.languages = ["Common", "Infernal"];
     character.resistances = "Fire";
     character.sizeClass = "Medium";
-    let heightWeight = returnCharacterHeight(character.race)
+    let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
-};
+}
 
 function returnRandomLanguage() {
     return utils.returnRandomArrayItem(["Abyssal", "Aquan", "Auran", "Celestial", "Deep Speech", "Draconic", "Dwarvish", "Elvish",
         "Giant", "Gnomish", "Goblin", "Gnoll", "Halfling", "Ignan", "Infernal", "Orc", "Primordial",
         "Sylvan", "Terran", "Undercommon"
     ]);
-};
+}
 
 //Simulates the rolling of 4D6, removing the lowest value die and returns the sum of the remainder
 function roll4D6RemoveLowestAndSum() {
@@ -348,15 +352,14 @@ function roll4D6RemoveLowestAndSum() {
 
     for (let i = 0; i < 4; i++) {
         numbers.push(utils.returnRandomNumberInRange(1, 6));
-    };
+    }
 
     numbers.sort().shift();
-
-    var numbers = numbers.reduce((a, b) => a + b, 0);
+    numbers = numbers.reduce((a, b) => a + b, 0);
 
     return numbers;
 
-};
+}
 
 //Returns 6 freshly rolled ability scores
 function returnSixNumbers() {
@@ -365,16 +368,16 @@ function returnSixNumbers() {
 
     for (let i = 0; i < 6; i++) {
         abilityScores.push(roll4D6RemoveLowestAndSum());
-    };
+    }
 
     return abilityScores;
 
-};
+}
 
 //Returns a random character class as a string // TODO: add remaining character classes
 function returnRandomCharacterClass() {
-    return utils.returnRandomArrayItem(classes.classList)
-};
+    return utils.returnRandomArrayItem(classes.classList);
+}
 
 
 // TODO: pull from bigger list in new js file
@@ -390,45 +393,45 @@ function returnFirstName(gender) {
         return utils.returnRandomArrayItem(maleFirstNames);
     } else {
         return utils.returnRandomArrayItem(femaleFirstNames);
-    };
-};
+    }
+}
 
 function returnLastName() {
 
     return utils.returnRandomArrayItem(surnames);
 
-};
+}
 
 
 //Returns a random gender
 function returnRandomGender() {
     return utils.returnRandomArrayItem(["male", "female"]);
-};
+}
 
 //Returns an array of ordered ability score prefrences based on the class supplied in the arguement
 function returnAbilityScorePreference (characterClass) {
 
     switch (true) {
 
-        case characterClass.name === "barbarian": return ["str", "con", "dex", "wis", "cha", "int"]; break;
-        case characterClass.name === "bard":      return ["cha", "dex", "con", "wis", "str", "int"]; break;
-        case characterClass.name === "monk":      return ["dex", "wis", "con", "str", "cha", "int"]; break;
-        case characterClass.name === "cleric":    return ["wis", "str", "con", "dex", "cha", "int"]; break;
-        case characterClass.name === "druid":     return ["wis", "dex", "con", "cha", "int", "str"]; break;
-        case characterClass.name === "paladin":   return ["str", "cha", "con", "wis", "dex", "int"]; break;
-        case characterClass.name === "ranger":    return ["dex", "con", "wis", "str", "cha", "int"]; break;
-        case characterClass.name === "rogue":     return ["dex", "con", "wis", "cha", "int", "str"]; break;
-        case characterClass.name === "sorcerer":  return ["cha", "con", "int", "wis", "dex", "str"]; break;
-        case characterClass.name === "warlock":   return ["cha", "con", "dex", "wis", "int", "str"]; break;
-        case characterClass.name === "wizard":    return ["int", "con", "dex", "wis", "cha", "str"]; break;
-        case characterClass.name === "fighter" && characterClass.primaryAbility === "str": return ["str", "con", "dex", "wis", "cha", "int"]; break;
-        case characterClass.name === "fighter" && characterClass.primaryAbility === "dex": return ["dex", "con", "str", "wis", "cha", "int"]; break;
+        case characterClass.name === "barbarian": return ["str", "con", "dex", "wis", "cha", "int"];
+        case characterClass.name === "bard":      return ["cha", "dex", "con", "wis", "str", "int"];
+        case characterClass.name === "monk":      return ["dex", "wis", "con", "str", "cha", "int"];
+        case characterClass.name === "cleric":    return ["wis", "str", "con", "dex", "cha", "int"];
+        case characterClass.name === "druid":     return ["wis", "dex", "con", "cha", "int", "str"];
+        case characterClass.name === "paladin":   return ["str", "cha", "con", "wis", "dex", "int"];
+        case characterClass.name === "ranger":    return ["dex", "con", "wis", "str", "cha", "int"];
+        case characterClass.name === "rogue":     return ["dex", "con", "wis", "cha", "int", "str"];
+        case characterClass.name === "sorcerer":  return ["cha", "con", "int", "wis", "dex", "str"];
+        case characterClass.name === "warlock":   return ["cha", "con", "dex", "wis", "int", "str"];
+        case characterClass.name === "wizard":    return ["int", "con", "dex", "wis", "cha", "str"];
+        case characterClass.name === "fighter" && characterClass.primaryAbility === "str": return ["str", "con", "dex", "wis", "cha", "int"];
+        case characterClass.name === "fighter" && characterClass.primaryAbility === "dex": return ["dex", "con", "str", "wis", "cha", "int"];
 
         default: return "invalid character class supplied as argument [returnAbilityScorePreference()]";
 
-    };
+    }
 
-};
+}
 
 
 //calculates an ability score's modifier
@@ -467,14 +470,14 @@ function returnAbilityScores(characterClass) {
 
     return characterAbilityScores;
 
-};
+}
 
 
 function returnRandomRace() {
 
-    return utils.returnRandomArrayItem(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfling", "Human", "Tiefling"])
+    return utils.returnRandomArrayItem(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfling", "Human", "Tiefling"]);
 
-};
+}
 
 
 
@@ -483,7 +486,7 @@ function calculateModifier(abilityScores) {
 
     console.log("score" + abilityScores[key] + "Modifier" + returnAbilityScoreModifier(abilityScores[key]));
   }
-};
+}
 
 function calculateFirstLevelHitPoints(characterClassName, conModifier){
 
@@ -500,12 +503,11 @@ function calculateFirstLevelHitPoints(characterClassName, conModifier){
     case characterClassName === "warlock": return 8 + conModifier;
     case characterClassName === "wizard":  return 6 + conModifier;
 
-      break;
-    default:return "fell though switch case"
+    default:return "fell though switch case";
 
   }
 
-};
+}
 
 function calculateSavingThrowScores(abilityScores, savingThrowProficiencies, proficiencyModifier){
 
@@ -520,12 +522,12 @@ function calculateSavingThrowScores(abilityScores, savingThrowProficiencies, pro
 
   };
 
-  if (savingThrows.strength.proficient     === true){savingThrows.strength.modifier     += proficiencyModifier};
-  if (savingThrows.dexterity.proficient    === true){savingThrows.dexterity.modifier    += proficiencyModifier};
-  if (savingThrows.constitution.proficient === true){savingThrows.constitution.modifier += proficiencyModifier};
-  if (savingThrows.intelligence.proficient === true){savingThrows.intelligence.modifier += proficiencyModifier};
-  if (savingThrows.wisdom.proficient       === true){savingThrows.wisdom.modifier       += proficiencyModifier};
-  if (savingThrows.charasma.proficient     === true){savingThrows.charasma.modifier     += proficiencyModifier};
+  if (savingThrows.strength.proficient     === true){savingThrows.strength.modifier     += proficiencyModifier;}
+  if (savingThrows.dexterity.proficient    === true){savingThrows.dexterity.modifier    += proficiencyModifier;}
+  if (savingThrows.constitution.proficient === true){savingThrows.constitution.modifier += proficiencyModifier;}
+  if (savingThrows.intelligence.proficient === true){savingThrows.intelligence.modifier += proficiencyModifier;}
+  if (savingThrows.wisdom.proficient       === true){savingThrows.wisdom.modifier       += proficiencyModifier;}
+  if (savingThrows.charasma.proficient     === true){savingThrows.charasma.modifier     += proficiencyModifier;}
 
   return savingThrows;
 
@@ -556,27 +558,27 @@ function calculateSkillScores(abilityScores, skillProficiencies, proficiencyModi
   };
 
 
-  if (skillScores.athletics.proficient === true){skillScores.athletics.modifier += proficiencyModifier};
-  if (skillScores.acrobatics.proficient === true){skillScores.acrobatics.modifier += proficiencyModifier};
-  if (skillScores.sleightOfHand.proficient === true){skillScores.sleightOfHand.modifier += proficiencyModifier};
-  if (skillScores.arcana.proficient === true){skillScores.arcana.modifier += proficiencyModifier};
-  if (skillScores.stealth.proficient === true){skillScores.stealth.modifier += proficiencyModifier};
-  if (skillScores.history.proficient === true){skillScores.history.modifier += proficiencyModifier};
-  if (skillScores.nature.proficient === true){skillScores.nature.modifier += proficiencyModifier};
-  if (skillScores.religion.proficient === true){skillScores.religion.modifier += proficiencyModifier};
-  if (skillScores.animalHandling.proficient === true){skillScores.animalHandling.modifier += proficiencyModifier};
-  if (skillScores.insight.proficient === true){skillScores.insight.modifier += proficiencyModifier};
-  if (skillScores.medicine.proficient === true){skillScores.medicine.modifier += proficiencyModifier};
-  if (skillScores.perception.proficient === true){skillScores.perception.modifier += proficiencyModifier};
-  if (skillScores.survival.proficient === true){skillScores.survival.modifier += proficiencyModifier};
-  if (skillScores.deception.proficient === true){skillScores.deception.modifier += proficiencyModifier};
-  if (skillScores.intimidation.proficient === true){skillScores.intimidation.modifier += proficiencyModifier};
-  if (skillScores.performance.proficient === true){skillScores.performance.modifier += proficiencyModifier};
-  if (skillScores.persuasion.proficient === true){skillScores.persuasion.modifier += proficiencyModifier};
+  if (skillScores.athletics.proficient === true){skillScores.athletics.modifier += proficiencyModifier;}
+  if (skillScores.acrobatics.proficient === true){skillScores.acrobatics.modifier += proficiencyModifier;}
+  if (skillScores.sleightOfHand.proficient === true){skillScores.sleightOfHand.modifier += proficiencyModifier;}
+  if (skillScores.arcana.proficient === true){skillScores.arcana.modifier += proficiencyModifier;}
+  if (skillScores.stealth.proficient === true){skillScores.stealth.modifier += proficiencyModifier;}
+  if (skillScores.history.proficient === true){skillScores.history.modifier += proficiencyModifier;}
+  if (skillScores.nature.proficient === true){skillScores.nature.modifier += proficiencyModifier;}
+  if (skillScores.religion.proficient === true){skillScores.religion.modifier += proficiencyModifier;}
+  if (skillScores.animalHandling.proficient === true){skillScores.animalHandling.modifier += proficiencyModifier;}
+  if (skillScores.insight.proficient === true){skillScores.insight.modifier += proficiencyModifier;}
+  if (skillScores.medicine.proficient === true){skillScores.medicine.modifier += proficiencyModifier;}
+  if (skillScores.perception.proficient === true){skillScores.perception.modifier += proficiencyModifier;}
+  if (skillScores.survival.proficient === true){skillScores.survival.modifier += proficiencyModifier;}
+  if (skillScores.deception.proficient === true){skillScores.deception.modifier += proficiencyModifier;}
+  if (skillScores.intimidation.proficient === true){skillScores.intimidation.modifier += proficiencyModifier;}
+  if (skillScores.performance.proficient === true){skillScores.performance.modifier += proficiencyModifier;}
+  if (skillScores.persuasion.proficient === true){skillScores.persuasion.modifier += proficiencyModifier;}
 
   return skillScores;
 
-};
+}
 
 //// TODO: refactor this beast
 function calculateSpellslots(characterClass){
@@ -592,7 +594,7 @@ function calculateSpellslots(characterClass){
     seventhLevel:{avalible:0, spells:[]},
     eighthLevel: {avalible:0, spells:[]},
     ninthLevel:  {avalible:0, spells:[]},
-  }
+  };
 
   if (characterClass === "bard"){
 
@@ -686,25 +688,25 @@ function NewCharacter(){
   this.name = names.returnRandomName(this.gender);
   this.alignment = returnRandomAlignment();
   this.abilityScores = returnAbilityScores(this.characterClass);
-  this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod)
+  this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod);
 
   returnCharacterAge(this);
   applySubraceBonuses(this);
 
   this.savingThrowScores = calculateSavingThrowScores(this.abilityScores, this.characterClass.savingThrows, this.proficiencyModifier);
   this.skillScores = calculateSkillScores(this.abilityScores, this.characterClass.skillProficiencies, this.proficiencyModifier);
-  this.spellSlots = calculateSpellslots(this.characterClass.name)
-  this.characterClass.initiative = this.abilityScores.dexMod
+  this.spellSlots = calculateSpellslots(this.characterClass.name);
+  this.characterClass.initiative = this.abilityScores.dexMod;
 
-  return this
+  return this;
 
-};
+}
 
 
 
 
 x = new NewCharacter();
-console.log(JSON.stringify(x, undefined, 2))
+console.log(JSON.stringify(x, undefined, 2));
 
 // JsonExport = JSON.stringify(x, undefined, 2);
 
