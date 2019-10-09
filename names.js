@@ -914,6 +914,117 @@ const dragonbornSurnames = [
 "Apitiris"
 ];
 
+const femaleTieflingNames = [
+"Zecria",
+"Seiricyra",
+"Fririssa",
+"Eaxori",
+"Afspira",
+"Briwala",
+"Lewala",
+"Faith",
+"Journey",
+"Levdani",
+"Levrali",
+"Yapione",
+"Dimzes",
+"Kalrali",
+"Pheborys",
+"Yorasolis",
+"Interesting",
+"Song",
+"Darkness",
+"Zaseis",
+"Nithki",
+"Kalmaia",
+"Yorabis",
+"Pespunith",
+"Zaipunith",
+"Levyis",
+"Timeless",
+"Gloom",
+"Chant",
+"Stresral",
+"Lennel",
+"Shosith",
+"Valdin",
+"Thilah",
+"Thorzendes",
+"Khordradrel",
+"Savreimsen",
+"Lerototh",
+"Neneyin"
+];
+
+const maleTieflingNames = [
+"Hormos",
+"Nephrut",
+"Malvir",
+"Valrus",
+"Uriira",
+"Karai",
+"Lokelech",
+"Eternal",
+"Rolnon",
+"Valthus ",
+"Meichar",
+"Thynemenos",
+"Kilrus",
+"Xarmos",
+"Dharron",
+"Salrius",
+"Valakas",
+"Zhermos",
+"Malenon",
+"Zorlius ",
+"Barilius",
+"Mavchar",
+"Nephmeros",
+"Killius",
+"Ekreus",
+"Carlech",
+"Arrai ",
+"Dokuc",
+"Yinry",
+"Adriath",
+"Yicor",
+"Zusuc",
+"Areci",
+"Agecus",
+"Elladrun",
+"Hilliardan",
+"Ertiallat"
+];
+
+const tieflingSurnames = [
+"Vervend ",
+"Brotaebae ",
+"Tovos ",
+"Zegraki ",
+"Shama ",
+"Toldris ",
+"Rova ",
+"Ecorvot ",
+"Drardim ",
+"Shagrerat ",
+"Mokot ",
+"Nirvad ",
+"Sashakeand ",
+"Fondre ",
+"Letevri ",
+"Veni ", 
+"Gibon",
+"Dobramia",
+"Nende",
+"Zetedaand",
+"Harvo",
+"Pasrossa",
+"Abem",
+"Riavagrat",
+"Fommeld",
+"Drorhiki"
+ ];
+  
 const maleGnomeNames = [
 "Trutt",
 "Zod",
@@ -990,45 +1101,6 @@ const halflingSurnames = [
 "Kavu",
 "Humbleward",
 "Gliseanver"
-];
-
-const maleTieflingNames = [
-"Dokuc",
-"Yinry",
-"Adriath",
-"Yicor",
-"Zusuc",
-"Areci",
-"Agecus",
-"Elladrun",
-"Hilliardan",
-"Ertiallat"
-];
-
-const femaleTieflingNames = [
-"Stresral",
-"Lennel",
-"Shosith",
-"Valdin",
-"Thilah",
-"Thorzendes",
-"Khordradrel",
-"Savreimsen",
-"Lerototh",
-"Neneyin"
-];
-
-const tieflingSurnames =[
-"Gibon",
-"Dobramia",
-"Nende",
-"Zetedaand",
-"Harvo",
-"Pasrossa",
-"Abem",
-"Riavagrat",
-"Fommeld",
-"Drorhiki"
 ];
 
 const maleHalfOrcNames = [
