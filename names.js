@@ -303,7 +303,7 @@ const femaleFirstNames = [
 "Veta",
 "Apryl",
 "Jayme"
-]
+];
 
 const humanLastNames = [
 "Huie",
@@ -1124,7 +1124,7 @@ function returnRandomName(gender){
     fullName.lastName = utils.returnRandomArrayItem(humanLastNames);
   }
   return fullName;
-};
+}
 
 
 
