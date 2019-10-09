@@ -946,7 +946,35 @@ const femaleTieflingNames = [
 "Chant",
 ];
 
-
+const maleTieflingNames = [
+"Hormos",
+"Nephrut",
+"Malvir",
+"Valrus",
+"Uriira",
+"Karai",
+"Lokelech",
+"Eternal",
+"Rolnon",
+"Valthus ",
+"Meichar",
+"Thynemenos",
+"Kilrus",
+"Xarmos",
+"Dharron",
+"Salrius",
+"Valakas",
+"Zhermos",
+"Malenon",
+"Zorlius ",
+"Barilius",
+"Mavchar",
+"Nephmeros",
+"Killius",
+"Ekreus",
+"Carlech",
+"Arrai ",  
+];
 
 
 
