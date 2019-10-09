@@ -944,6 +944,16 @@ const femaleTieflingNames = [
 "Timeless",
 "Gloom",
 "Chant",
+"Stresral",
+"Lennel",
+"Shosith",
+"Valdin",
+"Thilah",
+"Thorzendes",
+"Khordradrel",
+"Savreimsen",
+"Lerototh",
+"Neneyin"
 ];
 
 const maleTieflingNames = [
@@ -973,7 +983,17 @@ const maleTieflingNames = [
 "Killius",
 "Ekreus",
 "Carlech",
-"Arrai ",  
+"Arrai ",
+"Dokuc",
+"Yinry",
+"Adriath",
+"Yicor",
+"Zusuc",
+"Areci",
+"Agecus",
+"Elladrun",
+"Hilliardan",
+"Ertiallat"
 ];
 
 const tieflingSurnames = [
@@ -993,6 +1013,17 @@ const tieflingSurnames = [
 "Fondre ",
 "Letevri ",
 "Veni ", 
+"Gibon",
+"Dobramia",
+"Nende",
+"Zetedaand",
+"Harvo",
+"Pasrossa",
+"Abem",
+"Riavagrat",
+"Fommeld",
+"Drorhiki"
+ ];
   
 const maleGnomeNames = [
 "Trutt",
@@ -1070,45 +1101,6 @@ const halflingSurnames = [
 "Kavu",
 "Humbleward",
 "Gliseanver"
-];
-
-const maleTieflingNames = [
-"Dokuc",
-"Yinry",
-"Adriath",
-"Yicor",
-"Zusuc",
-"Areci",
-"Agecus",
-"Elladrun",
-"Hilliardan",
-"Ertiallat"
-];
-
-const femaleTieflingNames = [
-"Stresral",
-"Lennel",
-"Shosith",
-"Valdin",
-"Thilah",
-"Thorzendes",
-"Khordradrel",
-"Savreimsen",
-"Lerototh",
-"Neneyin"
-];
-
-const tieflingSurnames =[
-"Gibon",
-"Dobramia",
-"Nende",
-"Zetedaand",
-"Harvo",
-"Pasrossa",
-"Abem",
-"Riavagrat",
-"Fommeld",
-"Drorhiki"
 ];
 
 const maleHalfOrcNames = [
