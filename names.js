@@ -976,7 +976,24 @@ const maleTieflingNames = [
 "Arrai ",  
 ];
 
-
+const tieflingSurnames = [
+"Vervend ",
+"Brotaebae ",
+"Tovos ",
+"Zegraki ",
+"Shama ",
+"Toldris ",
+"Rova ",
+"Ecorvot ",
+"Drardim ",
+"Shagrerat ",
+"Mokot ",
+"Nirvad ",
+"Sashakeand ",
+"Fondre ",
+"Letevri ",
+"Veni ", 
+];
 
 
 
