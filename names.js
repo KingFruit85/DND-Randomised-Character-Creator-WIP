@@ -914,6 +914,38 @@ const dragonbornSurnames = [
 "Apitiris"
 ];
 
+const femaleTieflingNames = [
+"Zecria",
+"Seiricyra",
+"Fririssa",
+"Eaxori",
+"Afspira",
+"Briwala",
+"Lewala",
+"Faith",
+"Journey",
+"Levdani",
+"Levrali",
+"Yapione",
+"Dimzes",
+"Kalrali",
+"Pheborys",
+"Yorasolis",
+"Interesting",
+"Song",
+"Darkness",
+"Zaseis",
+"Nithki",
+"Kalmaia",
+"Yorabis",
+"Pespunith",
+"Zaipunith",
+"Levyis",
+"Timeless",
+"Gloom",
+"Chant",
+];
+
 
 
 
