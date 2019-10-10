@@ -92,7 +92,7 @@ function applySubraceBonuses(char){
     case character.race === "Halfling":applyHalflingRaceBonuses(character);break;
     case character.race === "Human":applyHumanRaceBonuses(character);break;
     case character.race === "Tiefling":applyTieflingRaceBonuses(character);break;
-    default: return "Fell though switch case [applySubraceBonuses()]";
+    default: character.race = "Fell though switch case [applySubraceBonuses()]";
 
   }
 
@@ -388,7 +388,7 @@ function returnSixNumbers() {
 
 }
 
-//Returns a random character class as a string // TODO: add remaining character classes
+//Returns a random character class as a string
 function returnRandomCharacterClass() {
     return utils.returnRandomArrayItem(classes.classList);
 }
@@ -668,20 +668,20 @@ function calculateSpellslots(characterClass){
 
 //NewCharacter Construtor
 function NewCharacter(){
-
+  names.returnRandomName(this);
   this.level = 1;// TODO: add level scaling
   this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
   this.characterClass = returnRandomCharacterClass();
   this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
   this.race = returnRandomRace();
   this.gender = returnRandomGender();
-  this.name = names.returnRandomName(this.gender);
+
   this.alignment = returnRandomAlignment();
   this.abilityScores = returnAbilityScores(this.characterClass);
   this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod);
 
   returnCharacterAge(this);
-  applySubraceBonuses(this.race);
+  applySubraceBonuses(this);
 
   this.savingThrowScores = calculateSavingThrowScores(this.abilityScores, this.characterClass.savingThrows, this.proficiencyModifier);
   this.skillScores = calculateSkillScores(this.abilityScores, this.characterClass.skillProficiencies, this.proficiencyModifier);
@@ -698,7 +698,7 @@ console.log(JSON.stringify(x, undefined, 2));
 
 JsonExport = JSON.stringify(x, undefined, 2);
 
-fs.writeFile("./" + x.name.firstName + " " + x.name.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
+fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
     if(err) {
         return console.log(err);
     }

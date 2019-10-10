@@ -1,5 +1,5 @@
 const core = require('./core.js');
-const utils = require('./utils.js')
+const utils = require('./utils.js');
 const weaponsAndShields = require('./weapons.js');
 const toolsAndEquipment = require('./tools.js');
 const armors = require('./armor');
@@ -43,18 +43,18 @@ function returnRandomProficiencies(collection, count) {
             proficiencies.push(pickedSkill);
         } else {
             i--;
-        };
+        }
 
-    };
+    }
 
     return proficiencies;
 
-};
+}
 
 function addItemXTimes(item, ammount) {
     for (x = ammount; x > 0; x--) {
         equipment.tools.push(weapons.simpleWeapons.javelin);
-    };
+    }
 }
 
 function addClassFeatures(className) {
@@ -67,7 +67,7 @@ function addClassFeatures(className) {
         classAbilities.push("rage", "unarmored defense");
     } else if (className === "fighter") {
         classAbilities.push("second wind");
-        classAbilities.push(utils.returnRandomArrayItem(["archery", "defense", "dueling", "great weapon fighting", "protection", "two weapon fighting"]))
+        classAbilities.push(utils.returnRandomArrayItem(["archery", "defense", "dueling", "great weapon fighting", "protection", "two weapon fighting"]));
     } else if (className === "cleric") {
         classAbilities.push("spellcasting", "disciple of life");
     } else if (className === "druid") {
@@ -80,9 +80,9 @@ function addClassFeatures(className) {
         let rangerFavoredEnemy = ["aberrations", "beasts", "celestials", "constructs", "dragons",
             "elementals", "fey", "fiends", "giants", "monstrosities", "oozes",
             "plants", "undead"
-        ]
+        ];
 
-        classAbilities.push("natural explorer", `favored enemy:${utils.returnRandomArrayItem(rangerFavoredEnemy)}`)
+        classAbilities.push("natural explorer", `favored enemy:${utils.returnRandomArrayItem(rangerFavoredEnemy)}`);
     } else if (className === "rogue") {
         classAbilities.push("expertise", "sneak attack", "thieves cant");
     } else if (className === "sorcerer") {
@@ -96,7 +96,7 @@ function addClassFeatures(className) {
 
     return classAbilities;
 
-};
+}
 
 //// TODO: ADD Ammunition TO EQUIPMENT AND MAKE PROJECTILES OBJECTS WITH THEIR OWN PROPERTIES
 
@@ -122,7 +122,7 @@ function createBard() {
     this.equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.diplomatsPack, toolsAndEquipment.equipmentPacks.entertainersPack]);
     this.equipment.weapons[1] = utils.returnRandomArrayItem([weaponsAndShields.martialMeleeWeapons.rapier, weaponsAndShields.martialMeleeWeapons.longsword]);
 
-};
+}
 
 function createBarbarian() {
 
@@ -133,7 +133,7 @@ function createBarbarian() {
         this.armorProficiencies = ["light armor", "medium armor", "shields"],
         this.weaponProficiencies = ["simple weapons", "martial weapons"],
         this.toolProficiencies = [],
-        this.skillProficiencies = returnRandomProficiencies(barbSkillProficiencies, 2)
+        this.skillProficiencies = returnRandomProficiencies(barbSkillProficiencies, 2);
 
     this.equipment = {
         weapons: [],
@@ -145,22 +145,22 @@ function createBarbarian() {
 
     for (x = 4; x > 0; x--) {
         this.equipment.tools.push(weaponsAndShields.simpleWeapons.javelin);
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         for (x = 0; x < 2; x++) {
             this.equipment.weapons.push(weaponsAndShields.simpleWeapons.handaxe);
-        };
+        }
     } else {
         this.equipment.weapons.push(weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons));
-    };
+    }
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         this.equipment.weapons.push(weaponsAndShields.martialMeleeWeapons.greataxe);
     } else {
         this.equipment.weapons.push(weaponsAndShields.returnRandomWeaponsFromCollection(weaponsAndShields.martialMeleeWeapons, 1));
     }
 
-};
+}
 
 function createMonk() {
 
@@ -190,9 +190,9 @@ function createMonk() {
     ]);
     for (i = 10; i > 0; i--) {
         this.equipment.weapons.push(weaponsAndShields.simpleRangedWeapons.dart);
-    };
+    }
 
-};
+}
 
 function createCleric() {
 
@@ -214,7 +214,7 @@ function createCleric() {
         armor: []
     };
 
-};
+}
 
 function createDruid() {
 
@@ -246,7 +246,7 @@ function createDruid() {
     this.equipment.tools.push(toolsAndEquipment.equipmentPacks.explorersPack);
     this.equipment.tools.push("Druidic Focus");
 
-};
+}
 
 function createFighter() {
 
@@ -275,21 +275,21 @@ function createFighter() {
     } else {
         this.equipment.weapons.push(weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.martialMeleeWeapons));
         this.equipment.weapons.push(weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.martialMeleeWeapons));
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         this.equipment.weapons.push(weaponsAndShields.simpleRangedWeapons.lightCrossbow, "20 light crossbow bolts");
     } else {
         this.equipment.weapons.push(weaponsAndShields.simpleWeapons.handaxe);
         this.equipment.weapons.push(weaponsAndShields.simpleWeapons.handaxe);
-    };
+    }
 
     this.equipment.weapons.push(weaponsAndShields.martialRangedWeapons.longbow, "20 longbow arrows");
     this.equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.dungeoneersPack,
         toolsAndEquipment.equipmentPacks.explorersPack
     ]);
 
-};
+}
 
 function createPaladin() {
 
@@ -318,21 +318,21 @@ function createPaladin() {
     } else {
         this.equipment.weapons.push(weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.martialMeleeWeapons));
         this.equipment.weapons.push(weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.martialMeleeWeapons));
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         for (x = 4; x > 0; x--) {
             this.equipment.tools.push(weaponsAndShields.simpleWeapons.javelin);
-        };
+        }
     } else {
-        this.equipment.tools.push(weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons))
-    };
+        this.equipment.tools.push(weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons));
+    }
 
     this.equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.priestsPack,
         toolsAndEquipment.equipmentPacks.explorersPack
     ]);
 
-};
+}
 
 function createRanger() {
 
@@ -356,7 +356,7 @@ function createRanger() {
         this.equipment.armor = armors.mediumArmor.scaleMail;
     } else {
         this.equipment.armor = armors.lightArmor.leather;
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         this.equipment.weapons[0] = weaponsAndShields.martialMeleeWeapons.shortsword;
@@ -364,7 +364,7 @@ function createRanger() {
     } else {
         this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
         this.equipment.weapons[1] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
-    };
+    }
 
     this.equipment.weapons[2] = weaponsAndShields.martialRangedWeapons.longbow;
     this.equipment.weapons[3] = "20 longbow arrows";
@@ -373,7 +373,7 @@ function createRanger() {
         toolsAndEquipment.equipmentPacks.explorersPack
     ]);
 
-};
+}
 
 function createRogue() {
 
@@ -401,14 +401,14 @@ function createRogue() {
         this.equipment.weapons[0] = weaponsAndShields.martialMeleeWeapons.rapier;
         this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
         this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         this.equipment.weapons[3] = weaponsAndShields.martialMeleeWeapons.shortsword;
     } else {
         this.equipment.weapons[3] = weaponsAndShields.simpleRangedWeapons.shortbow;
         this.equipment.weapons[4] = "20 longbow arrows";
-    };
+    }
 
     this.equipment.armor[0] = armors.lightArmor.leather;
     this.equipment.tools[0] = "thieves tools";
@@ -417,7 +417,7 @@ function createRogue() {
         toolsAndEquipment.equipmentPacks.explorersPack, toolsAndEquipment.equipmentPacks.burglarsPack
     ]);
 
-};
+}
 
 function createSorcerer() {
 
@@ -446,20 +446,20 @@ function createSorcerer() {
         this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
         this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
         this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
-        this.equipment.tools[0] = "component pouch"
+        this.equipment.tools[0] = "component pouch";
     } else {
-        this.equipment.tools[0] = "arcane focus"
-    };
+        this.equipment.tools[0] = "arcane focus";
+    }
 
     this.equipment.tools[1] = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.dungeoneersPack,
         toolsAndEquipment.equipmentPacks.explorersPack
     ]);
 
 
-};
+}
 
 function createWarlock() {
 
@@ -490,13 +490,13 @@ function createWarlock() {
         this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
         this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
         this.equipment.weapons[3] = weaponsAndShields.returnRandomWeaponFromCollection(weaponsAndShields.simpleWeapons);
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
-        this.equipment.tools[0] = "component pouch"
+        this.equipment.tools[0] = "component pouch";
     } else {
-        this.equipment.tools[0] = "arcane focus"
-    };
+        this.equipment.tools[0] = "arcane focus";
+    }
 
     this.equipment.armor[0] = armors.lightArmor.leather;
 
@@ -504,7 +504,7 @@ function createWarlock() {
         toolsAndEquipment.equipmentPacks.scholarsPack
     ]);
 
-};
+}
 
 function createWizard() {
 
@@ -528,13 +528,13 @@ function createWizard() {
         this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.quarterstaff;
     } else {
         this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger;
-    };
+    }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
-        this.equipment.tools[0] = "component pouch"
+        this.equipment.tools[0] = "component pouch";
     } else {
-        this.equipment.tools[0] = "arcane focus"
-    };
+        this.equipment.tools[0] = "arcane focus";
+    }
 
     this.equipment.tools[1] = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.explorersPack,
         toolsAndEquipment.equipmentPacks.scholarsPack
@@ -542,7 +542,7 @@ function createWizard() {
 
     this.equipment.tools[1] = "spellbook";
 
-};
+}
 
 classList = [
     new createBard(),

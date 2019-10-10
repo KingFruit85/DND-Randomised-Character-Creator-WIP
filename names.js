@@ -1184,18 +1184,16 @@ const halfElfSurnames = [
 
 
 
-function returnRandomName(gender){
-  fullName = {firstName:"",
-              lastName:""};
+function returnRandomName(character){
 
-  if(gender === "male"){
-    fullName.firstName = utils.returnRandomArrayItem(maleFirstNames);
-    fullName.lastName = utils.returnRandomArrayItem(humanLastNames);
+  if(character.gender === "male"){
+    character.firstName = utils.returnRandomArrayItem(maleFirstNames);
+    character.lastName = utils.returnRandomArrayItem(humanLastNames);
   }else{
-    fullName.firstName = utils.returnRandomArrayItem(femaleFirstNames);
-    fullName.lastName = utils.returnRandomArrayItem(humanLastNames);
+    character.firstName = utils.returnRandomArrayItem(femaleFirstNames);
+    character.lastName = utils.returnRandomArrayItem(humanLastNames);
   }
-  return fullName;
+  return character;
 }
 
 
