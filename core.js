@@ -380,9 +380,6 @@ function returnRandomCharacterClass() {
     return utils.returnRandomArrayItem(classes.classList);
 }
 
-
-// TODO: pull from bigger list in new js file
-
 //Returns a random gender
 function returnRandomGender() {
     return utils.returnRandomArrayItem(["male", "female"]);
