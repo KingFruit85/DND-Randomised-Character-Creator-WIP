@@ -15,10 +15,8 @@ function returnHeightAndWeight(height, weight) {
   let rollAmountHeight = height.substring(0, height.indexOf('d'));
   let diceTypeHeight   = height.substring(height.indexOf('d') +1);
 
-
   let rollAmountWeight = weight.substring(0, weight.indexOf('d'));
   let diceTypeWeight   = weight.substring(weight.indexOf('d') +1);
-
 
   let sumOfRolls = null;
   let heightWeight =[];
@@ -38,7 +36,6 @@ function returnHeightAndWeight(height, weight) {
 
   for (j = 1; j <= rollAmountWeight; j++){
     sumOfRolls +=  utils.returnRandomNumberInRange(1,diceTypeWeight);
-
   }
 
   heightWeight.push(heightWeight[0] * sumOfRolls);
@@ -62,8 +59,7 @@ function returnRandomAlignment() {
     ]);
 }
 
-
-
+//Takes the characters race property as an arguement and returns an age appropriate for that race
 function returnCharacterAge(race){
 
   switch (true) {
@@ -77,11 +73,11 @@ function returnCharacterAge(race){
     case race === "Human":      return utils.returnRandomNumberInRange(16,100);
     case race === "Tiefling":   return utils.returnRandomNumberInRange(16,120);
     default:return "Fell though switch case [returnCharacterAge()]";
-
   }
 
 }
 
+//Takes the character object as it's argument and applies the racial bonuses
 function applySubraceBonuses(char){
 
   character = char;
@@ -340,11 +336,28 @@ function applyTieflingRaceBonuses() {
 }
 
 function returnRandomLanguage() {
-    return utils.returnRandomArrayItem(["Abyssal", "Aquan", "Auran", "Celestial", "Deep Speech", "Draconic", "Dwarvish", "Elvish",
-        "Giant", "Gnomish", "Goblin", "Gnoll", "Halfling", "Ignan", "Infernal", "Orc", "Primordial",
-        "Sylvan", "Terran", "Undercommon"
-    ]);
-}
+    return utils.returnRandomArrayItem(["Abyssal",
+                                        "Aquan",
+                                        "Auran",
+                                        "Celestial",
+                                        "Deep Speech",
+                                        "Draconic",
+                                        "Dwarvish",
+                                        "Elvish",
+                                        "Giant",
+                                        "Gnomish",
+                                        "Goblin",
+                                        "Gnoll",
+                                        "Halfling",
+                                        "Ignan",
+                                        "Infernal",
+                                        "Orc",
+                                        "Primordial",
+                                        "Sylvan",
+                                        "Terran",
+                                        "Undercommon"
+                                      ]);
+                                    }
 
 //Simulates the rolling of 4D6, removing the lowest value die and returns the sum of the remainder
 function roll4D6RemoveLowestAndSum() {
@@ -622,7 +635,7 @@ function calculateSpellslots(characterClass){
     spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.sorcererCantrips, spellSlots.cantrips.avalible));
 
     spellSlots.firstLevel.avalible = 2;
-    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.sorcererLevel1, spellSlots.cantrips.avalible));
+    spellSlots.firstLevel.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.sorcererLevel1, spellSlots.firstLevel.avalible));
 
     spellSlots.totalSpellsKnown = 2;
 
@@ -633,7 +646,7 @@ function calculateSpellslots(characterClass){
     spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.warlockCantrips, spellSlots.cantrips.avalible));
 
     spellSlots.firstLevel.avalible = 1;
-    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.warlockLevel1, spellSlots.cantrips.avalible));
+    spellSlots.firstLevel.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.warlockLevel1, spellSlots.firstLevel.avalible));
 
     spellSlots.totalSpellsKnown = 2;
 
@@ -644,7 +657,7 @@ function calculateSpellslots(characterClass){
     spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.wizardCantrips, spellSlots.cantrips.avalible));
 
     spellSlots.firstLevel.avalible = 2;
-    spellSlots.cantrips.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.wizardLevel1, spellSlots.cantrips.avalible));
+    spellSlots.firstLevel.spells.push(utils.returnRandomObjectPropertiesAndValues(spells.wizardLevel1, spellSlots.firstLevel.avalible));
 
   }
 
@@ -668,7 +681,7 @@ function NewCharacter(){
   this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod);
 
   returnCharacterAge(this);
-  applySubraceBonuses(this);
+  applySubraceBonuses(this.race);
 
   this.savingThrowScores = calculateSavingThrowScores(this.abilityScores, this.characterClass.savingThrows, this.proficiencyModifier);
   this.skillScores = calculateSkillScores(this.abilityScores, this.characterClass.skillProficiencies, this.proficiencyModifier);
@@ -680,18 +693,16 @@ function NewCharacter(){
 }
 
 
-
-
 x = new NewCharacter();
 console.log(JSON.stringify(x, undefined, 2));
 
-// JsonExport = JSON.stringify(x, undefined, 2);
+JsonExport = JSON.stringify(x, undefined, 2);
 
-// fs.writeFile("C:/Users/Christopher/Desktop/D-D-V2-dev/export.txt", JsonExport, function(err) {
-//     if(err) {
-//         return console.log(err);
-//     }
-//
-//     console.log("The file was saved!");
-//     console.log(JsonExport)
-// });
+fs.writeFile("./" + x.name.firstName + " " + x.name.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
+    if(err) {
+        return console.log(err);
+    }
+
+    console.log("The file was saved!");
+    console.log(JsonExport);
+});
