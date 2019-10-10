@@ -886,10 +886,8 @@ function returnRandomName(gender){
               lastName:""};
 
   if(gender === "male"){
-    fullName.firstName = utils.returnRandomArrayItem(maleFirstNames);
     fullName.lastName = utils.returnRandomArrayItem(humanLastNames);
   }else{
-    fullName.firstName = utils.returnRandomArrayItem(femaleFirstNames);
     fullName.lastName = utils.returnRandomArrayItem(humanLastNames);
   }
   return fullName;
