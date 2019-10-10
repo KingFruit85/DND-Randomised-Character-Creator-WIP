@@ -380,30 +380,6 @@ function returnRandomCharacterClass() {
     return utils.returnRandomArrayItem(classes.classList);
 }
 
-
-// TODO: pull from bigger list in new js file
-const maleFirstNames = ["Chris", "Adam", "Wim", "Ali"];
-const femaleFirstNames = ["Magda", "Kelly", "Holly", "Zifa"];
-const surnames = ["Long", "Mistiaen", "Abildgaard", "Halil", "C.O.C.A.I.N.E"];
-
-
-
-function returnFirstName(gender) {
-
-    if (gender === "male") {
-        return utils.returnRandomArrayItem(maleFirstNames);
-    } else {
-        return utils.returnRandomArrayItem(femaleFirstNames);
-    }
-}
-
-function returnLastName() {
-
-    return utils.returnRandomArrayItem(surnames);
-
-}
-
-
 //Returns a random gender
 function returnRandomGender() {
     return utils.returnRandomArrayItem(["male", "female"]);
