@@ -10,7 +10,7 @@ bardCantrips = {
     Prestidigitation: allspells.prestidigitation,
     TrueStrike:       allspells.true_strike,
     ViciousMockery:   allspells.vicious_mockery
-}
+};
 
 bardLevel1 = {
     AnimalFriendship:    allspells.animal_friendship,
@@ -33,7 +33,7 @@ bardLevel1 = {
     SpeakwithAnimals:    allspells.speak_with_animals,
     Thunderwave:         allspells.thunderwave,
     UnseenServant:       allspells.unseen_servant
-  }
+  };
 
 clericCantrips = {
     Guidance:            allspells.guidance,
@@ -42,7 +42,7 @@ clericCantrips = {
     Resistance:          allspells.resistance,
     SacredFlame:         allspells.sacred_flame,
     Thaumaturgy:         allspells.thaumaturgy
-}
+};
 
 clericLevel1 = {
     Bane:                allspells.bane,
@@ -60,7 +60,7 @@ clericLevel1 = {
     PurifyFoodandDrink:  allspells.purify_food_and_drink,
     Sanctuary:           allspells.sanctuary,
     ShieldofFaith:       allspells.shield_of_faith
-}
+};
 
 druidCantrips = {
   Guidance:              allspells.guidance,
@@ -68,7 +68,7 @@ druidCantrips = {
   ProduceFlame:          allspells.produce_flame,
   Resistance:            allspells.resistance,
   Shillelagh:            allspells.shillelagh
-}
+};
 
 druidLevel1 = {
   CharmPerson:           allspells.charm_person,
@@ -85,7 +85,7 @@ druidLevel1 = {
   PurifyFoodandDrink:    allspells.purify_food_and_drink,
   SpeakWithAnimals:      allspells.speak_with_animals,
   Thunderwave:           allspells.thunderwave
-}
+};
 
 paladinLevel1 = {
   Bless:                 allspells.bless,
@@ -99,7 +99,7 @@ paladinLevel1 = {
   ProtectionFromEvilAndGood:allspells.protection_from_evil_and_good,
   PurifyFoodAndDrink:    allspells.purify_food_and_drink,
   ShieldOfFaith:         allspells.shield_of_faith
-}
+};
 
 
 rangerLevel1 = {
@@ -111,7 +111,7 @@ rangerLevel1 = {
   Jump:                  allspells.jump,
   Longstrider:           allspells.longstrider,
   SpeakWithAnimals:      allspells.speak_with_animals
-}
+};
 
 sorcererCantrips = {
   AcidSplash:            allspells.acid_splash,
@@ -126,7 +126,7 @@ sorcererCantrips = {
   RayofFrost:            allspells.ray_of_frost,
   ShockingGrasp:         allspells.shocking_grasp,
   TrueStrike:            allspells.true_strike
-}
+};
 
 sorcererLevel1 = {
   BurningHands:          allspells.burning_hands,
@@ -146,7 +146,7 @@ sorcererLevel1 = {
   SilentImage:           allspells.silent_image,
   Sleep:                 allspells.sleep,
   Thunderwave:           allspells.thunderwave
-}
+};
 
 warlockCantrips = {
   ChillTouch:            allspells.chill_touch,
@@ -154,7 +154,7 @@ warlockCantrips = {
   MinorIllusion:         allspells.minor_illusion,
   Prestidigitation:      allspells.prestidigitation,
   TrueStrike:            allspells.true_strike
-}
+};
 
 warlockLevel1 = {
   CharmPerson:           allspells.charm_person,
@@ -163,7 +163,7 @@ warlockLevel1 = {
   IllusoryScript:        allspells.illusory_script,
   ProtectionfromEvilandGood:allspells.protection_from_evil_and_good,
   UnseenServant:         allspells.unseen_servant
-}
+};
 
 wizardCantrips = {
   AcidSplash:            allspells.acid_splash,
@@ -178,7 +178,7 @@ wizardCantrips = {
   RayofFrost:            allspells.ray_of_frost,
   ShockingGrasp:         allspells.shocking_grasp,
   TrueStrike:            allspells.true_strike
-}
+};
 
 wizardLevel1 = {
   Alarm:                 allspells.alarm,
@@ -207,8 +207,7 @@ wizardLevel1 = {
   Sleep:                 allspells.sleep,
   Thunderwave:           allspells.thunderwave,
   UnseenServant:         allspells.unseen_servant
-
-}
+};
 
 
 
