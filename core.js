@@ -668,13 +668,13 @@ function calculateSpellslots(characterClass){
 
 //NewCharacter Construtor
 function NewCharacter(){
-  names.returnRandomName(this);
   this.level = 1;// TODO: add level scaling
   this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
   this.characterClass = returnRandomCharacterClass();
   this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
   this.race = returnRandomRace();
   this.gender = returnRandomGender();
+  names.returnRandomName(this);
 
   this.alignment = returnRandomAlignment();
   this.abilityScores = returnAbilityScores(this.characterClass);
