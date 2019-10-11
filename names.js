@@ -2,7 +2,7 @@ const utils =require('./utils');
 
 //// TODO: add racial names
 
-const maleFirstNames = [
+const maleHumanNames = [
   "Emmitt",
   "Shane",
   "Leonel",
@@ -154,7 +154,7 @@ const maleFirstNames = [
   "Esteban"
 ];
 
-const femaleFirstNames = [
+const femaleHumanNames = [
 "Kum",
 "Miranda",
 "Sherrell",
