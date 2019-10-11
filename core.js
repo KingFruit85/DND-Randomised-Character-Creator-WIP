@@ -67,8 +67,8 @@ function returnCharacterAge(race){
     case race === "Dwarf":      return utils.returnRandomNumberInRange(50,350);
     case race === "Elf":        return utils.returnRandomNumberInRange(100,750);
     case race === "Gnome":      return utils.returnRandomNumberInRange(40,450);
-    case race === "Half Elf":   return utils.returnRandomNumberInRange(20,180);
-    case race === "Half Orc":   return utils.returnRandomNumberInRange(14,75);
+    case race === "Half-Elf":   return utils.returnRandomNumberInRange(20,180);
+    case race === "Half-Orc":   return utils.returnRandomNumberInRange(14,75);
     case race === "Halfling":   return utils.returnRandomNumberInRange(20,250);
     case race === "Human":      return utils.returnRandomNumberInRange(16,100);
     case race === "Tiefling":   return utils.returnRandomNumberInRange(16,120);
@@ -87,8 +87,8 @@ function applySubraceBonuses(char){
     case character.race === "Dwarf":applyDwarfRaceBonuses(character);break;
     case character.race === "Elf":applyElfRaceBonuses(character);break;
     case character.race === "Gnome":applyGnomeRaceBonuses(character);break;
-    case character.race === "Half Elf":applyHalfElfRaceBonuses(character);break;
-    case character.race === "Half Orc":applyHalfOrcRaceBonuses(character);break;
+    case character.race === "Half-Elf":applyHalfElfRaceBonuses(character);break;
+    case character.race === "Half-Orc":applyHalfOrcRaceBonuses(character);break;
     case character.race === "Halfling":applyHalflingRaceBonuses(character);break;
     case character.race === "Human":applyHumanRaceBonuses(character);break;
     case character.race === "Tiefling":applyTieflingRaceBonuses(character);break;
@@ -129,12 +129,12 @@ function returnCharacterHeight(race) {
             heightAndWeight[0] = additionalHeightAndWeight[0] + 2.11 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 35 + " lbs";
             break;
-        case race === "Half Elf":
+        case race === "Half-Elf":
             additionalHeightAndWeight = returnHeightAndWeight("2d8", "2d4");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 4.9 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 110 + " lbs";
             break;
-        case race === "Half Orc":
+        case race === "Half-Orc":
             additionalHeightAndWeight = returnHeightAndWeight("2d10", "2d6");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 4.10 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 140 + " lbs";
@@ -465,7 +465,7 @@ function returnAbilityScores(characterClass) {
 
 function returnRandomRace() {
 
-    return utils.returnRandomArrayItem(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfling", "Human", "Tiefling"]);
+    return utils.returnRandomArrayItem(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"]);
 
 }
 
