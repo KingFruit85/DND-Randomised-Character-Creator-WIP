@@ -1267,20 +1267,21 @@ const halfElfSurnames = [
 "Luralei"
 ];
 
-
-
 function returnRandomName(character){
+  switch (true) {
+    case character.race === "Dwarf" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleDwarfNames);
+    character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
+    break;
 
-  if(character.gender === "male"){
-    character.firstName = utils.returnRandomArrayItem(maleFirstNames);
-    character.lastName = utils.returnRandomArrayItem(humanLastNames);
-  }else{
-    character.firstName = utils.returnRandomArrayItem(femaleFirstNames);
-    character.lastName = utils.returnRandomArrayItem(humanLastNames);
+    case character.race === "Dwarf" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleDwarfNames);
+    character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
+    break;
+    default:character.firstName = "James"; character.lastName = "Bond";
   }
+
   return character;
 }
-
-
 
 exports.returnRandomName = returnRandomName;
