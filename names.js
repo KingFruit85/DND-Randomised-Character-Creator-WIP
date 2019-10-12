@@ -1412,10 +1412,4 @@ function returnRandomName(character){
   return character;
 }
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> c2d4185c6c776f70a0549d4d2fb708fb3ced23c8
 exports.returnRandomName = returnRandomName;
