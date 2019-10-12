@@ -11,20 +11,20 @@ function returnRandomNumberInRange(minValue, maxValue) {
 
     }
 
-};
+}
 
 //returns a floating point value between the given arguements
 function  returnRandomFloatInRange(minValue, maxValue) {
   return Math.random() * (maxValue - minValue) + minValue;
-};
+}
 
 
 //Returns a random element of the array provided as the arguement
 function returnRandomArrayItem(array){
 
-    return array[returnRandomNumberInRange(0, array.length - 1)]
+    return array[returnRandomNumberInRange(0, array.length - 1)];
 
-};
+}
 
 function returnRandomObjectPropertiesAndValues(collection, ammount){
 
