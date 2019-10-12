@@ -1310,7 +1310,7 @@ function returnRandomName(character){
     character.firstName = utils.returnRandomArrayItem(maleHalfElfNames);
     character.lastName = utils.returnRandomArrayItem(halfElfSurnames);
     break;
-    case character.race === "Hal-Elf" && character.gender === "female":
+    case character.race === "Half-Elf" && character.gender === "female":
     character.firstName = utils.returnRandomArrayItem(femaleHalfElfNames);
     character.lastName = utils.returnRandomArrayItem(halfElfSurnames);
     break;
