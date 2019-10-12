@@ -352,7 +352,7 @@ function applyHumanRaceBonuses() {
           featFound = true;
         }
 
-        
+
 
     }
 
@@ -738,16 +738,12 @@ function calculateSpellslots(characterClass){
 
 //NewCharacter Construtor
 function NewCharacter(){
-<<<<<<< HEAD
-
-=======
->>>>>>> c2d4185c6c776f70a0549d4d2fb708fb3ced23c8
   this.level = 1;// TODO: add level scaling
   this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
   this.characterClass = returnRandomCharacterClass();
   this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
   // this.race = returnRandomRace();
-  this.race = "Human";
+  this.race = returnRandomRace();
   this.gender = returnRandomGender();
   names.returnRandomName(this);
 
