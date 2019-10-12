@@ -2,7 +2,7 @@ const utils =require('./utils');
 
 //// TODO: add racial names
 
-const maleFirstNames = [
+const maleHumanNames = [
   "Emmitt",
   "Shane",
   "Leonel",
@@ -154,7 +154,7 @@ const maleFirstNames = [
   "Esteban"
 ];
 
-const femaleFirstNames = [
+const femaleHumanNames = [
 "Kum",
 "Miranda",
 "Sherrell",
@@ -305,7 +305,7 @@ const femaleFirstNames = [
 "Jayme"
 ];
 
-const humanLastNames = [
+const humanSurnames = [
 "Huie",
 "Mchenry",
 "Gebhard",
@@ -644,7 +644,8 @@ const femaleDwarfNames =[
 "Riswynn",
 "Torbera",
 "Vistra",
-"Sylveria"
+"Sylveria",
+"Gronti"
 ];
 
 const dwarfSurnames = [
@@ -1267,20 +1268,93 @@ const halfElfSurnames = [
 "Luralei"
 ];
 
-
-
 function returnRandomName(character){
+  switch (true) {
+    case character.race === "Dragonborn" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleDragonbornNames);
+    character.lastName = utils.returnRandomArrayItem(dragonbornSurnames);
+    break;
+    case character.race === "Dragonborn" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleDragonbornNames);
+    character.lastName = utils.returnRandomArrayItem(dragonbornSurnames);
+    break;
+    
+    case character.race === "Dwarf" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleDwarfNames);
+    character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
+    break;
+    case character.race === "Dwarf" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleDwarfNames);
+    character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
+    break;
 
-  if(character.gender === "male"){
-    character.firstName = utils.returnRandomArrayItem(maleFirstNames);
-    character.lastName = utils.returnRandomArrayItem(humanLastNames);
-  }else{
-    character.firstName = utils.returnRandomArrayItem(femaleFirstNames);
-    character.lastName = utils.returnRandomArrayItem(humanLastNames);
+    case character.race === "Elf" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleElfNames);
+    character.lastName = utils.returnRandomArrayItem(elfSurnames);
+    break;
+    case character.race === "Elf" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleElfNames);
+    character.lastName = utils.returnRandomArrayItem(elfSurnames);
+    break;
+
+    case character.race === "Gnome" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleGnomeNames);
+    character.lastName = utils.returnRandomArrayItem(gnomeSurnames);
+    break;
+    case character.race === "Gnome" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleGnomeNames);
+    character.lastName = utils.returnRandomArrayItem(gnomeSurnames);
+    break;
+
+    case character.race === "Half-Elf" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleHalfElfNames);
+    character.lastName = utils.returnRandomArrayItem(halfElfSurnames);
+    break;
+    case character.race === "Half-Elf" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleHalfElfNames);
+    character.lastName = utils.returnRandomArrayItem(halfElfSurnames);
+    break;
+
+    case character.race === "Half-Orc" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleHalfOrcNames);
+    character.lastName = utils.returnRandomArrayItem(halfOrcSurnames);
+    break;
+    case character.race === "Half-Orc" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleHalfOrcNames);
+    character.lastName = utils.returnRandomArrayItem(halfOrcSurnames);
+    break;
+
+    case character.race === "Halfling" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleHalflingNames);
+    character.lastName = utils.returnRandomArrayItem(halflingSurnames);
+    break;
+    case character.race === "Halfling" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleHalflingNames);
+    character.lastName = utils.returnRandomArrayItem(halflingSurnames);
+    break;
+    
+    case character.race === "Human" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleHumanNames);
+    character.lastName = utils.returnRandomArrayItem(humanSurnames);
+    break;
+    case character.race === "Human" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleHumanNames);
+    character.lastName = utils.returnRandomArrayItem(humanSurnames);
+    break;
+
+    case character.race === "Tiefling" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleTieflingNames);
+    character.lastName = utils.returnRandomArrayItem(tiefilingSurnames);
+    break;
+    case character.race === "Tiefling" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleTieflingNames);
+    character.lastName = utils.returnRandomArrayItem(tieflingSurnames);
+    break;
+
+    default:character.firstName = "James"; character.lastName = "Bond";
   }
+
   return character;
 }
-
-
 
 exports.returnRandomName = returnRandomName;
