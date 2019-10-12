@@ -644,7 +644,8 @@ const femaleDwarfNames =[
 "Riswynn",
 "Torbera",
 "Vistra",
-"Sylveria"
+"Sylveria",
+"Gronti"
 ];
 
 const dwarfSurnames = [
