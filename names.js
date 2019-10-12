@@ -1269,6 +1269,15 @@ const halfElfSurnames = [
 
 function returnRandomName(character){
   switch (true) {
+    case character.race === "Dragonborn" && character.gender === "male":
+    character.firstName = utils.returnRandomArrayItem(maleDragonbornNames);
+    character.lastName = utils.returnRandomArrayItem(dragonbornSurnames);
+    break;
+    case character.race === "Dragonborn" && character.gender === "female":
+    character.firstName = utils.returnRandomArrayItem(femaleDragonbornNames);
+    character.lastName = utils.returnRandomArrayItem(dragonbornSurnames);
+    break;
+    
     case character.race === "Dwarf" && character.gender === "male":
     character.firstName = utils.returnRandomArrayItem(maleDwarfNames);
     character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
