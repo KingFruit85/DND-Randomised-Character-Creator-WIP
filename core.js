@@ -303,21 +303,35 @@ function applyHalflingRaceBonuses() {
 
 function applyHumanRaceBonuses() {
 
-    character.abilityScores.str += 1;
-    character.abilityScores.con += 1;
-    character.abilityScores.dex += 1;
-    character.abilityScores.int += 1;
-    character.abilityScores.wis += 1;
-    character.abilityScores.cha += 1;
     character.speed = 30;
-    character.racialAbilities = null; // TODO: Humans don't have racial traits but they do have vaiant rules.
+    character.racialAbilities = null;
     character.languages = ["Common", returnRandomLanguage()];
     character.resistances = null;
     character.sizeClass = "Medium";
     let heightWeight = returnCharacterHeight(character.race);
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
-    // TODO: Variant human
+
+
+    if(utils.returnRandomNumberInRange(0, 1) === 0){
+      //Variant Human
+
+
+
+    }else{
+      //Standard Human
+
+      character.abilityScores.str += 1;
+      character.abilityScores.con += 1;
+      character.abilityScores.dex += 1;
+      character.abilityScores.int += 1;
+      character.abilityScores.wis += 1;
+      character.abilityScores.cha += 1;
+
+    }
+
+
+
 }
 
 function applyTieflingRaceBonuses() {
