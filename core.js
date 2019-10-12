@@ -3,6 +3,7 @@ const utils = require('./utils.js');
 const racial_traits =require('./racial_traits.js');
 const spells =require('./spells.js');
 const names =require('./names.js');
+const feats =require('./feats.js');
 const fs = require('fs');
 
 
@@ -302,7 +303,7 @@ function applyHalflingRaceBonuses() {
 }
 
 function applyHumanRaceBonuses() {
-
+    //Apply common human stats regardless of variant rules or not
     character.speed = 30;
     character.racialAbilities = null;
     character.languages = ["Common", returnRandomLanguage()];
@@ -312,15 +313,70 @@ function applyHumanRaceBonuses() {
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
-
+    //Roll for variant rules
     if(utils.returnRandomNumberInRange(0, 1) === 0){
+
       //Variant Human
+
+      character.variant = true;
+      //Increase two random ability scores
+      let abilitiyScores = ["str", "con", "dex", "int", "wis", "cha"];
+      var randomTwoAbilityScores = [];
+
+      randomTwoAbilityScores.push(utils.returnRandomArrayItem(abilitiyScores));
+      abilitiyScores.splice(abilitiyScores.indexOf(randomTwoAbilityScores[0]),1);
+      randomTwoAbilityScores.push(utils.returnRandomArrayItem(abilitiyScores));
+
+      character.abilityScores[randomTwoAbilityScores[0]] += 1;
+      character.abilityScores[randomTwoAbilityScores[1]] += 1;
+
+      //add a random feat
+      var randomFeat = feats.returnRandomFeat();
+      var charStatValue = this.character.abilityScores[randomFeat.statRequirement[0]];
+      var featStatValue = randomFeat.statRequirement[1];
+
+      //checks if character is eligable for the feat and selects a different one if not
+
+      var featFound = false;
+
+      while(featFound === false){
+
+        if(randomFeat.statRequirement[0] != undefined){
+
+            if(charStatValue < featStatValue){
+              randomFeat = feats.returnRandomFeat();
+            }else{
+              featFound = true;
+            }
+        }else{
+          featFound = true;
+        }
+
+        
+
+    }
+
+    character.feat = randomFeat;
+
+    // if the feat has a stat increase, applys it
+    if (character.feat.statIncrease != undefined){
+      character.abilityScores[character.feat.statIncrease[0]] += character.feat.statIncrease[1];
+    }
+
+    //if the feat adds a proficient, apply it
+
+    if (character.feat.proficiencyBonus != undefined){
+      console.log("ARMOR");
+      character.characterClass.armorProficiencies.push(randomFeat.proficiencyBonus[0]);
+    }
+
+
 
 
 
     }else{
       //Standard Human
-
+      character.variant = false;
       character.abilityScores.str += 1;
       character.abilityScores.con += 1;
       character.abilityScores.dex += 1;
@@ -682,13 +738,15 @@ function calculateSpellslots(characterClass){
 
 //NewCharacter Construtor
 function NewCharacter(){
-  names.returnRandomName(this);
+
   this.level = 1;// TODO: add level scaling
   this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
   this.characterClass = returnRandomCharacterClass();
   this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
-  this.race = returnRandomRace();
+  // this.race = returnRandomRace();
+  this.race = "Human";
   this.gender = returnRandomGender();
+  names.returnRandomName(this);
 
   this.alignment = returnRandomAlignment();
   this.abilityScores = returnAbilityScores(this.characterClass);
@@ -708,7 +766,14 @@ function NewCharacter(){
 
 
 x = new NewCharacter();
-console.log(JSON.stringify(x, undefined, 2));
+
+console.log(x.variant + " " + x.firstName + " " + x.lastName);
+
+// console.log(JSON.stringify(x.variant, undefined, 2));
+
+
+
+
 
 JsonExport = JSON.stringify(x, undefined, 2);
 
@@ -718,5 +783,5 @@ fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.cha
     }
 
     console.log("The file was saved!");
-    console.log(JsonExport);
+
 });
