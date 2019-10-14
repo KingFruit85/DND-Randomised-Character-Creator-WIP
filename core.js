@@ -492,7 +492,7 @@ function returnRandomCharacterClass(chartype) {
 
 //Returns a random gender
 function returnRandomGender(genderType) {
-  if(genderType === 'undefined'){
+  if(typeof genderType === 'undefined'){
     return utils.returnRandomArrayItem(["male", "female"]);
   }else{
     return genderType;
@@ -812,7 +812,7 @@ for (let j = 0; j < process.argv.length; j++) { //loops all arguments
     }
 
     if (process.argv[j] === '-c' || process.argv[j] === '-C') { //check for the argument -c, if true user wants to force a specific class
-        if (validClassList.includes(process.argv[j + 1].toLowerCase())) { //checks to make sure arguement is valid class
+        if (typeof process.argv[j + 1] != 'undefined' && validClassList.includes(process.argv[j + 1].toLowerCase())) { //checks to make sure arguement is valid class
             chartype = process.argv[j + 1].toLowerCase();
         } else {
             chartype = 'undefined';
@@ -821,7 +821,7 @@ for (let j = 0; j < process.argv.length; j++) { //loops all arguments
     }
 
     if (process.argv[j] === '-r' || process.argv[j] === '-R') { //check for the argument -r, if true user wants to force a specific race
-        if (validRaceList.includes(process.argv[j + 1].toLowerCase())) { //checks to make sure arguement is valid race
+        if (typeof process.argv[j + 1] != 'undefined' && validRaceList.includes(process.argv[j + 1].toLowerCase())) { //checks to make sure arguement is valid race
             raceType = process.argv[j + 1].toLowerCase();
         } else {
             console.log("ERROR: The provided race arguement isn't valid - race will be random"); //If argument isn't a string or a valid class
@@ -830,7 +830,7 @@ for (let j = 0; j < process.argv.length; j++) { //loops all arguments
 
     if (process.argv[j] === '-g' || process.argv[j] === '-G') { //check for the argument -g, if true user wants to force a specific gender
         let genderProvided = process.argv[j + 1];
-        if (genderProvided != 'undefined' && (genderProvided.toLowerCase() === "male" || genderProvided.toLowerCase() === "female")) {
+        if (typeof genderProvided != 'undefined' && (genderProvided.toLowerCase() === "male" || genderProvided.toLowerCase() === "female")) {
             genderType = process.argv[j + 1].toLowerCase();
         } else {
             genderType = 'undefined';
