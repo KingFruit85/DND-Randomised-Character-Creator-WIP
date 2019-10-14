@@ -788,9 +788,21 @@ for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
       if(err) {
           return console.log(err);
       }
+//assigns a new character object to x
+x = new NewCharacter();
+
+//lets the user know the character has been saved
+console.log(x.firstName + " " + x.lastName + " -character created. File saved in root directory of program");
+
+//Exports character object to JSON file in root dir
+JsonExport = JSON.stringify(x, undefined, 2);
 
       console.log("The file was saved!");
+
 
   });
 
 }
+
+});
+

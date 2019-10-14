@@ -257,7 +257,7 @@ const dwarfSurnames = [
   "Torunn",
   "Ungart"
   ];
-  
+
 
 /////////////* ELF */////////////
 
@@ -304,7 +304,7 @@ const maleElfNames = [
   "Kaelthrimar",
   "Ardyn"
   ];
-  
+
 // SURNAME
 const elfSurnames = [
   "Amakiir",
@@ -325,7 +325,7 @@ const elfSurnames = [
   "Moonbright",
   "Featherfall"
   ];
-  
+
 
 /////////////* GNOME */////////////
 
@@ -414,7 +414,7 @@ const halfElfSurnames = [
   "Faekian",
   "Lianan",
   "Luralei"
-  ];  
+  ];
 
 
 /////////////* HALF-ORC */////////////
@@ -461,7 +461,7 @@ const femaleHalfOrcNames = [
   "Tlahra",
   "Uzifsula",
   "Zahoua",
-  ];  
+  ];
 
 // MALE
 const maleHalfOrcNames = [
@@ -545,7 +545,7 @@ const halfOrcSurnames =[
   "Elraglok",
   "Zongi"
   ];
-  
+
 
 /////////////* HALFLING */////////////
 
@@ -561,7 +561,7 @@ const femaleHalflingNames = [
   "Tulnurrath",
   "Vassezi",
   "Retiato"
-  ];  
+  ];
 
 // MALE
 const maleHalflingNames = [
@@ -1333,7 +1333,7 @@ function returnRandomName(character){
     character.firstName = utils.returnRandomArrayItem(femaleDragonbornNames);
     character.lastName = utils.returnRandomArrayItem(dragonbornSurnames);
     break;
-    
+
     case character.race === "Dwarf" && character.gender === "male":
     character.firstName = utils.returnRandomArrayItem(maleDwarfNames);
     character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
@@ -1387,7 +1387,7 @@ function returnRandomName(character){
     character.firstName = utils.returnRandomArrayItem(femaleHalflingNames);
     character.lastName = utils.returnRandomArrayItem(halflingSurnames);
     break;
-    
+
     case character.race === "Human" && character.gender === "male":
     character.firstName = utils.returnRandomArrayItem(maleHumanNames);
     character.lastName = utils.returnRandomArrayItem(humanSurnames);
@@ -1399,7 +1399,7 @@ function returnRandomName(character){
 
     case character.race === "Tiefling" && character.gender === "male":
     character.firstName = utils.returnRandomArrayItem(maleTieflingNames);
-    character.lastName = utils.returnRandomArrayItem(tiefilingSurnames);
+    character.lastName = utils.returnRandomArrayItem(tieflingSurnames);
     break;
     case character.race === "Tiefling" && character.gender === "female":
     character.firstName = utils.returnRandomArrayItem(femaleTieflingNames);
@@ -1412,10 +1412,4 @@ function returnRandomName(character){
   return character;
 }
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> c2d4185c6c776f70a0549d4d2fb708fb3ced23c8
 exports.returnRandomName = returnRandomName;
