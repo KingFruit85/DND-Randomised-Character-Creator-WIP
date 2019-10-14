@@ -763,24 +763,18 @@ function NewCharacter(){
 
 }
 
-
+//assigns a new character object to x
 x = new NewCharacter();
 
-console.log(x.variant + " " + x.firstName + " " + x.lastName);
+//lets the user know the character has been saved
+console.log(x.firstName + " " + x.lastName + " -character created. File saved in root directory of program");
 
-// console.log(JSON.stringify(x.variant, undefined, 2));
-
-
-
-
-
+//Exports character object to JSON file in root dir
 JsonExport = JSON.stringify(x, undefined, 2);
 
 fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
     if(err) {
         return console.log(err);
     }
-
-    console.log("The file was saved!");
 
 });
