@@ -17,7 +17,7 @@ You copy and paste the output to a site such as [this](http://jsonviewer.stack.h
 * '-r x' where 'x' is a string representing a valid D&D5e character race setting this will return only the provided race
 * '-g x' where 'x' is a string representing a valid D&D5e character gender setting this will return only the provided gender
 
-If a the -c/-r/-g switches are not followed by a valid argument the program will default to a random value. -n will default to 1.
+If any of the -c/-r/-g switches are not followed by a valid argument the program will default that switch to a random value. -n will default to 1.
 
 ###### Examples
 ```
