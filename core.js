@@ -763,6 +763,31 @@ function NewCharacter(){
 
 }
 
+charQty = 1;
+for (let j = 0; j < process.argv.length; j++) {    //loops all arguments 
+  if (process.argv[j] == '-n') {                   //check for the argument -n, if 'true' user wants several chars
+    var isnum = /^\d+$/.test(process.argv[j+1]); //checks if the next argument is a number
+    if (isnum == true) {
+      charQty = process.argv[j+1];
+    }
+  }
+  //console.log(j + ' -> ' + (process.argv[j])); //used to print all arguments on screen for testing
+}
+
+for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
+
+  var x = new NewCharacter();
+
+  console.log(x.variant + " " + x.firstName + " " + x.lastName);
+
+  // console.log(JSON.stringify(x.variant, undefined, 2));
+
+  JsonExport = JSON.stringify(x, undefined, 2);
+
+  fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
+      if(err) {
+          return console.log(err);
+      }
 //assigns a new character object to x
 x = new NewCharacter();
 
@@ -772,9 +797,12 @@ console.log(x.firstName + " " + x.lastName + " -character created. File saved in
 //Exports character object to JSON file in root dir
 JsonExport = JSON.stringify(x, undefined, 2);
 
-fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
-    if(err) {
-        return console.log(err);
-    }
+      console.log("The file was saved!");
+
+
+  });
+
+}
 
 });
+
