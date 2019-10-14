@@ -6,7 +6,11 @@ const names =require('./names.js');
 const feats =require('./feats.js');
 const fs = require('fs');
 
+const validClassList = ["bard", "barbarian", "cleric", "fighter", "monk", "paladin",
+                    "ranger", "rogue", "sorcerer", "warlock", "wizard"];
 
+const validRaceList = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "half-orc",
+                       "halfling", "human", "tiefling"];
 
 
 // TODO: refactor, must be a cleaner way to do this
@@ -64,15 +68,15 @@ function returnRandomAlignment() {
 function returnCharacterAge(race){
 
   switch (true) {
-    case race === "Dragonborn": return utils.returnRandomNumberInRange(15,80);
-    case race === "Dwarf":      return utils.returnRandomNumberInRange(50,350);
-    case race === "Elf":        return utils.returnRandomNumberInRange(100,750);
-    case race === "Gnome":      return utils.returnRandomNumberInRange(40,450);
-    case race === "Half-Elf":   return utils.returnRandomNumberInRange(20,180);
-    case race === "Half-Orc":   return utils.returnRandomNumberInRange(14,75);
-    case race === "Halfling":   return utils.returnRandomNumberInRange(20,250);
-    case race === "Human":      return utils.returnRandomNumberInRange(16,100);
-    case race === "Tiefling":   return utils.returnRandomNumberInRange(16,120);
+    case race === "dragonborn": return utils.returnRandomNumberInRange(15,80);
+    case race === "dwarf":      return utils.returnRandomNumberInRange(50,350);
+    case race === "elf":        return utils.returnRandomNumberInRange(100,750);
+    case race === "gnome":      return utils.returnRandomNumberInRange(40,450);
+    case race === "half-elf":   return utils.returnRandomNumberInRange(20,180);
+    case race === "half-orc":   return utils.returnRandomNumberInRange(14,75);
+    case race === "halfling":   return utils.returnRandomNumberInRange(20,250);
+    case race === "human":      return utils.returnRandomNumberInRange(16,100);
+    case race === "tiefling":   return utils.returnRandomNumberInRange(16,120);
     default:return "Fell though switch case [returnCharacterAge()]";
   }
 
@@ -84,15 +88,15 @@ function applySubraceBonuses(char){
   character = char;
 
   switch (true) {
-    case character.race === "Dragonborn":applyDragonbornRaceBonuses(character);break;
-    case character.race === "Dwarf":applyDwarfRaceBonuses(character);break;
-    case character.race === "Elf":applyElfRaceBonuses(character);break;
-    case character.race === "Gnome":applyGnomeRaceBonuses(character);break;
-    case character.race === "Half-Elf":applyHalfElfRaceBonuses(character);break;
-    case character.race === "Half-Orc":applyHalfOrcRaceBonuses(character);break;
-    case character.race === "Halfling":applyHalflingRaceBonuses(character);break;
-    case character.race === "Human":applyHumanRaceBonuses(character);break;
-    case character.race === "Tiefling":applyTieflingRaceBonuses(character);break;
+    case character.race === "dragonborn":applyDragonbornRaceBonuses(character);break;
+    case character.race === "dwarf":applyDwarfRaceBonuses(character);break;
+    case character.race === "elf":applyElfRaceBonuses(character);break;
+    case character.race === "gnome":applyGnomeRaceBonuses(character);break;
+    case character.race === "half-elf":applyHalfElfRaceBonuses(character);break;
+    case character.race === "half-orc":applyHalfOrcRaceBonuses(character);break;
+    case character.race === "halfling":applyHalflingRaceBonuses(character);break;
+    case character.race === "human":applyHumanRaceBonuses(character);break;
+    case character.race === "tiefling":applyTieflingRaceBonuses(character);break;
     default: character.race = "Fell though switch case [applySubraceBonuses()]";
 
   }
@@ -110,47 +114,47 @@ function returnCharacterHeight(race) {
     let heightAndWeight = [];
 
     switch (true) {
-        case race === "Dragonborn":
+        case race === "dragonborn":
             additionalHeightAndWeight = returnHeightAndWeight("2d8", "2d6");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 5.6 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 175 + " lbs";
             break;
-        case race === "Dwarf":
+        case race === "dwarf":
             additionalHeightAndWeight = returnHeightAndWeight("2d8", "2d6");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 3.8 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 115 + " lbs";
             break;
-        case race === "Elf":
+        case race === "elf":
             additionalHeightAndWeight = returnHeightAndWeight("2d10", "1d4");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 4.6 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 90 + " lbs";
             break;
-        case race === "Gnome":
+        case race === "gnome":
             additionalHeightAndWeight = returnHeightAndWeight("2d4", "1d1");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 2.11 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 35 + " lbs";
             break;
-        case race === "Half-Elf":
+        case race === "half-elf":
             additionalHeightAndWeight = returnHeightAndWeight("2d8", "2d4");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 4.9 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 110 + " lbs";
             break;
-        case race === "Half-Orc":
+        case race === "half-orc":
             additionalHeightAndWeight = returnHeightAndWeight("2d10", "2d6");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 4.10 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 140 + " lbs";
             break;
-        case race === "Halfling":
+        case race === "halfling":
             additionalHeightAndWeight = returnHeightAndWeight("2d4", "1d1");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 2.7 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 35 + " lbs";
             break;
-        case race === "Human":
+        case race === "human":
             additionalHeightAndWeight = returnHeightAndWeight("2d10", "2d4");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 4.8 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 110 + " lbs";
             break;
-        case race === "Tiefling":
+        case race === "tiefling":
             additionalHeightAndWeight = returnHeightAndWeight("2d8", "2d4");
             heightAndWeight[0] = additionalHeightAndWeight[0] + 4.9 + " ft";
             heightAndWeight[1] = additionalHeightAndWeight[1] + 110 + " lbs";
@@ -366,7 +370,7 @@ function applyHumanRaceBonuses() {
     //if the feat adds a proficient, apply it
 
     if (character.feat.proficiencyBonus != undefined){
-      console.log("ARMOR");
+
       character.characterClass.armorProficiencies.push(randomFeat.proficiencyBonus[0]);
     }
 
@@ -459,13 +463,40 @@ function returnSixNumbers() {
 }
 
 //Returns a random character class as a string
-function returnRandomCharacterClass() {
-    return utils.returnRandomArrayItem(classes.classList);
+function returnRandomCharacterClass(chartype) {
+
+    if (chartype != undefined && validClassList.includes(chartype)){
+
+      switch (true) {
+        case chartype === "bard":return new classes.createBard();
+        case chartype === "barbarian":return new classes.createBarbarian();
+        case chartype === "monk":return new classes.createMonk();
+        case chartype === "cleric":return new classes.createCleric();
+        case chartype === "druid":return new classes.createDruid();
+        case chartype === "fighter":return new classes.createFighter();
+        case chartype === "paladin":return new classes.createPaladin();
+        case chartype === "ranger":return new classes.createRanger();
+        case chartype === "rogue":return new classes.createRogue();
+        case chartype === "sorcerer":return new classes.createSorcerer();
+        case chartype === "warlock":return new classes.createWarlock();
+        case chartype === "wizard":return new classes.createWizard();
+        default:return "ERROR:Fell though switchcase in core.js -> returnRandomCharacterClass()";
+
+      }
+
+    }else{
+      return utils.returnRandomArrayItem(classes.classList);
+    }
+
 }
 
 //Returns a random gender
-function returnRandomGender() {
+function returnRandomGender(genderType) {
+  if(genderType === 'undefined'){
     return utils.returnRandomArrayItem(["male", "female"]);
+  }else{
+    return genderType;
+  }
 }
 
 //Returns an array of ordered ability score prefrences based on the class supplied in the arguement
@@ -533,10 +564,13 @@ function returnAbilityScores(characterClass) {
 }
 
 
-function returnRandomRace() {
+function returnRandomRace(raceType) {
 
-    return utils.returnRandomArrayItem(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"]);
-
+  if(raceType != "undefined" && validRaceList.includes(raceType)){
+    return raceType;
+  }else{
+    return utils.returnRandomArrayItem(validRaceList);
+  }
 }
 
 
@@ -735,16 +769,17 @@ function calculateSpellslots(characterClass){
 
 }
 
+var chartype; //set by -c commandline arguement
+var raceType; //set by the -r commandline arguement
 
 //NewCharacter Construtor
 function NewCharacter(){
   this.level = 1;// TODO: add level scaling
   this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
-  this.characterClass = returnRandomCharacterClass();
+  this.characterClass = returnRandomCharacterClass(chartype);
   this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
-  // this.race = returnRandomRace();
-  this.race = returnRandomRace();
-  this.gender = returnRandomGender();
+  this.race = returnRandomRace(raceType);
+  this.gender = returnRandomGender(genderType);
   names.returnRandomName(this);
 
   this.alignment = returnRandomAlignment();
@@ -763,18 +798,66 @@ function NewCharacter(){
 
 }
 
-//assigns a new character object to x
-x = new NewCharacter();
+var charQty = 1;
+var raceType;
+var genderType;
 
-//lets the user know the character has been saved
-console.log(x.firstName + " " + x.lastName + " -character created. File saved in root directory of program");
+for (let j = 0; j < process.argv.length; j++) { //loops all arguments
 
-//Exports character object to JSON file in root dir
-JsonExport = JSON.stringify(x, undefined, 2);
-
-fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
-    if(err) {
-        return console.log(err);
+    if (process.argv[j] === '-n' || process.argv[j] === '-N') { //check for the argument -n, if 'true' user wants several chars
+        var isnum = /^\d+$/.test(process.argv[j + 1]); //checks if the next argument is a number
+        if (isnum == true) {
+            charQty = process.argv[j + 1];
+        }
     }
 
-});
+    if (process.argv[j] === '-c' || process.argv[j] === '-C') { //check for the argument -c, if true user wants to force a specific class
+        if (validClassList.includes(process.argv[j + 1].toLowerCase())) { //checks to make sure arguement is valid class
+            chartype = process.argv[j + 1].toLowerCase();
+        } else {
+            chartype = 'undefined';
+            console.log("ERROR:Provided class arguement is not a valid class - class will be random");
+        }
+    }
+
+    if (process.argv[j] === '-r' || process.argv[j] === '-R') { //check for the argument -r, if true user wants to force a specific race
+        if (validRaceList.includes(process.argv[j + 1].toLowerCase())) { //checks to make sure arguement is valid race
+            raceType = process.argv[j + 1].toLowerCase();
+        } else {
+            console.log("ERROR: The provided race arguement isn't valid - race will be random"); //If argument isn't a string or a valid class
+        }
+    }
+
+    if (process.argv[j] === '-g' || process.argv[j] === '-G') { //check for the argument -g, if true user wants to force a specific gender
+        let genderProvided = process.argv[j + 1];
+        if (genderProvided != 'undefined' && (genderProvided.toLowerCase() === "male" || genderProvided.toLowerCase() === "female")) {
+            genderType = process.argv[j + 1].toLowerCase();
+        } else {
+            genderType = 'undefined';
+            console.log("ERROR: The provided gender arguement isn't valid - gender will be random"); //If argument isn't a string or a valid class
+        }
+    }
+    // console.log(j + ' -> ' + (process.argv[j])); //used to print all arguments on screen for testing
+}
+
+//Logs out to the screen the count and type of character sheets the user has requested
+console.log("***********************************************************************************");
+console.log("**********************User has requested " + charQty + " level 1 " + chartype + "'s**********************");
+console.log("***********************************************************************************");
+
+for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
+
+  var x = new NewCharacter();
+
+  console.log(x.firstName + " " + x.lastName + " a " + x.gender + " " + x.race + " " + x.characterClass.name); //
+
+  JsonExport = JSON.stringify(x, undefined, 2);
+
+  // fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
+  //     if(err) {
+  //         return console.log(err);
+  //     }
+  //
+  // });
+
+}

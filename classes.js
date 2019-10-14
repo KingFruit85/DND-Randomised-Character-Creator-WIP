@@ -109,18 +109,18 @@ function createBard() {
         this.savingThrows = ["dex", "cha"],
         this.armorProficiencies = ["light armor"],
         this.weaponProficiencies = ["simple weapons", "hand crossbows", "longswords", "rapiers", "shortswords"],
-        this.toolProficiencies = toolsAndEquipment.returnRandomInstruments(2);
-    this.skillProficiencies = returnRandomProficiencies(skillProficiencies, 3);
+        this.toolProficiencies = toolsAndEquipment.returnRandomInstruments(2),
+        this.skillProficiencies = returnRandomProficiencies(skillProficiencies, 3),
 
     this.equipment = {
         weapons: [],
         tools: [],
         armor: []
-    };
-    this.equipment.armor = armors.lightArmor.leather;
-    this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.diplomatsPack, toolsAndEquipment.equipmentPacks.entertainersPack]);
-    this.equipment.weapons[1] = utils.returnRandomArrayItem([weaponsAndShields.martialMeleeWeapons.rapier, weaponsAndShields.martialMeleeWeapons.longsword]);
+    },
+    this.equipment.armor = armors.lightArmor.leather,
+    this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger,
+    this.equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.diplomatsPack, toolsAndEquipment.equipmentPacks.entertainersPack]),
+    this.equipment.weapons[1] = utils.returnRandomArrayItem([weaponsAndShields.martialMeleeWeapons.rapier, weaponsAndShields.martialMeleeWeapons.longsword])
 
 }
 
@@ -522,7 +522,7 @@ function createWizard() {
             weapons: [],
             tools: [],
             armor: []
-        };
+        }
 
     if (utils.returnRandomNumberInRange(0, 1) === 0) {
         this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.quarterstaff;
