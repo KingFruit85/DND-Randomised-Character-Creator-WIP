@@ -623,7 +623,17 @@ const halflingSurnames = [
   "Winterforce",
   "Kavu",
   "Humbleward",
-  "Gliseanver"
+  "Gliseanver",
+  "Brushgather",
+  "Goodbarrel",
+  "Greenbottle",
+  "High-hill",
+  "Hilltopple",
+  "Leagallow",
+  "Tealeaf",
+  "Thorngage",
+  "Tosscobble",
+  "Underbough"
 ];
 
 
