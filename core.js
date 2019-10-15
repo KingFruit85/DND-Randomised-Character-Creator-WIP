@@ -853,11 +853,11 @@ for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
 
   JsonExport = JSON.stringify(x, undefined, 2);
 
-  // fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
-  //     if(err) {
-  //         return console.log(err);
-  //     }
-  //
-  // });
+  fs.writeFile("./" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
+      if(err) {
+          return console.log(err);
+      }
+
+  });
 
 }
