@@ -6,10 +6,8 @@ This is (eventually) going to be a website that will present the user with a ran
 Currently it is command line based.
 
 ## Testing
----
-Note - *File export is currently* **off** *by default in the current build, to turn back on, uncomment out code between lines 856 & 861 in core.js*
----
-Running **node core.js** from the root directory will output a JSON formatted character sheet to the terminal as well as saving a .JSON file in the root directory
+
+Running **node core.js** from the root directory will output a JSON formatted character sheet to the terminal as well as saving a .JSON file in the ./Exports directory
 
 You copy and paste the output to a site such as [this](http://jsonviewer.stack.hu/) for better readability
 
