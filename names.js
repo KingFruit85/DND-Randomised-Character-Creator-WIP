@@ -560,7 +560,25 @@ const femaleHalflingNames = [
   "Fozulma",
   "Tulnurrath",
   "Vassezi",
-  "Retiato"
+  "Retiato",
+  "Andry",
+  "Bree",
+  "Callie",
+  "Cora",
+  "Euphemia",
+  "Jillian",
+  "Kithri",
+  "Lavinia",
+  "Lidda",
+  "Merla",
+  "Nedda",
+  "Paela",
+  "Portia",
+  "Seraphina",
+  "Shaena",
+  "Trym",
+  "Vani",
+  "Verna"
 ];
 
 // MALE
