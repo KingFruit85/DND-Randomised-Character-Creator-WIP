@@ -853,6 +853,12 @@ for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
 
   JsonExport = JSON.stringify(x, undefined, 2);
 
+var dir = './Exports';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
   fs.writeFile("./exports/" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
       if(err) {
           return console.log(err);
