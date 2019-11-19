@@ -294,7 +294,9 @@ function applyHalfOrcRaceBonuses() {
 
 function applyHalflingRaceBonuses() {
 
+
     character.abilityScores.dex += 2;
+
     character.speed = 25;
     character.racialAbilities = racial_traits.halfling_racial;
     character.languages = ["Common", "Halfling"];
@@ -573,15 +575,6 @@ function returnRandomRace(raceType) {
   }
 }
 
-
-
-function calculateModifier(abilityScores) {
-  for (var key in abilityScores) {
-
-    console.log("score" + abilityScores[key] + "Modifier" + returnAbilityScoreModifier(abilityScores[key]));
-  }
-}
-
 function calculateFirstLevelHitPoints(characterClassName, conModifier){
 
   switch (true) {
@@ -783,12 +776,13 @@ function NewCharacter(){
   names.returnRandomName(this);
 
   this.alignment = returnRandomAlignment();
-  this.abilityScores = returnAbilityScores(this.characterClass);
-  this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod);
 
+  this.abilityScores = returnAbilityScores(this.characterClass);
   returnCharacterAge(this);
   applySubraceBonuses(this);
+  this.abilityScores = returnAbilityScores(this.characterClass);//Some racial traits increase ability scores so we have to recalculate
 
+  this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod);
   this.savingThrowScores = calculateSavingThrowScores(this.abilityScores, this.characterClass.savingThrows, this.proficiencyModifier);
   this.skillScores = calculateSkillScores(this.abilityScores, this.characterClass.skillProficiencies, this.proficiencyModifier);
   this.spellSlots = calculateSpellslots(this.characterClass.name);
@@ -849,7 +843,8 @@ for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
 
   var x = new NewCharacter();
 
-  console.log(x.firstName + " " + x.lastName + " a " + x.gender + " " + x.race + " " + x.characterClass.name); //
+  console.log(x.firstName + " " + x.lastName + " a " + x.gender + " " + x.race + " " + x.characterClass.name);
+  console.log("Dex score: " + x.abilityScores.dex,"Dex Mod: " + x.abilityScores.dexMod);
 
   JsonExport = JSON.stringify(x, undefined, 2);
 
