@@ -667,6 +667,44 @@ function calculateSkillScores(abilityScores, skillProficiencies, proficiencyModi
 
 }
 
+/**------------------------------------------------------------------------------
+ * Calculate `Armor Class`
+ * Calculations from https://merricb.com/2014/09/13/armour-class-in-dungeons-dragons-5e/
+ *///----------------------------------------------------------------------------
+function calculateArmorClass(char) {
+  let AC = NaN;
+  if(char.characterClass.equipment.armor !== undefined) { //checks if there is an armor
+    AC = parseInt(char.characterClass.equipment.armor.baseArmorClass,10);
+  }
+  if (!(isNaN(AC)) ) { //1. there is an armor  
+    //1.1 Adds Dex depending of armor used.
+    if (char.characterClass.equipment.armor.additionalModifier === 'DEX') {
+      if (char.characterClass.equipment.armor.modifierLimit > char.abilityScores.dexMod) { //test the armor modifier limit
+        AC += char.characterClass.equipment.armor.modifierLimit;  
+      }
+      else {
+        AC += char.abilityScores.dexMod; //dexMod can be lower than armor modifier limit
+      }
+    }
+  }
+  else { //no armor
+    AC = 10;
+    const className = char.characterClass.name;
+      // 2.1 check for unarmored sorcerer (add +3 to AC )
+      if ((className === "sorcerer")) { //sorcerer and no armor adds +3
+        AC += 3; // from https://roll20.net/compendium/dnd5e/Sorcerer#h-Sorcerer
+      }
+      if ((className === "barbarian")) { //barbarian and no armor adds conMod
+        AC += char.abilityScores.conMod; 
+      }
+      if ((className === "monk")) { //monk and no armor adds wisMod
+        AC += char.abilityScores.wisMod; 
+      }
+      AC += char.abilityScores.dexMod; //finally add dex
+  }
+  return AC;
+}
+
 //// TODO: refactor this beast
 function calculateSpellslots(characterClass){
 
@@ -787,6 +825,8 @@ function NewCharacter(){
   this.skillScores = calculateSkillScores(this.abilityScores, this.characterClass.skillProficiencies, this.proficiencyModifier);
   this.spellSlots = calculateSpellslots(this.characterClass.name);
   this.characterClass.initiative = this.abilityScores.dexMod;
+
+  this.armorClass = calculateArmorClass(this);
 
   return this;
 
