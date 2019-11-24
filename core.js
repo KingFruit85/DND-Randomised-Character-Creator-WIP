@@ -319,10 +319,12 @@ function applyHumanRaceBonuses() {
     character.height = heightWeight[0];
     character.weight = heightWeight[1];
 
+
     //Roll for variant rules
     if(utils.returnRandomNumberInRange(0, 1) === 0){
 
       //Variant Human
+
 
       character.variant = true;
       //Increase two random ability scores
@@ -333,8 +335,9 @@ function applyHumanRaceBonuses() {
       abilitiyScores.splice(abilitiyScores.indexOf(randomTwoAbilityScores[0]),1);
       randomTwoAbilityScores.push(utils.returnRandomArrayItem(abilitiyScores));
 
-      character.abilityScores[randomTwoAbilityScores[0]] += 1;
-      character.abilityScores[randomTwoAbilityScores[1]] += 1;
+      character.abilityScores[randomTwoAbilityScores[0]]++;
+      character.abilityScores[randomTwoAbilityScores[1]]++;
+
 
       //add a random feat
       var randomFeat = feats.returnRandomFeat();
@@ -358,8 +361,6 @@ function applyHumanRaceBonuses() {
           featFound = true;
         }
 
-
-
     }
 
     character.feat = randomFeat;
@@ -376,24 +377,17 @@ function applyHumanRaceBonuses() {
       character.characterClass.armorProficiencies.push(randomFeat.proficiencyBonus[0]);
     }
 
-
-
-
-
     }else{
       //Standard Human
-      character.variant = false;
-      character.abilityScores.str += 1;
-      character.abilityScores.con += 1;
-      character.abilityScores.dex += 1;
-      character.abilityScores.int += 1;
-      character.abilityScores.wis += 1;
-      character.abilityScores.cha += 1;
+      character.variant = "false";
+      character.abilityScores.str++;
+      character.abilityScores.con++;
+      character.abilityScores.dex++;
+      character.abilityScores.int++;
+      character.abilityScores.wis++;
+      character.abilityScores.cha++;
 
     }
-
-
-
 }
 
 function applyTieflingRaceBonuses() {
@@ -531,6 +525,19 @@ function returnAbilityScorePreference (characterClass) {
 function returnAbilityScoreModifier(stat){
 
   return Math.floor( ( stat - 10 ) / 2 );
+
+}
+
+function recalculateAbilityScoreModifiers(abilityScores){
+
+  abilityScores.strMod = Math.floor( ( abilityScores.str - 10 ) / 2 );
+  abilityScores.dexMod = Math.floor( ( abilityScores.dex - 10 ) / 2 );
+  abilityScores.conMod = Math.floor( ( abilityScores.con - 10 ) / 2 );
+  abilityScores.intMod = Math.floor( ( abilityScores.int - 10 ) / 2 );
+  abilityScores.wisMod = Math.floor( ( abilityScores.wis - 10 ) / 2 );
+  abilityScores.chaMod = Math.floor( ( abilityScores.cha - 10 ) / 2 );
+
+  return abilityScores;
 
 }
 
@@ -780,8 +787,7 @@ function NewCharacter(){
   this.abilityScores = returnAbilityScores(this.characterClass);
   returnCharacterAge(this);
   applySubraceBonuses(this);
-  this.abilityScores = returnAbilityScores(this.characterClass);//Some racial traits increase ability scores so we have to recalculate
-
+  this.abilityScores = recalculateAbilityScoreModifiers(this.abilityScores);//Some racial traits increase ability scores so we have to recalculate
   this.hitPoints = calculateFirstLevelHitPoints(this.characterClass.name, this.abilityScores.conMod);
   this.savingThrowScores = calculateSavingThrowScores(this.abilityScores, this.characterClass.savingThrows, this.proficiencyModifier);
   this.skillScores = calculateSkillScores(this.abilityScores, this.characterClass.skillProficiencies, this.proficiencyModifier);
@@ -839,12 +845,11 @@ console.log("*******************************************************************
 console.log("**********************User has requested " + charQty + " level 1 " + chartype + "'s**********************");
 console.log("***********************************************************************************");
 
+
 for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
 
   var x = new NewCharacter();
-
-  console.log(x.firstName + " " + x.lastName + " a " + x.gender + " " + x.race + " " + x.characterClass.name);
-  console.log("Dex score: " + x.abilityScores.dex,"Dex Mod: " + x.abilityScores.dexMod);
+  console.log(x.firstName, x.lastName, "a", x.gender, x.race, x.characterClass.name, "has been saved to the exports folder");
 
   JsonExport = JSON.stringify(x, undefined, 2);
 
