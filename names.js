@@ -1478,95 +1478,168 @@ const tieflingSurnames = [
 
 /////////////* SWITCH FUNCTION */////////////
 
+function returnRandomDragonbornName(gender){
 
-
-function returnRandomName(character) {
-  switch (true) {
-    case character.race === "dragonborn" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleDragonbornNames);
-      character.lastName = utils.returnRandomArrayItem(dragonbornSurnames);
-      break;
-    case character.race === "dragonborn" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleDragonbornNames);
-      character.lastName = utils.returnRandomArrayItem(dragonbornSurnames);
-      break;
-
-    case character.race === "dwarf" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleDwarfNames);
-      character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
-      break;
-    case character.race === "dwarf" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleDwarfNames);
-      character.lastName = utils.returnRandomArrayItem(dwarfSurnames);
-      break;
-
-    case character.race === "elf" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleElfNames);
-      character.lastName = utils.returnRandomArrayItem(elfSurnames);
-      break;
-    case character.race === "elf" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleElfNames);
-      character.lastName = utils.returnRandomArrayItem(elfSurnames);
-      break;
-
-    case character.race === "gnome" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleGnomeNames);
-      character.lastName = utils.returnRandomArrayItem(gnomeSurnames);
-      break;
-    case character.race === "gnome" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleGnomeNames);
-      character.lastName = utils.returnRandomArrayItem(gnomeSurnames);
-      break;
-
-    case character.race === "half-elf" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleHalfElfNames);
-      character.lastName = utils.returnRandomArrayItem(halfElfSurnames);
-      break;
-    case character.race === "half-elf" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleHalfElfNames);
-      character.lastName = utils.returnRandomArrayItem(halfElfSurnames);
-      break;
-
-    case character.race === "half-orc" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleHalfOrcNames);
-      character.lastName = utils.returnRandomArrayItem(halfOrcSurnames);
-      break;
-    case character.race === "half-orc" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleHalfOrcNames);
-      character.lastName = utils.returnRandomArrayItem(halfOrcSurnames);
-      break;
-
-    case character.race === "halfling" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleHalflingNames);
-      character.lastName = utils.returnRandomArrayItem(halflingSurnames);
-      break;
-    case character.race === "halfling" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleHalflingNames);
-      character.lastName = utils.returnRandomArrayItem(halflingSurnames);
-      break;
-
-    case character.race === "human" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleHumanNames);
-      character.lastName = utils.returnRandomArrayItem(humanSurnames);
-      break;
-    case character.race === "human" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleHumanNames);
-      character.lastName = utils.returnRandomArrayItem(humanSurnames);
-      break;
-
-    case character.race === "tiefling" && character.gender === "male":
-      character.firstName = utils.returnRandomArrayItem(maleTieflingNames);
-      character.lastName = utils.returnRandomArrayItem(tieflingSurnames);
-      break;
-    case character.race === "tiefling" && character.gender === "female":
-      character.firstName = utils.returnRandomArrayItem(femaleTieflingNames);
-      character.lastName = utils.returnRandomArrayItem(tieflingSurnames);
-      break;
-
-    default: character.firstName = "James"; character.lastName = "Bond";
-  }
-
-  return character;
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleDragonbornNames),
+        lastName:utils.returnRandomArrayItem(dragonbornSurnames)
+      };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleDragonbornNames),
+        lastName:utils.returnRandomArrayItem(dragonbornSurnames)
+      };
+    }
+      return fullName;
 }
+
+function returnRandomDwarfName(gender){
+
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleDwarfNames),
+        lastName:utils.returnRandomArrayItem(dwarfSurnames)
+      };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleDwarfNames),
+        lastName:utils.returnRandomArrayItem(dwarfSurnames)
+      };
+    }
+      return fullName;
+}
+
+function returnRandomElfName(gender){
+
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleElfNames),
+        lastName:utils.returnRandomArrayItem(elfSurnames)
+      };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleElfNames),
+        lastName:utils.returnRandomArrayItem(elfSurnames)
+      };
+    }
+      return fullName;
+}
+
+function returnRandomGnomeName(gender){
+
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleGnomeNames),
+        lastName:utils.returnRandomArrayItem(gnomeSurnames)
+      };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleGnomeNames),
+        lastName:utils.returnRandomArrayItem(gnomeSurnames)
+      };
+    }
+      return fullName;
+}
+
+function returnRandomHalfElfName(gender){
+
+    if(gender === "male"){
+      fullName =
+      {
+        firstName:utils.returnRandomArrayItem(maleHalfElfNames.concat(maleHumanNames)),
+        lastName:utils.returnRandomArrayItem(halfElfSurnames.concat(humanSurnames))
+      };
+    }else{
+      fullName =
+      {
+        firstName:utils.returnRandomArrayItem(maleHalfElfNames.concat(femaleHumanNames)),
+        lastName:utils.returnRandomArrayItem(halfElfSurnames.concat(humanSurnames))
+      };
+    }
+      return fullName;
+}
+
+function returnRandomHalfOrcName(gender){
+
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleHalfOrcNames),
+        lastName:utils.returnRandomArrayItem(halfOrcSurnames)
+      };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleHalfOrcNames),
+        lastName:utils.returnRandomArrayItem(halfOrcSurnames)
+      };
+    }
+      return fullName;
+}
+
+function returnRandomHumanName(gender){
+
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleHumanNames),
+        lastName:utils.returnRandomArrayItem(humanSurnames)
+      };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleHumanNames),
+        lastName:utils.returnRandomArrayItem(humanSurnames)
+      };
+    }
+      return fullName;
+}
+
+function returnRandomHalflingName(gender){
+
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleHalflingNames),
+        lastName:utils.returnRandomArrayItem(halflingSurnames)
+       };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleHalflingNames),
+        lastName:utils.returnRandomArrayItem(halflingSurnames)
+       };
+    }
+      return fullName;
+}
+
+function returnRandomTieflingName(gender){
+
+    if(gender === "male"){
+      fullName = {
+        firstName:utils.returnRandomArrayItem(maleTieflingNames),
+        lastName:utils.returnRandomArrayItem(tieflingSurnames)
+      };
+    }else{
+      fullName = {
+        firstName:utils.returnRandomArrayItem(femaleTieflingNames),
+        lastName:utils.returnRandomArrayItem(tieflingSurnames)
+      };
+    }
+      return fullName;
+}
+
+function returnRandomName(race,gender){
+  switch (true) {
+    case race === "dragonborn":return returnRandomDragonbornName(gender);
+    case race === "dwarf":return returnRandomDwarfName(gender);
+    case race === "elf":return returnRandomElfName(gender);
+    case race === "gnome":return returnRandomGnomeName(gender);
+    case race === "half-elf":return returnRandomHalfElfName(gender);
+    case race === "half-orc":return returnRandomHalfOrcName(gender);
+    case race === "halfling":return returnRandomHalflingName(gender);
+    case race === "human":return returnRandomHumanName(gender);
+    case race === "tiefling":return returnRandomTieflingName(gender);
+
+    default:return "Fell through switch case returnRandomName in names.js";
+
+  }
+}
+
 
 exports.returnRandomName = returnRandomName;
