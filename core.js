@@ -683,11 +683,11 @@ function calculateArmorClass(char) {
   if(char.characterClass.equipment.armor !== undefined) { //checks if there is an armor
     AC = parseInt(char.characterClass.equipment.armor.baseArmorClass,10);
   }
-  if (!(isNaN(AC)) ) { //1. there is an armor  
+  if (!(isNaN(AC)) ) { //1. there is an armor
     //1.1 Adds Dex depending of armor used.
     if (char.characterClass.equipment.armor.additionalModifier === 'DEX') {
       if (char.characterClass.equipment.armor.modifierLimit > char.abilityScores.dexMod) { //test the armor modifier limit
-        AC += char.characterClass.equipment.armor.modifierLimit;  
+        AC += char.characterClass.equipment.armor.modifierLimit;
       }
       else {
         AC += char.abilityScores.dexMod; //dexMod can be lower than armor modifier limit
@@ -702,10 +702,10 @@ function calculateArmorClass(char) {
         AC += 3; // from https://roll20.net/compendium/dnd5e/Sorcerer#h-Sorcerer
       }
       if ((className === "barbarian")) { //barbarian and no armor adds conMod
-        AC += char.abilityScores.conMod; 
+        AC += char.abilityScores.conMod;
       }
       if ((className === "monk")) { //monk and no armor adds wisMod
-        AC += char.abilityScores.wisMod; 
+        AC += char.abilityScores.wisMod;
       }
       AC += char.abilityScores.dexMod; //finally add dex
   }
@@ -818,7 +818,7 @@ function NewCharacter(){
   this.characterClassAbilities = classes.addClassFeatures(this.characterClass.name);
   this.race = returnRandomRace(raceType);
   this.gender = returnRandomGender(genderType);
-  names.returnRandomName(this);
+  this.fullname = names.returnRandomName(this.race, this.gender);
 
   this.alignment = returnRandomAlignment();
 
@@ -889,7 +889,7 @@ console.log("*******************************************************************
 for (var k = 0; k < charQty; k++) { //loop to create several characters in a row
 
   var x = new NewCharacter();
-  console.log(x.firstName, x.lastName, "a", x.gender, x.race, x.characterClass.name, "has been saved to the exports folder");
+  console.log(x.fullname.firstName, x.fullname.lastName, "a", x.gender, x.race, x.characterClass.name, "has been saved to the exports folder");
 
   JsonExport = JSON.stringify(x, undefined, 2);
 
@@ -899,7 +899,7 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
 
-  fs.writeFile("./exports/" + x.firstName + " " + x.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
+  fs.writeFile("./exports/" + x.fullname.firstName + " " + x.fullname.lastName + "- " + x.race + " " + x.characterClass.name + ".JSON", JsonExport, function(err) {
       if(err) {
           return console.log(err);
       }
