@@ -392,7 +392,7 @@ function applyHumanRaceBonuses() {
 
     }else{
       //Standard Human
-      character.variant = "false";
+      character.variant = false;
       character.abilityScores.str++;
       character.abilityScores.con++;
       character.abilityScores.dex++;
