@@ -49,7 +49,11 @@ function returnHeightAndWeight(height, weight) {
 
 }
 
-//returns a random alignment // TODO: make the assigned alignments fall in line with the player hand book guide
+/**-------------------------------------------------------------------------------
+* @description Returns a random alignment
+* // TODO: make the assigned alignments fall in line with the player hand book guide
+* @returns {String} a random alignment as a string
+*///------------------------------------------------------------------------------
 function returnRandomAlignment() {
     return utils.returnRandomArrayItem([
         "Lawful Good",
@@ -64,7 +68,11 @@ function returnRandomAlignment() {
     ]);
 }
 
-//Takes the characters race property as an arguement and returns an age appropriate for that race
+/**-------------------------------------------------------------------------------
+* @description Calculates a random character age based on the provided race type
+* @param {String} race - the character race
+* @returns {Number} the calculated age as a whole number
+*///------------------------------------------------------------------------------
 function returnCharacterAge(race){
 
   switch (true) {
@@ -82,7 +90,12 @@ function returnCharacterAge(race){
 
 }
 
-//Takes the character object as it's argument and applies the racial bonuses
+/**-------------------------------------------------------------------------------
+* @description Applies racial bonuses to the character object based on race
+* @param {Object} char - the character object
+* @returns {Object} the ammended character object
+*///------------------------------------------------------------------------------
+
 function applySubraceBonuses(char){
 
   character = char;
