@@ -7,7 +7,7 @@ const feats =require('./feats.js');
 const fs = require('fs');
 
 const validClassList = ["bard", "barbarian", "cleric", "fighter", "monk", "paladin",
-                    "ranger", "rogue", "sorcerer", "warlock", "wizard"];
+                    "ranger", "rogue", "sorcerer", "warlock", "wizard", "druid"];
 
 const validRaceList = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "half-orc",
                        "halfling", "human", "tiefling"];
@@ -588,6 +588,7 @@ function calculateFirstLevelHitPoints(characterClassName, conModifier){
     case characterClassName === "bard":  return 8 + conModifier;
     case characterClassName === "barbarian": return 12 + conModifier;
     case characterClassName === "cleric":  return 8 + conModifier;
+    case characterClassName === "druid":  return 8 + conModifier;
     case characterClassName === "fighter": return 10 + conModifier;
     case characterClassName === "monk":  return 8 + conModifier;
     case characterClassName === "paladin": return 10 + conModifier;
