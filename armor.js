@@ -9,7 +9,7 @@ const lightArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:true,
-        Weight: "8lb"
+        Weight:8
     },
     leather: {
         name: "Leather Armor",
@@ -19,7 +19,7 @@ const lightArmor = {
         modifierLimit:null,
         strengthRequirement:false,
         stealthDisadvantage:false,
-        Weight: "10lb"
+        Weight:10
     },
     studdedLeather: {
         name: "Studded Leather Armor",
@@ -30,7 +30,7 @@ const lightArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight: "13lb"
+        Weight:13
     }
 };
 
@@ -45,7 +45,7 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight: "12lb"
+        Weight:12
     },
     chainShirt: {
         name: "Chain Shirt",
@@ -56,7 +56,7 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight: "20lb"
+        Weight:20
     },
     scaleMail: {
         name: "Scale Mail",
@@ -67,7 +67,7 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:true,
-        Weight: "45lb"
+        Weight:45
     },
     breastplate: {
         name: "Breastplate",
@@ -78,7 +78,7 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight: "40lb"
+        Weight:40
     },
     halfPlate: {
         name: "HalfPlate",
@@ -89,7 +89,7 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:true,
-        Weight: "8lb"
+        Weight:8
     }
 };
 
@@ -102,7 +102,7 @@ const heavyArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage: true,
-        Weight: "40 lb"
+        Weight:40
     },
     chainMail: {
         name: "Chain Mail",
@@ -112,7 +112,7 @@ const heavyArmor = {
         strengthRequirement:true,
         strengthRequirementValue:13,
         stealthDisadvantage: true,
-        Weight: "55 lb"
+        Weight:55
     },
     splint: {
         name: "Splint Mail",
@@ -122,7 +122,7 @@ const heavyArmor = {
         strengthRequirement:true,
         strengthRequirementValue:15,
         stealthDisadvantage: true,
-        Weight: "60 lb"
+        Weight:60
     },
     plate: {
         name: "Plate Mail",
@@ -132,7 +132,7 @@ const heavyArmor = {
         strengthRequirement:true,
         strengthRequirementValue:15,
         stealthDisadvantage: true,
-        Weight: "65 lb"
+        Weight:65
     },
 
 };
