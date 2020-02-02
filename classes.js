@@ -247,8 +247,8 @@ function createBard() {
     tools: [],
     armor: []
   };
-  (this.equipment.armor = armors.lightArmor.leather),
-    (this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger),
+
+  (this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger),
     (this.equipment.tools = utils.returnRandomArrayItem([
       toolsAndEquipment.equipmentPacks.diplomatsPack,
       toolsAndEquipment.equipmentPacks.entertainersPack
@@ -277,7 +277,6 @@ function createBarbarian() {
     tools: [],
     armor: []
   };
-  this.equipment.armor = armors.lightArmor.no_armor;
   this.equipment.tools.push(toolsAndEquipment.equipmentPacks.explorersPack);
 
   for (x = 4; x > 0; x--) {
@@ -324,8 +323,6 @@ function createMonk() {
       tools: [],
       armor: []
     });
-
-  this.equipment.armor = armors.lightArmor.no_armor;
 
   this.equipment.weapons[0] = utils.returnRandomArrayItem([
     weaponsAndShields.martialMeleeWeapons.shortsword,
@@ -383,7 +380,6 @@ function createCleric() {
     );
   }
 
-  this.equipment.armor = armors.heavyArmor.chainMail;
   this.equipment.weapons.push(armors.shields.shield);
 
   this.equipment.tools.push(
@@ -425,7 +421,6 @@ function createDruid() {
     armor: []
   };
 
-  this.equipment.armor = armors.lightArmor.leather;
   this.equipment.weapons[0] = utils.returnRandomArrayItem([
     armors.shields.woodenShield,
     weaponsAndShields.returnRandomWeaponFromCollection(
@@ -467,11 +462,6 @@ function createFighter() {
     tools: [],
     armor: []
   };
-
-  this.equipment.armor = utils.returnRandomArrayItem([
-    armors.lightArmor.leather,
-    armors.heavyArmor.chainMail
-  ]);
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     //// TODO: maybe change this to only select weapons that can be used in one hand, or both.
@@ -536,8 +526,6 @@ function createPaladin() {
     armor: []
   };
 
-  this.equipment.armor = armors.heavyArmor.chainMail;
-
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     //// TODO: maybe change this to only select weapons that can be used in one hand, or both.
     this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(
@@ -592,12 +580,6 @@ function createRanger() {
       tools: [],
       armor: []
     });
-
-  if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.armor = armors.mediumArmor.scaleMail;
-  } else {
-    this.equipment.armor = armors.lightArmor.leather;
-  }
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     this.equipment.weapons[0] =
@@ -665,7 +647,6 @@ function createRogue() {
     this.equipment.weapons[4] = addAmmunition("arrows", 20);
   }
 
-  this.equipment.armor[0] = armors.lightArmor.leather;
   this.equipment.tools[0] = "thieves tools";
 
   this.equipment.tools = utils.returnRandomArrayItem([
@@ -768,8 +749,6 @@ function createWarlock() {
   } else {
     this.equipment.tools[0] = "arcane focus";
   }
-
-  this.equipment.armor[0] = armors.lightArmor.leather;
 
   this.equipment.tools[1] = utils.returnRandomArrayItem([
     toolsAndEquipment.equipmentPacks.dungeoneersPack,

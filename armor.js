@@ -1,257 +1,258 @@
-const lightArmor = {
+const utils = require("./utils.js");
 
-    padded: {
-        name: "Padded Armor",
-        Cost: "5gp",
-        baseArmorClass:11,
-        additionalModifier:"DEX",
-        modifierLimit:null,
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage:true,
-        Weight:8,
-        category:"light armor"
-    },
-    leather: {
-        name: "Leather Armor",
-        Cost: "10 gp",
-        baseArmorClass: 11,
-        additionalModifier:"DEX",
-        modifierLimit:null,
-        strengthRequirement:false,
-        stealthDisadvantage:false,
-        Weight:10,
-        category:"light armor"
-    },
-    studdedLeather: {
-        name: "Studded Leather Armor",
-        Cost: "45 gp",
-        baseArmorClass:12,
-        additionalModifier:"DEX",
-        modifierLimit:null,
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage:false,
-        Weight:13,
-        category:"light armor"
-    }
+const lightArmor = {
+  padded: {
+    name: "Padded Armor",
+    Cost: "5gp",
+    baseArmorClass: 11,
+    additionalModifier: "DEX",
+    modifierLimit: null,
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: true,
+    Weight: 8,
+    category: "light armor"
+  },
+  leather: {
+    name: "Leather Armor",
+    Cost: "10 gp",
+    baseArmorClass: 11,
+    additionalModifier: "DEX",
+    modifierLimit: null,
+    strengthRequirement: false,
+    stealthDisadvantage: false,
+    Weight: 10,
+    category: "light armor"
+  },
+  studdedLeather: {
+    name: "Studded Leather Armor",
+    Cost: "45 gp",
+    baseArmorClass: 12,
+    additionalModifier: "DEX",
+    modifierLimit: null,
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: false,
+    Weight: 13,
+    category: "light armor"
+  }
 };
 
 const mediumArmor = {
-
-    hide: {
-        name: "Hide Armor",
-        Cost: "10gp",
-        baseArmorClass:12,
-        additionalModifier:"DEX",
-        modifierLimit:2,
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage:false,
-        Weight:12,
-        category:"medium armor"
-    },
-    chainShirt: {
-        name: "Chain Shirt",
-        Cost: "50gp",
-        baseArmorClass:13,
-        additionalModifier:"DEX",
-        modifierLimit:2,
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage:false,
-        Weight:20,
-        category:"medium armor"
-    },
-    scaleMail: {
-        name: "Scale Mail",
-        Cost: "50gp",
-        baseArmorClass:14,
-        additionalModifier:"DEX",
-        modifierLimit:2,
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage:true,
-        Weight:45,
-        category:"medium armor"
-    },
-    breastplate: {
-        name: "Breastplate",
-        Cost: "400gp",
-        baseArmorClass:15,
-        additionalModifier:"DEX",
-        modifierLimit:2,
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage:false,
-        Weight:40,
-        category:"medium armor"
-    },
-    halfPlate: {
-        name: "HalfPlate",
-        Cost: "750gp",
-        baseArmorClass:11,
-        additionalModifier:"DEX",
-        modifierLimit:null,
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage:true,
-        Weight:8,
-        category:"medium armor"
-    }
+  hide: {
+    name: "Hide Armor",
+    Cost: "10gp",
+    baseArmorClass: 12,
+    additionalModifier: "DEX",
+    modifierLimit: 2,
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: false,
+    Weight: 12,
+    category: "medium armor"
+  },
+  chainShirt: {
+    name: "Chain Shirt",
+    Cost: "50gp",
+    baseArmorClass: 13,
+    additionalModifier: "DEX",
+    modifierLimit: 2,
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: false,
+    Weight: 20,
+    category: "medium armor"
+  },
+  scaleMail: {
+    name: "Scale Mail",
+    Cost: "50gp",
+    baseArmorClass: 14,
+    additionalModifier: "DEX",
+    modifierLimit: 2,
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: true,
+    Weight: 45,
+    category: "medium armor"
+  },
+  breastplate: {
+    name: "Breastplate",
+    Cost: "400gp",
+    baseArmorClass: 15,
+    additionalModifier: "DEX",
+    modifierLimit: 2,
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: false,
+    Weight: 40,
+    category: "medium armor"
+  },
+  halfPlate: {
+    name: "HalfPlate",
+    Cost: "750gp",
+    baseArmorClass: 11,
+    additionalModifier: "DEX",
+    modifierLimit: null,
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: true,
+    Weight: 8,
+    category: "medium armor"
+  }
 };
 
 const heavyArmor = {
-
-    ringMail: {
-        name: "Ring Mail",
-        Cost: "30 gp",
-        baseArmorClass: "14",
-        strengthRequirement:false,
-        strengthRequirementValue:null,
-        stealthDisadvantage: true,
-        Weight:40,
-        category:"heavy armor"
-    },
-    chainMail: {
-        name: "Chain Mail",
-        Cost: "75 gp",
-        baseArmorClass: "16",
-        additionalModifier:null,
-        strengthRequirement:true,
-        strengthRequirementValue:13,
-        stealthDisadvantage: true,
-        Weight:55,
-        category:"heavy armor"
-    },
-    splint: {
-        name: "Splint Mail",
-        Cost: "200 gp",
-        baseArmorClass: "17",
-        additionalModifier:null,
-        strengthRequirement:true,
-        strengthRequirementValue:15,
-        stealthDisadvantage: true,
-        Weight:60,
-        category:"heavy armor"
-    },
-    plate: {
-        name: "Plate Mail",
-        Cost: "1500 gp",
-        baseArmorClass: "18",
-        additionalModifier:null,
-        strengthRequirement:true,
-        strengthRequirementValue:15,
-        stealthDisadvantage: true,
-        Weight:65,
-        category:"heavy armor"
-    },
-
+  ringMail: {
+    name: "Ring Mail",
+    Cost: "30 gp",
+    baseArmorClass: "14",
+    strengthRequirement: false,
+    strengthRequirementValue: null,
+    stealthDisadvantage: true,
+    Weight: 40,
+    category: "heavy armor"
+  },
+  chainMail: {
+    name: "Chain Mail",
+    Cost: "75 gp",
+    baseArmorClass: "16",
+    additionalModifier: null,
+    strengthRequirement: true,
+    strengthRequirementValue: 13,
+    stealthDisadvantage: true,
+    Weight: 55,
+    category: "heavy armor"
+  },
+  splint: {
+    name: "Splint Mail",
+    Cost: "200 gp",
+    baseArmorClass: "17",
+    additionalModifier: null,
+    strengthRequirement: true,
+    strengthRequirementValue: 15,
+    stealthDisadvantage: true,
+    Weight: 60,
+    category: "heavy armor"
+  },
+  plate: {
+    name: "Plate Mail",
+    Cost: "1500 gp",
+    baseArmorClass: "18",
+    additionalModifier: null,
+    strengthRequirement: true,
+    strengthRequirementValue: 15,
+    stealthDisadvantage: true,
+    Weight: 65,
+    category: "heavy armor"
+  }
 };
 
 const shields = {
-    shield: {
-        name: "Shield",
-        Cost: "10gp"
-    },
+  shield: {
+    name: "Shield",
+    Cost: "10gp"
+  },
 
-    woodenShield:{
-      name:"Wooden Shield",
-      cost:"10gp"
-    }
-
+  woodenShield: {
+    name: "Wooden Shield",
+    cost: "10gp"
+  }
 };
 
-function assignArmor(className, strengthScore){
+//for the time being clerics, paladins and fighters are the only classes that have the option to wear armor with a str requirement at level 1, so the other class functions can just apply whatever the best armor is avalible to the other classes without performing a str check
+function assignArmor(character) {
+  const charName = character.characterClass.name;
+  const armorProficiencies = character.characterClass.armorProficiencies;
+  const strengthScore = character.abilityScores.str;
 
   switch (true) {
-    case chartype === "bard":return getBardArmor();
-    case chartype === "barbarian":
-    case chartype === "monk":
-    case chartype === "cleric":
-    case chartype === "druid":
-    case chartype === "fighter":
-    case chartype === "paladin":
-    case chartype === "ranger":
-    case chartype === "rogue":
-    case chartype === "sorcerer":
-    case chartype === "warlock":
-    case chartype === "wizard":
+    case charName === "bard":
+      return getBardArmor(armorProficiencies, strengthScore);
+    case charName === "barbarian":
+      return getBarbarianArmor(armorProficiencies, strengthScore);
+    case charName === "monk":
+      return getMonkArmor(armorProficiencies, strengthScore);
+    case charName === "cleric":
+      return getClericArmor(armorProficiencies, strengthScore);
+    case charName === "druid":
+      return getDruidArmor(armorProficiencies, strengthScore);
+    case charName === "fighter":
+      return getFighterArmor(armorProficiencies, strengthScore);
+    case charName === "paladin":
+      return getPaladinArmor(armorProficiencies, strengthScore);
+    case charName === "ranger":
+      return getRangerArmor(armorProficiencies, strengthScore);
+    case charName === "rogue":
+      return getRogueArmor(armorProficiencies, strengthScore);
+    case charName === "sorcerer":
+      return getSorcererArmor(armorProficiencies, strengthScore);
+    case charName === "warlock":
+      return getWarlockArmor(armorProficiencies, strengthScore);
+    case charName === "wizard":
+      return getWizardArmor(armorProficiencies, strengthScore);
 
       break;
     default:
-
   }
 }
 
+function getBardArmor(armorProficiencies, strengthScore) {
+  return lightArmor.leather;
+}
 
-function canWearArmor(armor, strengthScore, armorProficiencies){
-  if(armor.strengthRequirement === true && armor.strengthRequirementValue <= strengthScore && armorProficiencies.includes(armor.category)){
-    return true;
-  }else {
-    return false;
+function getBarbarianArmor(armorProficiencies, strengthScore) {
+  return;
+}
+
+function getMonkArmor(armorProficiencies, strengthScore) {
+  return;
+}
+
+function getClericArmor(armorProficiencies, strengthScore) {
+  if (armorProficiencies.includes("heavy armor") && strengthScore >= 13) {
+    return heavyArmor.chainMail;
+  } else {
+    return mediumArmor.scaleMail;
   }
-
 }
 
-function getBardArmor(strengthScore, armorProficiencies){
-  let check = canWearArmor(lightArmor.leather, strengthScore, armorProficiencies);
-
-  if (check === true){
-    return lightArmor.leather;
-  }else{
-    return null;
-  }
-
-
-
-
+function getDruidArmor(armorProficiencies, strengthScore) {
+  return lightArmor.leather;
 }
 
-function getBarbarianArmor(){
-
+function getFighterArmor(armorProficiencies, strengthScore) {
+  return utils.returnRandomArrayItem([
+    lightArmor.leather,
+    heavyArmor.chainMail
+  ]);
 }
 
-function getMonkArmor(){
-
+function getPaladinArmor(armorProficiencies, strengthScore) {
+  return heavyArmor.chainMail;
 }
 
-function getClericArmor(){
-
+function getRangerArmor(armorProficiencies, strengthScore) {
+  return utils.returnRandomArrayItem([
+    mediumArmor.scaleMail,
+    lightArmor.leather
+  ]);
 }
 
-function getDruidArmor(){
-
+function getRogueArmor(armorProficiencies, strengthScore) {
+  return lightArmor.leather;
 }
 
-function getFighterArmor(){
-
+function getSorcererArmor(armorProficiencies, strengthScore) {
+  return;
 }
 
-function getPaladinArmor(){
-
+function getWarlockArmor(armorProficiencies, strengthScore) {
+  return lightArmor.leather;
 }
 
-function getRangerArmor(){
-
+function getWizardArmor(armorProficiencies, strengthScore) {
+  return;
 }
-
-function getRogueArmor(){
-
-}
-
-function getSorcererArmor(){
-
-}
-
-function getWarlockArmor(){
-
-}
-
-function getWizardArmor(){
-
-}
-
 
 exports.assignArmor = assignArmor;
 exports.lightArmor = lightArmor;

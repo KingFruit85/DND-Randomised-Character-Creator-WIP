@@ -4,6 +4,7 @@ const racial_traits = require("./racial_traits.js");
 const spells = require("./spells.js");
 const names = require("./names.js");
 const feats = require("./feats.js");
+const armors = require("./armor");
 const fs = require("fs");
 
 const validClassList = [
@@ -897,30 +898,32 @@ function calculateSkillScores(
   }
 
   return skillScores;
-} //----------------------------------------------------------------------------
+}
 
 /**------------------------------------------------------------------------------
  * Calculate `Armor Class`
  * Calculations from https://merricb.com/2014/09/13/armour-class-in-dungeons-dragons-5e/
- */ function calculateArmorClass(char) {
-  const weapons = char.characterClass.equipment.weapons;
+ */
+
+function calculateArmorClass(char) {
   let AC = NaN;
+  let modLimit = 2;
+  let dexMod = char.abilityScores.dexMod;
+
   if (char.characterClass.equipment.armor !== undefined) {
     //checks if there is an armor
     AC = parseInt(char.characterClass.equipment.armor.baseArmorClass, 10);
   }
+
   if (!isNaN(AC)) {
     //1. there is an armor
     //1.1 Adds Dex depending of armor used.
     if (char.characterClass.equipment.armor.additionalModifier === "DEX") {
-      if (
-        char.characterClass.equipment.armor.modifierLimit >
-        char.abilityScores.dexMod
-      ) {
+      if (modLimit < dexMod) {
         //test the armor modifier limit
-        AC += char.characterClass.equipment.armor.modifierLimit;
+        AC += modLimit;
       } else {
-        AC += char.abilityScores.dexMod; //dexMod can be lower than armor modifier limit
+        AC += dexMod; //dexMod can be lower than armor modifier limit
       }
     }
   } else {
@@ -944,12 +947,16 @@ function calculateSkillScores(
     AC += char.abilityScores.dexMod; //finally add dex
   }
 
+  //grabs the weapon collection to check for shield
+  const weapons = char.characterClass.equipment.weapons;
+
   if (weapons.some(item => item.name === "Shield")) {
     //Adds shield ac bonus
     AC += 2;
+  } else if (weapons.some(item => item.name === "Wooden Shield")) {
+    AC += 2;
   }
 
-  console.log(AC);
   return AC;
 }
 
@@ -1109,7 +1116,7 @@ function NewCharacter() {
   this.abilityScores = returnAbilityScores(this.characterClass);
   returnCharacterAge(this);
   applySubraceBonuses(this);
-  this.abilityScores = recalculateAbilityScoreModifiers(this.abilityScores); //Some racial traits increase ability scores so we have to recalculate
+  this.abilityScores = recalculateAbilityScoreModifiers(this.abilityScores); //Some racial traits increase ability scores so we have to recalculate here to account for those
   this.hitPoints = calculateFirstLevelHitPoints(
     this.characterClass.name,
     this.abilityScores.conMod
@@ -1127,6 +1134,7 @@ function NewCharacter() {
   this.spellSlots = calculateSpellslots(this.characterClass.name);
   this.characterClass.initiative = this.abilityScores.dexMod;
 
+  this.characterClass.equipment.armor = armors.assignArmor(this);
   this.armorClass = calculateArmorClass(this);
 
   return this;
