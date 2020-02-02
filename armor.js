@@ -9,7 +9,8 @@ const lightArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:true,
-        Weight:8
+        Weight:8,
+        category:"light armor"
     },
     leather: {
         name: "Leather Armor",
@@ -19,7 +20,8 @@ const lightArmor = {
         modifierLimit:null,
         strengthRequirement:false,
         stealthDisadvantage:false,
-        Weight:10
+        Weight:10,
+        category:"light armor"
     },
     studdedLeather: {
         name: "Studded Leather Armor",
@@ -30,7 +32,8 @@ const lightArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight:13
+        Weight:13,
+        category:"light armor"
     }
 };
 
@@ -45,7 +48,8 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight:12
+        Weight:12,
+        category:"medium armor"
     },
     chainShirt: {
         name: "Chain Shirt",
@@ -56,7 +60,8 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight:20
+        Weight:20,
+        category:"medium armor"
     },
     scaleMail: {
         name: "Scale Mail",
@@ -67,7 +72,8 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:true,
-        Weight:45
+        Weight:45,
+        category:"medium armor"
     },
     breastplate: {
         name: "Breastplate",
@@ -78,7 +84,8 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:false,
-        Weight:40
+        Weight:40,
+        category:"medium armor"
     },
     halfPlate: {
         name: "HalfPlate",
@@ -89,7 +96,8 @@ const mediumArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage:true,
-        Weight:8
+        Weight:8,
+        category:"medium armor"
     }
 };
 
@@ -102,7 +110,8 @@ const heavyArmor = {
         strengthRequirement:false,
         strengthRequirementValue:null,
         stealthDisadvantage: true,
-        Weight:40
+        Weight:40,
+        category:"heavy armor"
     },
     chainMail: {
         name: "Chain Mail",
@@ -112,7 +121,8 @@ const heavyArmor = {
         strengthRequirement:true,
         strengthRequirementValue:13,
         stealthDisadvantage: true,
-        Weight:55
+        Weight:55,
+        category:"heavy armor"
     },
     splint: {
         name: "Splint Mail",
@@ -122,7 +132,8 @@ const heavyArmor = {
         strengthRequirement:true,
         strengthRequirementValue:15,
         stealthDisadvantage: true,
-        Weight:60
+        Weight:60,
+        category:"heavy armor"
     },
     plate: {
         name: "Plate Mail",
@@ -132,7 +143,8 @@ const heavyArmor = {
         strengthRequirement:true,
         strengthRequirementValue:15,
         stealthDisadvantage: true,
-        Weight:65
+        Weight:65,
+        category:"heavy armor"
     },
 
 };
@@ -150,8 +162,98 @@ const shields = {
 
 };
 
+function assignArmor(className, strengthScore){
+
+  switch (true) {
+    case chartype === "bard":return getBardArmor();
+    case chartype === "barbarian":
+    case chartype === "monk":
+    case chartype === "cleric":
+    case chartype === "druid":
+    case chartype === "fighter":
+    case chartype === "paladin":
+    case chartype === "ranger":
+    case chartype === "rogue":
+    case chartype === "sorcerer":
+    case chartype === "warlock":
+    case chartype === "wizard":
+
+      break;
+    default:
+
+  }
+}
 
 
+function canWearArmor(armor, strengthScore, armorProficiencies){
+  if(armor.strengthRequirement === true && armor.strengthRequirementValue <= strengthScore && armorProficiencies.includes(armor.category)){
+    return true;
+  }else {
+    return false;
+  }
+
+}
+
+function getBardArmor(strengthScore, armorProficiencies){
+  let check = canWearArmor(lightArmor.leather, strengthScore, armorProficiencies);
+
+  if (check === true){
+    return lightArmor.leather;
+  }else{
+    return null;
+  }
+
+
+
+
+}
+
+function getBarbarianArmor(){
+
+}
+
+function getMonkArmor(){
+
+}
+
+function getClericArmor(){
+
+}
+
+function getDruidArmor(){
+
+}
+
+function getFighterArmor(){
+
+}
+
+function getPaladinArmor(){
+
+}
+
+function getRangerArmor(){
+
+}
+
+function getRogueArmor(){
+
+}
+
+function getSorcererArmor(){
+
+}
+
+function getWarlockArmor(){
+
+}
+
+function getWizardArmor(){
+
+}
+
+
+exports.assignArmor = assignArmor;
 exports.lightArmor = lightArmor;
 exports.mediumArmor = mediumArmor;
 exports.heavyArmor = heavyArmor;
