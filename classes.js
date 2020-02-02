@@ -217,8 +217,6 @@ function addClassFeatures(className) {
   return classAbilities;
 }
 
-//// TODO: ADD Ammunition TO EQUIPMENT AND MAKE PROJECTILES OBJECTS WITH THEIR OWN PROPERTIES
-
 function addAmmunition(type, count) {
   if (type == "arrows") {
     return (arrows = { name: "arrows", count: count });
