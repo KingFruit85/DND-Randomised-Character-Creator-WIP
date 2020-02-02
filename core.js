@@ -1096,7 +1096,6 @@ var raceType; //set by the -r commandline arguement
 function NewCharacter() {
   this.level = 1; // TODO: add level scaling
   this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
-  this.characterClassName = utils.returnRandomArrayItem(validClassList);
   this.characterClass = returnRandomCharacterClass(chartype);
   this.characterClassAbilities = classes.addClassFeatures(
     this.characterClass.name

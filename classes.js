@@ -157,8 +157,6 @@ function addItemXTimes(item, ammount) {
   }
 }
 
-function checkAC() {}
-
 function addClassFeatures(className) {
   let classAbilities = [];
 
@@ -221,6 +219,14 @@ function addClassFeatures(className) {
 
 //// TODO: ADD Ammunition TO EQUIPMENT AND MAKE PROJECTILES OBJECTS WITH THEIR OWN PROPERTIES
 
+function addAmmunition(type, count) {
+  if (type == "arrows") {
+    return (arrows = { name: "arrows", count: count });
+  } else if (type === "bolts") {
+    return (bolts = { name: "bolts", count: count });
+  }
+}
+
 function createBard() {
   this.name = "bard";
   this.primaryAbility = "cha";
@@ -243,10 +249,16 @@ function createBard() {
     tools: [],
     armor: []
   };
-  // this.equipment.armor = armors.lightArmor.leather,
-  // this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger,
-  // this.equipment.tools = utils.returnRandomArrayItem([toolsAndEquipment.equipmentPacks.diplomatsPack, toolsAndEquipment.equipmentPacks.entertainersPack]),
-  // this.equipment.weapons[1] = utils.returnRandomArrayItem([weaponsAndShields.martialMeleeWeapons.rapier, weaponsAndShields.martialMeleeWeapons.longsword])
+  (this.equipment.armor = armors.lightArmor.leather),
+    (this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger),
+    (this.equipment.tools = utils.returnRandomArrayItem([
+      toolsAndEquipment.equipmentPacks.diplomatsPack,
+      toolsAndEquipment.equipmentPacks.entertainersPack
+    ])),
+    (this.equipment.weapons[1] = utils.returnRandomArrayItem([
+      weaponsAndShields.martialMeleeWeapons.rapier,
+      weaponsAndShields.martialMeleeWeapons.longsword
+    ]));
 }
 
 function createBarbarian() {
@@ -363,7 +375,7 @@ function createCleric() {
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     this.equipment.weapons.push(
       weaponsAndShields.simpleRangedWeapons.lightCrossbow,
-      "20 light crossbow bolts"
+      addAmmunition("bolts", 20)
     );
   } else {
     this.equipment.weapons.push(
@@ -485,7 +497,7 @@ function createFighter() {
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     this.equipment.weapons.push(
       weaponsAndShields.simpleRangedWeapons.lightCrossbow,
-      "20 light crossbow bolts"
+      addAmmunition("bolts", 20)
     );
   } else {
     this.equipment.weapons.push(weaponsAndShields.simpleWeapons.handaxe);
@@ -494,7 +506,7 @@ function createFighter() {
 
   this.equipment.weapons.push(
     weaponsAndShields.martialRangedWeapons.longbow,
-    "20 longbow arrows"
+    addAmmunition("arrows", 20)
   );
   this.equipment.tools = utils.returnRandomArrayItem([
     toolsAndEquipment.equipmentPacks.dungeoneersPack,
@@ -604,7 +616,7 @@ function createRanger() {
   }
 
   this.equipment.weapons[2] = weaponsAndShields.martialRangedWeapons.longbow;
-  this.equipment.weapons[3] = "20 longbow arrows";
+  this.equipment.weapons[3] = addAmmunition("arrows", 20);
 
   this.equipment.tools = utils.returnRandomArrayItem([
     toolsAndEquipment.equipmentPacks.dungeoneersPack,
@@ -652,7 +664,7 @@ function createRogue() {
       weaponsAndShields.martialMeleeWeapons.shortsword;
   } else {
     this.equipment.weapons[3] = weaponsAndShields.simpleRangedWeapons.shortbow;
-    this.equipment.weapons[4] = "20 longbow arrows";
+    this.equipment.weapons[4] = addAmmunition("arrows", 20);
   }
 
   this.equipment.armor[0] = armors.lightArmor.leather;
@@ -694,7 +706,7 @@ function createSorcerer() {
       weaponsAndShields.simpleRangedWeapons.lightCrossbow;
     this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
     this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[3] = "20 crossbow bolts";
+    this.equipment.weapons[3] = addAmmunition("bolts", 20);
   } else {
     this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.simpleWeapons
@@ -738,7 +750,7 @@ function createWarlock() {
       weaponsAndShields.simpleRangedWeapons.lightCrossbow;
     this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
     this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[3] = "20 crossbow bolts";
+    this.equipment.weapons[3] = addAmmunition("bolts", 20);
     this.equipment.weapons[4] = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.simpleWeapons
     );
