@@ -947,13 +947,20 @@ function calculateArmorClass(char) {
     AC += char.abilityScores.dexMod; //finally add dex
   }
 
-  //grabs the weapon collection to check for shield
+  //grabs the weapon collection and armor proficiencies
   const weapons = char.characterClass.equipment.weapons;
+  const armorProf = char.characterClass.armorProficiencies;
 
-  if (weapons.some(item => item.name === "Shield")) {
-    //Adds shield ac bonus
+  //Checks for the exsistance of a shield in the characters inventory and that they have proficiency to use one and applies ac bonus if these conditions return true.
+  if (
+    weapons.some(item => item.name === "Shield") &&
+    armorProf.includes("shields")
+  ) {
     AC += 2;
-  } else if (weapons.some(item => item.name === "Wooden Shield")) {
+  } else if (
+    weapons.some(item => item.name === "Wooden Shield") &&
+    armorProfincludes("shields")
+  ) {
     AC += 2;
   }
 
