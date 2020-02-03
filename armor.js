@@ -209,6 +209,7 @@ function getMonkArmor(armorProficiencies, strengthScore) {
 }
 
 function getClericArmor(armorProficiencies, strengthScore) {
+  //kind of a pointless loop as SRD clerics can only be life domain therefore will always have heavy armor prof, but who knows what the future holds I guess
   if (armorProficiencies.includes("heavy armor") && strengthScore >= 13) {
     return heavyArmor.chainMail;
   } else {
@@ -221,10 +222,11 @@ function getDruidArmor(armorProficiencies, strengthScore) {
 }
 
 function getFighterArmor(armorProficiencies, strengthScore) {
-  return utils.returnRandomArrayItem([
-    lightArmor.leather,
-    heavyArmor.chainMail
-  ]);
+  if (strengthScore >= 13) {
+    return heavyArmor.chainMail;
+  } else {
+    return lightArmor.leather;
+  }
 }
 
 function getPaladinArmor(armorProficiencies, strengthScore) {

@@ -1234,6 +1234,9 @@ for (var k = 0; k < charQty; k++) {
     "has been saved to the exports folder"
   );
 
+  console.log(x.abilityScores.str);
+  console.log(x.characterClass.equipment.armor.name);
+
   JsonExport = JSON.stringify(x, undefined, 2);
 
   var dir = "./Exports";
