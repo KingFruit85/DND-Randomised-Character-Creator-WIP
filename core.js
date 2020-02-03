@@ -959,7 +959,7 @@ function calculateArmorClass(char) {
     AC += 2;
   } else if (
     weapons.some(item => item.name === "Wooden Shield") &&
-    armorProfincludes("shields")
+    armorProf.includes("shields")
   ) {
     AC += 2;
   }
