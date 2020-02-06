@@ -948,20 +948,23 @@ function calculateArmorClass(char) {
   }
 
   //grabs the weapon collection and armor proficiencies
-  const weapons = char.characterClass.equipment.weapons;
+  const shield = char.characterClass.equipment.shield;
   const armorProf = char.characterClass.armorProficiencies;
 
   //Checks for the exsistance of a shield in the characters inventory and that they have proficiency to use one and applies ac bonus if these conditions return true.
-  if (
-    weapons.some(item => item.name === "Shield") &&
-    armorProf.includes("shields")
-  ) {
-    AC += 2;
-  } else if (
-    weapons.some(item => item.name === "Wooden Shield") &&
-    armorProf.includes("shields")
-  ) {
-    AC += 2;
+
+  if (shield !== undefined) {
+    if (
+      shield.some(item => item.name === "Shield") &&
+      armorProf.includes("shields")
+    ) {
+      AC += 2;
+    } else if (
+      shield.some(item => item.name === "Wooden Shield") &&
+      armorProf.includes("shields")
+    ) {
+      AC += 2;
+    }
   }
 
   return AC;
@@ -1240,9 +1243,6 @@ for (var k = 0; k < charQty; k++) {
     x.characterClass.name,
     "has been saved to the exports folder"
   );
-
-  console.log(x.abilityScores.str);
-  console.log(x.characterClass.equipment.armor.name);
 
   JsonExport = JSON.stringify(x, undefined, 2);
 

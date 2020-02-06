@@ -243,88 +243,106 @@ function createBard() {
   this.skillProficiencies = returnRandomProficiencies(skillProficiencies, 3);
 
   this.equipment = {
-    weapons: [],
+    primaryWeapon: [],
+    additionalWeapons: [],
     tools: [],
-    armor: []
+    armor: [],
+    shield: []
   };
 
-  (this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger),
-    (this.equipment.tools = utils.returnRandomArrayItem([
-      toolsAndEquipment.equipmentPacks.diplomatsPack,
-      toolsAndEquipment.equipmentPacks.entertainersPack
-    ])),
-    (this.equipment.weapons[1] = utils.returnRandomArrayItem([
-      weaponsAndShields.martialMeleeWeapons.rapier,
-      weaponsAndShields.martialMeleeWeapons.longsword
-    ]));
+  this.equipment.primaryWeapon = utils.returnRandomArrayItem([
+    weaponsAndShields.martialMeleeWeapons.rapier,
+    weaponsAndShields.martialMeleeWeapons.longsword
+  ]);
+
+  this.equipment.additionalWeapons.push(weaponsAndShields.simpleWeapons.dagger);
+  this.equipment.tools = utils.returnRandomArrayItem([
+    toolsAndEquipment.equipmentPacks.diplomatsPack,
+    toolsAndEquipment.equipmentPacks.entertainersPack
+  ]);
 }
 
 function createBarbarian() {
-  (this.name = "barbarian"),
-    (this.primaryAbility = "str"),
-    (this.hitDie = 12),
-    (this.savingThrows = ["str", "dex"]),
-    (this.armorProficiencies = ["light armor", "medium armor", "shields"]),
-    (this.weaponProficiencies = ["simple weapons", "martial weapons"]),
-    (this.toolProficiencies = []),
-    (this.skillProficiencies = returnRandomProficiencies(
-      barbSkillProficiencies,
-      2
-    ));
+  this.name = "barbarian";
+  this.primaryAbility = "str";
+  this.hitDie = 12;
+  this.savingThrows = ["str", "dex"];
+  this.armorProficiencies = ["light armor", "medium armor", "shields"];
+  this.weaponProficiencies = ["simple weapons", "martial weapons"];
+  this.toolProficiencies = [];
+  this.skillProficiencies = returnRandomProficiencies(
+    barbSkillProficiencies,
+    2
+  );
 
   this.equipment = {
-    weapons: [],
+    primaryWeapon: [],
+    additionalWeapons: [],
     tools: [],
-    armor: []
+    armor: [],
+    shield: []
   };
-  this.equipment.tools.push(toolsAndEquipment.equipmentPacks.explorersPack);
 
-  for (x = 4; x > 0; x--) {
-    this.equipment.tools.push(weaponsAndShields.simpleWeapons.javelin);
-  }
+  this.equipment.tools = toolsAndEquipment.equipmentPacks.explorersPack;
+
+  this.equipment.primaryWeapon = utils.returnRandomArrayItem([
+    weaponsAndShields.martialMeleeWeapons.greataxe,
+    weaponsAndShields.returnRandomWeaponsFromCollection(
+      weaponsAndShields.martialMeleeWeapons,
+      1
+    )
+  ]);
+
+  this.equipment.additionalWeapons.push(
+    weaponsAndShields.simpleWeapons.javelin
+  );
+  this.equipment.additionalWeapons.push(
+    weaponsAndShields.simpleWeapons.javelin
+  );
+  this.equipment.additionalWeapons.push(
+    weaponsAndShields.simpleWeapons.javelin
+  );
+  this.equipment.additionalWeapons.push(
+    weaponsAndShields.simpleWeapons.javelin
+  );
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     for (x = 0; x < 2; x++) {
-      this.equipment.weapons.push(weaponsAndShields.simpleWeapons.handaxe);
+      this.equipment.additionalWeapons.push(
+        weaponsAndShields.simpleWeapons.handaxe
+      );
     }
   } else {
-    this.equipment.weapons.push(
+    this.equipment.additionalWeapons.push(
       weaponsAndShields.returnRandomWeaponFromCollection(
         weaponsAndShields.simpleWeapons
-      )
-    );
-  }
-  if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons.push(weaponsAndShields.martialMeleeWeapons.greataxe);
-  } else {
-    this.equipment.weapons.push(
-      weaponsAndShields.returnRandomWeaponsFromCollection(
-        weaponsAndShields.martialMeleeWeapons,
-        1
       )
     );
   }
 }
 
 function createMonk() {
-  (this.name = "monk"),
-    (this.primaryAbility = "dex"),
-    (this.hitDie = 8),
-    (this.savingThrows = ["str", "dex"]),
-    (this.armorProficiencies = ["none"]),
-    (this.weaponProficiencies = ["simple weapons", "shortswords"]),
-    (this.toolProficiencies = toolsAndEquipment.returnRandomInstrument()), //add artisan tools to the selection
-    (this.skillProficiencies = returnRandomProficiencies(
-      monkSkillProficiencies,
-      2
-    )),
-    (this.equipment = {
-      weapons: [],
-      tools: [],
-      armor: []
-    });
+  this.name = "monk";
+  this.primaryAbility = "dex";
+  this.hitDie = 8;
+  this.savingThrows = ["str", "dex"];
+  this.armorProficiencies = ["none"];
+  this.weaponProficiencies = ["simple weapons", "shortswords"];
+  this.toolProficiencies = toolsAndEquipment.returnRandomInstrument(); //add artisan tools to the selection
+  this.skillProficiencies = returnRandomProficiencies(
+    monkSkillProficiencies,
+    2
+  );
 
-  this.equipment.weapons[0] = utils.returnRandomArrayItem([
+  this.equipment = {
+    primaryWeapon: [],
+    additionalWeapons: [],
+    tools: [],
+    armor: [],
+    shield: []
+  };
+
+  this.equipment.primaryWeapon = utils.returnRandomArrayItem([
     weaponsAndShields.martialMeleeWeapons.shortsword,
     weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.simpleWeapons
@@ -336,22 +354,24 @@ function createMonk() {
     toolsAndEquipment.equipmentPacks.explorersPack
   ]);
   for (i = 10; i > 0; i--) {
-    this.equipment.weapons.push(weaponsAndShields.simpleRangedWeapons.dart);
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleRangedWeapons.dart
+    );
   }
 }
 
 function createCleric() {
-  (this.name = "cleric"),
-    (this.primaryAbility = "wis"),
-    (this.hitDie = 8),
-    (this.savingThrows = ["wis", "cha"]),
-    (this.armorProficiencies = ["light armor", "medium armor", "shields"]),
-    (this.weaponProficiencies = ["simple weapons"]),
-    (this.toolProficiencies = ["none"]),
-    (this.skillProficiencies = returnRandomProficiencies(
-      clericSkillProficiencies,
-      2
-    ));
+  this.name = "cleric";
+  this.primaryAbility = "wis";
+  this.hitDie = 8;
+  this.savingThrows = ["wis", "cha"];
+  this.armorProficiencies = ["light armor", "medium armor", "shields"];
+  this.weaponProficiencies = ["simple weapons"];
+  this.toolProficiencies = ["none"];
+  this.skillProficiencies = returnRandomProficiencies(
+    clericSkillProficiencies,
+    2
+  );
 
   /// Life domain features, as the 5E SRD only provides the life domain as an option for clerics, this will need to be fleshed out for custom domains if requested.
 
@@ -360,27 +380,29 @@ function createCleric() {
   /////----------------------------------------------------------------------------------------------------------
 
   this.equipment = {
-    weapons: [],
+    primaryWeapon: [],
+    additionalWeapons: [],
     tools: [],
-    armor: []
+    armor: [],
+    shield: []
   };
 
-  this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.mace;
+  this.equipment.primaryWeapon = weaponsAndShields.simpleWeapons.mace;
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons.push(
+    this.equipment.additionalWeapons.push(
       weaponsAndShields.simpleRangedWeapons.lightCrossbow,
       addAmmunition("bolts", 20)
     );
   } else {
-    this.equipment.weapons.push(
+    this.equipment.additionalWeapons.push(
       weaponsAndShields.returnRandomWeaponFromCollection(
         weaponsAndShields.simpleWeapons
       )
     );
   }
 
-  this.equipment.weapons.push(armors.shields.shield);
+  this.equipment.shield.push(armors.shields.shield);
 
   this.equipment.tools.push(
     utils.returnRandomArrayItem([
@@ -392,90 +414,95 @@ function createCleric() {
 }
 
 function createDruid() {
-  (this.name = "druid"),
-    (this.primaryAbility = "wis"),
-    (this.hitDie = 8),
-    (this.savingThrows = ["int", "wis"]),
-    (this.armorProficiencies = ["light armor", "medium armor", "shields"]),
-    (this.weaponProficiencies = [
-      "clubs",
-      "daggers",
-      "darts",
-      "javelins",
-      "maces",
-      "quarterstaffs",
-      "scimitars",
-      "sickles",
-      "slings",
-      "spears"
-    ]),
-    (this.toolProficiencies = ["herbalism kit"]),
-    (this.skillProficiencies = returnRandomProficiencies(
-      druidSkillProficiencies,
-      2
-    ));
+  this.name = "druid";
+  this.primaryAbility = "wis";
+  this.hitDie = 8;
+  this.savingThrows = ["int", "wis"];
+  this.armorProficiencies = ["light armor", "medium armor", "shields"];
+  this.weaponProficiencies = [
+    "clubs",
+    "daggers",
+    "darts",
+    "javelins",
+    "maces",
+    "quarterstaffs",
+    "scimitars",
+    "sickles",
+    "slings",
+    "spears"
+  ];
+  this.toolProficiencies = ["herbalism kit"];
+  this.skillProficiencies = returnRandomProficiencies(
+    druidSkillProficiencies,
+    2
+  );
 
   this.equipment = {
-    weapons: [],
+    primaryWeapon: [],
+    additionalWeapons: [],
     tools: [],
-    armor: []
+    armor: [],
+    shield: []
   };
 
-  this.equipment.weapons[0] = utils.returnRandomArrayItem([
-    armors.shields.woodenShield,
-    weaponsAndShields.returnRandomWeaponFromCollection(
-      weaponsAndShields.simpleWeapons
-    )
-  ]);
-
-  this.equipment.weapons[1] = utils.returnRandomArrayItem([
+  this.equipment.primaryWeapon = utils.returnRandomArrayItem([
     weaponsAndShields.martialMeleeWeapons.scimitar,
     weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.simpleWeapons
     )
   ]);
 
+  if (utils.returnRandomNumberInRange(0, 1) === 0) {
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.returnRandomWeaponFromCollection(
+        weaponsAndShields.simpleWeapons
+      )
+    );
+  } else {
+    this.equipment.shield.push(armors.shields.woodenShield);
+  }
+
   this.equipment.tools.push(toolsAndEquipment.equipmentPacks.explorersPack);
   this.equipment.tools.push("Druidic Focus");
 }
 
 function createFighter() {
-  (this.name = "fighter"),
-    (this.primaryAbility = utils.returnRandomArrayItem(["str", "dex"])),
-    (this.hitDie = 10),
-    (this.savingThrows = ["str", "con"]),
-    (this.armorProficiencies = [
-      "light armor",
-      "medium armor",
-      "heavy armor",
-      "shields"
-    ]),
-    (this.weaponProficiencies = ["simple weapons", "martial weapons"]),
-    (this.toolProficiencies = ["none"]),
-    (this.skillProficiencies = returnRandomProficiencies(
-      fighterSkillProficiencies,
-      2
-    ));
+  this.name = "fighter";
+  this.primaryAbility = utils.returnRandomArrayItem(["str", "dex"]);
+  this.hitDie = 10;
+  this.savingThrows = ["str", "con"];
+  this.armorProficiencies = [
+    "light armor",
+    "medium armor",
+    "heavy armor",
+    "shields"
+  ];
+  this.weaponProficiencies = ["simple weapons", "martial weapons"];
+  this.toolProficiencies = ["none"];
+  //TODO test this, noticed it can return null
+  this.skillProficiencies = returnRandomProficiencies(
+    fighterSkillProficiencies,
+    2
+  );
 
   this.equipment = {
-    weapons: [],
+    primaryWeapon: [],
+    additionalWeapons: [],
     tools: [],
-    armor: []
+    armor: [],
+    shield: []
   };
-
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    //// TODO: maybe change this to only select weapons that can be used in one hand, or both.
-    this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(
+    //// TODO: Change this to only select weapons that can be used in one hand, or both.
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.martialMeleeWeapons
     );
-    this.equipment.weapons[1] = armors.shields.shield;
+    this.equipment.shield.push(armors.shields.shield);
   } else {
-    this.equipment.weapons.push(
-      weaponsAndShields.returnRandomWeaponFromCollection(
-        weaponsAndShields.martialMeleeWeapons
-      )
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
+      weaponsAndShields.martialMeleeWeapons
     );
-    this.equipment.weapons.push(
+    this.equipment.additionalWeapons.push(
       weaponsAndShields.returnRandomWeaponFromCollection(
         weaponsAndShields.martialMeleeWeapons
       )
@@ -483,19 +510,23 @@ function createFighter() {
   }
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons.push(
+    this.equipment.additionalWeapons.push(
       weaponsAndShields.simpleRangedWeapons.lightCrossbow,
       addAmmunition("bolts", 20)
     );
   } else {
-    this.equipment.weapons.push(weaponsAndShields.simpleWeapons.handaxe);
-    this.equipment.weapons.push(weaponsAndShields.simpleWeapons.handaxe);
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.handaxe
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.handaxe
+    );
   }
-
-  this.equipment.weapons.push(
-    weaponsAndShields.martialRangedWeapons.longbow,
-    addAmmunition("arrows", 20)
-  );
+  //TODO: this should only be applied if fighter has leather armor
+  // this.equipment.weapons.push(
+  //   weaponsAndShields.martialRangedWeapons.longbow,
+  //   addAmmunition("arrows", 20)
+  // );
   this.equipment.tools = utils.returnRandomArrayItem([
     toolsAndEquipment.equipmentPacks.dungeoneersPack,
     toolsAndEquipment.equipmentPacks.explorersPack
@@ -521,36 +552,36 @@ function createPaladin() {
     ));
 
   this.equipment = {
-    weapons: [],
+    primaryWeapon: [],
+    additionalWeapons: [],
     tools: [],
-    armor: []
+    armor: [],
+    shield: []
   };
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     //// TODO: maybe change this to only select weapons that can be used in one hand, or both.
-    this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.martialMeleeWeapons
     );
-    this.equipment.weapons[1] = armors.shields.shield;
+    this.equipment.shield = armors.shields.shield;
   } else {
-    this.equipment.weapons.push(
-      weaponsAndShields.returnRandomWeaponFromCollection(
-        weaponsAndShields.martialMeleeWeapons
-      )
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
+      weaponsAndShields.martialMeleeWeapons
     );
-    this.equipment.weapons.push(
-      weaponsAndShields.returnRandomWeaponFromCollection(
-        weaponsAndShields.martialMeleeWeapons
-      )
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
+      weaponsAndShields.martialMeleeWeapons
     );
   }
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
     for (x = 4; x > 0; x--) {
-      this.equipment.tools.push(weaponsAndShields.simpleWeapons.javelin);
+      this.equipment.additionalWeapons.push(
+        weaponsAndShields.simpleWeapons.javelin
+      );
     }
   } else {
-    this.equipment.tools.push(
+    this.equipment.additionalWeapons.push(
       weaponsAndShields.returnRandomWeaponFromCollection(
         weaponsAndShields.simpleWeapons
       )
@@ -564,39 +595,47 @@ function createPaladin() {
 }
 
 function createRanger() {
-  (this.name = "ranger"),
-    (this.primaryAbility = "dex"),
-    (this.hitDie = 10),
-    (this.savingThrows = ["dex", "str"]),
-    (this.armorProficiencies = ["light armor", "medium armor", "shields"]),
-    (this.weaponProficiencies = ["simple weapons", "martial weapons"]),
-    (this.toolProficiencies = ["none"]),
-    (this.skillProficiencies = returnRandomProficiencies(
-      rangerSkillProficiencies,
-      2
-    )),
-    (this.equipment = {
-      weapons: [],
-      tools: [],
-      armor: []
-    });
+  this.name = "ranger";
+  this.primaryAbility = "dex";
+  this.hitDie = 10;
+  this.savingThrows = ["dex", "str"];
+  this.armorProficiencies = ["light armor", "medium armor", "shields"];
+  this.weaponProficiencies = ["simple weapons", "martial weapons"];
+  this.toolProficiencies = ["none"];
+  this.skillProficiencies = returnRandomProficiencies(
+    rangerSkillProficiencies,
+    2
+  );
+
+  this.equipment = {
+    primaryWeapon: [],
+    additionalWeapons: [],
+    tools: [],
+    armor: [],
+    shield: []
+  };
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons[0] =
+    this.equipment.primaryWeapon =
       weaponsAndShields.martialMeleeWeapons.shortsword;
-    this.equipment.weapons[1] =
-      weaponsAndShields.martialMeleeWeapons.shortsword;
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.martialMeleeWeapons.shortsword
+    );
   } else {
-    this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.simpleWeapons
     );
-    this.equipment.weapons[1] = weaponsAndShields.returnRandomWeaponFromCollection(
-      weaponsAndShields.simpleWeapons
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.returnRandomWeaponFromCollection(
+        weaponsAndShields.simpleWeapons
+      )
     );
   }
 
-  this.equipment.weapons[2] = weaponsAndShields.martialRangedWeapons.longbow;
-  this.equipment.weapons[3] = addAmmunition("arrows", 20);
+  this.equipment.additionalWeapons.push(
+    weaponsAndShields.martialRangedWeapons.longbow
+  );
+  this.equipment.additionalWeapons.push(addAmmunition("arrows", 20));
 
   this.equipment.tools = utils.returnRandomArrayItem([
     toolsAndEquipment.equipmentPacks.dungeoneersPack,
@@ -605,199 +644,241 @@ function createRanger() {
 }
 
 function createRogue() {
-  (this.name = "rogue"),
-    (this.primaryAbility = "dex"),
-    (this.hitDie = 8),
-    (this.savingThrows = ["dex", "int"]),
-    (this.armorProficiencies = ["light armor", "medium armor", "shields"]),
-    (this.weaponProficiencies = [
-      "simple weapons",
-      "hand crossbows",
-      "longswords",
-      "rapiers",
-      "shortswords"
-    ]),
-    (this.toolProficiencies = ["thieves' tools"]),
-    (this.skillProficiencies = returnRandomProficiencies(
-      rogueSkillProficiencies,
-      4
-    )),
-    (this.equipment = {
-      weapons: [],
-      tools: [],
-      armor: []
-    });
+  this.name = "rogue";
+  this.primaryAbility = "dex";
+  this.hitDie = 8;
+  this.savingThrows = ["dex", "int"];
+  this.armorProficiencies = ["light armor", "medium armor", "shields"];
+  this.weaponProficiencies = [
+    "simple weapons",
+    "hand crossbows",
+    "longswords",
+    "rapiers",
+    "shortswords"
+  ];
+  this.toolProficiencies = ["thieves' tools"];
+  this.skillProficiencies = returnRandomProficiencies(
+    rogueSkillProficiencies,
+    4
+  );
+
+  this.equipment = {
+    primaryWeapon: [],
+    additionalWeapons: [],
+    tools: [],
+    armor: [],
+    shield: []
+  };
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons[0] =
+    this.equipment.primaryWeapon =
       weaponsAndShields.martialMeleeWeapons.shortsword;
-    this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
   } else {
-    this.equipment.weapons[0] = weaponsAndShields.martialMeleeWeapons.rapier;
-    this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+    this.equipment.primaryWeapon = weaponsAndShields.martialMeleeWeapons.rapier;
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
   }
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons[3] =
-      weaponsAndShields.martialMeleeWeapons.shortsword;
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.martialMeleeWeapons.shortsword
+    );
   } else {
-    this.equipment.weapons[3] = weaponsAndShields.simpleRangedWeapons.shortbow;
-    this.equipment.weapons[4] = addAmmunition("arrows", 20);
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleRangedWeapons.shortbow
+    );
+    this.equipment.additionalWeapons.push(addAmmunition("arrows", 20));
   }
 
-  this.equipment.tools[0] = "thieves tools";
+  this.equipment.tools.push("thieves tools");
 
-  this.equipment.tools = utils.returnRandomArrayItem([
-    toolsAndEquipment.equipmentPacks.dungeoneersPack,
-    toolsAndEquipment.equipmentPacks.explorersPack,
-    toolsAndEquipment.equipmentPacks.burglarsPack
-  ]);
+  this.equipment.tools.push(
+    utils.returnRandomArrayItem([
+      toolsAndEquipment.equipmentPacks.dungeoneersPack,
+      toolsAndEquipment.equipmentPacks.explorersPack,
+      toolsAndEquipment.equipmentPacks.burglarsPack
+    ])
+  );
 }
 
 function createSorcerer() {
-  (this.name = "sorcerer"),
-    (this.primaryAbility = "cha"),
-    (this.hitDie = 8),
-    (this.savingThrows = ["con", "cha"]),
-    (this.armorProficiencies = []),
-    (this.weaponProficiencies = [
-      "daggers",
-      "darts",
-      "slings",
-      "quarterstaffs",
-      "light crossbows"
-    ]),
-    (this.toolProficiencies = []),
-    (this.skillProficiencies = returnRandomProficiencies(
-      sorcererProficiencies,
-      2
-    )),
-    (this.equipment = {
-      weapons: [],
-      tools: [],
-      armor: []
-    });
+  this.name = "sorcerer";
+  this.primaryAbility = "cha";
+  this.hitDie = 8;
+  this.savingThrows = ["con", "cha"];
+  this.armorProficiencies = [];
+  this.weaponProficiencies = [
+    "daggers",
+    "darts",
+    "slings",
+    "quarterstaffs",
+    "light crossbows"
+  ];
+  this.toolProficiencies = [];
+  this.skillProficiencies = returnRandomProficiencies(sorcererProficiencies, 2);
+
+  this.equipment = {
+    primaryWeapon: [],
+    additionalWeapons: [],
+    tools: [],
+    armor: [],
+    shield: []
+  };
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons[0] =
-      weaponsAndShields.simpleRangedWeapons.lightCrossbow;
-    this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[3] = addAmmunition("bolts", 20);
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleRangedWeapons.lightCrossbow
+    );
+    this.equipment.additionalWeapons.push(addAmmunition("bolts", 20));
+    this.equipment.primaryWeapon = weaponsAndShields.simpleWeapons.dagger;
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
   } else {
-    this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.simpleWeapons
     );
-    this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
   }
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.tools[0] = "component pouch";
+    this.equipment.tools.push("component pouch");
   } else {
-    this.equipment.tools[0] = "arcane focus";
+    this.equipment.tools.push("arcane focus");
   }
 
-  this.equipment.tools[1] = utils.returnRandomArrayItem([
-    toolsAndEquipment.equipmentPacks.dungeoneersPack,
-    toolsAndEquipment.equipmentPacks.explorersPack
-  ]);
+  this.equipment.tools.push(
+    utils.returnRandomArrayItem([
+      toolsAndEquipment.equipmentPacks.dungeoneersPack,
+      toolsAndEquipment.equipmentPacks.explorersPack
+    ])
+  );
 }
 
 function createWarlock() {
-  (this.name = "warlock"),
-    (this.primaryAbility = "cha"),
-    (this.hitDie = 8),
-    (this.savingThrows = ["wis", "cha"]),
-    (this.armorProficiencies = ["light armor"]),
-    (this.weaponProficiencies = ["simple weapons"]),
-    (this.toolProficiencies = []),
-    (this.skillProficiencies = returnRandomProficiencies(
-      warlockProficiencies,
-      2
-    )),
-    (this.equipment = {
-      weapons: [],
-      tools: [],
-      armor: []
-    });
+  this.name = "warlock";
+  this.primaryAbility = "cha";
+  this.hitDie = 8;
+  this.savingThrows = ["wis", "cha"];
+  this.armorProficiencies = ["light armor"];
+  this.weaponProficiencies = ["simple weapons"];
+  this.toolProficiencies = [];
+  this.skillProficiencies = returnRandomProficiencies(warlockProficiencies, 2);
+
+  this.equipment = {
+    primaryWeapon: [],
+    additionalWeapons: [],
+    tools: [],
+    armor: [],
+    shield: []
+  };
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons[0] =
-      weaponsAndShields.simpleRangedWeapons.lightCrossbow;
-    this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[3] = addAmmunition("bolts", 20);
-    this.equipment.weapons[4] = weaponsAndShields.returnRandomWeaponFromCollection(
-      weaponsAndShields.simpleWeapons
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleRangedWeapons.lightCrossbow
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
+    this.equipment.additionalWeapons.push(addAmmunition("bolts", 20));
+    this.equipment.primaryWeapon.push(
+      weaponsAndShields.returnRandomWeaponFromCollection(
+        weaponsAndShields.simpleWeapons
+      )
     );
   } else {
-    this.equipment.weapons[0] = weaponsAndShields.returnRandomWeaponFromCollection(
+    this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.simpleWeapons
     );
-    this.equipment.weapons[1] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[2] = weaponsAndShields.simpleWeapons.dagger;
-    this.equipment.weapons[3] = weaponsAndShields.returnRandomWeaponFromCollection(
-      weaponsAndShields.simpleWeapons
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.simpleWeapons.dagger
+    );
+    this.equipment.additionalWeapons.push(
+      weaponsAndShields.returnRandomWeaponFromCollection(
+        weaponsAndShields.simpleWeapons
+      )
     );
   }
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.tools[0] = "component pouch";
+    this.equipment.tools.push("component pouch");
   } else {
-    this.equipment.tools[0] = "arcane focus";
+    this.equipment.tools.push("arcane focus");
   }
 
-  this.equipment.tools[1] = utils.returnRandomArrayItem([
-    toolsAndEquipment.equipmentPacks.dungeoneersPack,
-    toolsAndEquipment.equipmentPacks.scholarsPack
-  ]);
+  this.equipment.tools.push(
+    utils.returnRandomArrayItem([
+      toolsAndEquipment.equipmentPacks.dungeoneersPack,
+      toolsAndEquipment.equipmentPacks.scholarsPack
+    ])
+  );
 }
 
 function createWizard() {
-  (this.name = "wizard"),
-    (this.primaryAbility = "int"),
-    (this.hitDie = 6),
-    (this.savingThrows = ["int", "wis"]),
-    (this.armorProficiencies = []),
-    (this.weaponProficiencies = [
-      "daggers",
-      "darts",
-      "slings",
-      "quarterstaffs",
-      "light crossbows"
-    ]),
-    (this.toolProficiencies = []),
-    (this.skillProficiencies = returnRandomProficiencies(
-      wizardProficiencies,
-      2
-    )),
-    (this.equipment = {
-      weapons: [],
-      tools: [],
-      armor: []
-    });
+  this.name = "wizard";
+  this.primaryAbility = "int";
+  this.hitDie = 6;
+  this.savingThrows = ["int", "wis"];
+  this.armorProficiencies = [];
+  this.weaponProficiencies = [
+    "daggers",
+    "darts",
+    "slings",
+    "quarterstaffs",
+    "light crossbows"
+  ];
+  this.toolProficiencies = [];
+  this.skillProficiencies = returnRandomProficiencies(wizardProficiencies, 2);
+
+  this.equipment = {
+    primaryWeapon: [],
+    additionalWeapons: [],
+    tools: [],
+    armor: [],
+    shield: []
+  };
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.quarterstaff;
+    this.equipment.primaryWeapon = weaponsAndShields.simpleWeapons.quarterstaff;
   } else {
-    this.equipment.weapons[0] = weaponsAndShields.simpleWeapons.dagger;
+    this.equipment.primaryWeapon = weaponsAndShields.simpleWeapons.dagger;
   }
 
   if (utils.returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.tools[0] = "component pouch";
+    this.equipment.tools.push("component pouch");
   } else {
-    this.equipment.tools[0] = "arcane focus";
+    this.equipment.tools.push("arcane focus");
   }
 
-  this.equipment.tools[1] = utils.returnRandomArrayItem([
-    toolsAndEquipment.equipmentPacks.explorersPack,
-    toolsAndEquipment.equipmentPacks.scholarsPack
-  ]);
+  this.equipment.tools.push(
+    utils.returnRandomArrayItem([
+      toolsAndEquipment.equipmentPacks.explorersPack,
+      toolsAndEquipment.equipmentPacks.scholarsPack
+    ])
+  );
 
-  this.equipment.tools[1] = "spellbook";
+  this.equipment.tools.push("spellbook");
 }
 
 classList = [
