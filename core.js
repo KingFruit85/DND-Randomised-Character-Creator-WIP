@@ -1280,18 +1280,31 @@ for (var k = 0; k < charQty; k++) {
     " " +
     x.characterClass.name;
 
-  let remainingCharacters = 58 - lineLength.length;
+  let remainingCharacters = 57 - lineLength.length;
+
+  let genderIcon = "";
+  if (x.gender === "male") {
+    genderIcon = "\u2642";
+  } else {
+    genderIcon = "\u2640";
+  }
 
   console.log(
-    "\u2551",
-    "\u2705",
-    x.fullname.firstName,
-    x.fullname.lastName,
-    "the",
-    x.race,
-    x.characterClass.name,
-    " ".repeat(remainingCharacters),
-    "\u2551"
+    "\u2551" +
+      " \u2705 " +
+      genderIcon +
+      " " +
+      x.fullname.firstName +
+      " " +
+      x.fullname.lastName +
+      " " +
+      "the " +
+      x.race +
+      " " +
+      x.characterClass.name +
+      " " +
+      " ".repeat(remainingCharacters) +
+      "\u2551"
   );
 
   JsonExport = JSON.stringify(x, undefined, 2);
