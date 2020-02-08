@@ -1215,33 +1215,106 @@ for (let j = 0; j < process.argv.length; j++) {
   // console.log(j + ' -> ' + (process.argv[j])); //used to print all arguments on screen for testing
 }
 
-//Logs out to the screen the count and type of character sheets the user has requested
-console.log(
-  "***********************************************************************************"
-);
-console.log(
-  "**********************User has requested " +
-    charQty +
-    " level 1 " +
-    chartype +
-    "'s**********************"
-);
-console.log(
-  "***********************************************************************************"
-);
+//First attempt at a bit more aesthetically pleasing cli output
+function drawTipBox() {
+  let line = "\u2554";
+  let line2 = "\u2560";
+  let line3 = "\u2560";
+
+  for (x = 0; x < 60; x++) {
+    line += "\u2550";
+  }
+  line += "\u2557";
+
+  for (x = 0; x < 60; x++) {
+    line2 += "\u2550";
+  }
+  line2 += "\u2563";
+
+  for (x = 0; x < 60; x++) {
+    line3 += "\u2550";
+  }
+  line3 += "\u2563";
+
+  console.log(line);
+
+  console.log(
+    "\u2551",
+    "Command line switches                                     ",
+    "\u2551"
+  );
+  console.log(line2);
+  console.log(
+    "\u2551",
+    "'-n x' Sets the number of character sheets to be returned ",
+    "\u2551"
+  );
+  console.log(
+    "\u2551",
+    "'-c x' Sets the class to be returned                      ",
+    "\u2551"
+  );
+  console.log(
+    "\u2551",
+    "'-r x' Sets the race to be returned                       ",
+    "\u2551"
+  );
+  console.log(
+    "\u2551",
+    "'-g x' Sets the gender to be returned                     ",
+    "\u2551"
+  );
+
+  console.log(line3);
+}
+
+function drawOutput() {
+  let line = "\u2560";
+  console.log(
+    "\u2551",
+    "Output                                                    ",
+    "\u2551"
+  );
+
+  for (x = 0; x < 60; x++) {
+    line += "\u2550";
+  }
+  line += "\u2563";
+  console.log(line);
+}
+
+drawTipBox();
+drawOutput();
 
 for (var k = 0; k < charQty; k++) {
   //loop to create several characters in a row
 
-  var x = new NewCharacter();
+  let x = new NewCharacter();
+
+  let lineLength =
+    "\u2551 " +
+    "\u2705 " +
+    x.fullname.firstName +
+    " " +
+    x.fullname.lastName +
+    " " +
+    "the " +
+    x.race +
+    " " +
+    x.characterClass.name;
+
+  let remainingCharacters = 58 - lineLength.length;
+
   console.log(
+    "\u2551",
+    "\u2705",
     x.fullname.firstName,
     x.fullname.lastName,
-    "a",
-    x.gender,
+    "the",
     x.race,
     x.characterClass.name,
-    "has been saved to the exports folder"
+    " ".repeat(remainingCharacters),
+    "\u2551"
   );
 
   JsonExport = JSON.stringify(x, undefined, 2);
@@ -1270,3 +1343,4 @@ for (var k = 0; k < charQty; k++) {
     }
   );
 }
+console.log("\u255A" + "\u2550".repeat(60) + "\u255D");
