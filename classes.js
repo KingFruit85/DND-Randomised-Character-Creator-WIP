@@ -564,7 +564,7 @@ function createPaladin() {
     this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.martialMeleeWeapons
     );
-    this.equipment.shield = armors.shields.shield;
+    this.equipment.shield.push(armors.shields.shield);
   } else {
     this.equipment.primaryWeapon = weaponsAndShields.returnRandomWeaponFromCollection(
       weaponsAndShields.martialMeleeWeapons
