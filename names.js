@@ -1,4 +1,4 @@
-const utils = require('./utils');
+const utils = require("./utils");
 
 /////////////* DRAGONBORN */////////////
 
@@ -194,7 +194,6 @@ const dragonbornSurnames = [
   "Apitiris"
 ];
 
-
 /////////////* DWARF */////////////
 
 // FEMALE
@@ -257,7 +256,6 @@ const dwarfSurnames = [
   "Torunn",
   "Ungart"
 ];
-
 
 /////////////* ELF */////////////
 
@@ -326,7 +324,6 @@ const elfSurnames = [
   "Featherfall"
 ];
 
-
 /////////////* GNOME */////////////
 
 // FEMALE
@@ -341,8 +338,8 @@ const femaleGnomeNames = [
   "Utrothraim",
   "Zosuffosh",
   "Sensannailzish",
-  "Camila ",
-  "Sorally ",
+  "Camila",
+  "Sorally",
   "Jessabolt",
   "Lolena",
   "Audgit",
@@ -356,8 +353,8 @@ const femaleGnomeNames = [
   "Lisabink",
   "Ponny",
   "Bensy",
-  "Teritink ",
-  "Sorakka ",
+  "Teritink",
+  "Sorakka",
   "Kaliffle",
   "Sharabolt",
   "Trimble",
@@ -365,14 +362,14 @@ const femaleGnomeNames = [
   "Lisaline",
   "Merilie",
   "Camilyn",
-  "Stefty ",
+  "Stefty",
   "Sharadette",
   "Naralie",
   "Kelbi",
   "Linanora",
   "Sandi",
   "Torimsy",
-  "Marakka ",
+  "Marakka",
   "Steckle",
   "Emmabol",
   "Kessabeth",
@@ -398,12 +395,12 @@ const maleGnomeNames = [
   "Bongle",
   "Ampbert",
   "Monthony",
-  "Filford ",
+  "Filford",
   "Kilfin",
   "Zimort",
-  "Gefford ",
+  "Gefford",
   "Gearwood",
-  "Perkle ",
+  "Perkle",
   "Wizwood",
   "Wilridge",
   "Pefford",
@@ -416,14 +413,14 @@ const maleGnomeNames = [
   "Toshley",
   "Lugworth",
   "Meby",
-  "Mimble ",
+  "Mimble",
   "Flickridge",
   "Tekson",
   "Monton",
   "Scrapwright",
   "Elford",
   "Zankus",
-  "Bigon ",
+  "Bigon",
   "Zigon",
   "Wiznik",
   "Zimworth",
@@ -482,7 +479,6 @@ const gnomeSurnames = [
   "Overwobble",
   "Rotortinker"
 ];
-
 
 /////////////* HALF-ELF */////////////
 
@@ -827,107 +823,106 @@ const halfElfSurnames = [
   "Herdan",
   "Magquinal",
   "Carralei",
-"Zumyra",
-"Farfina",
-"Fenmaris",
-"Valhice",
-"Dagwyn",
-"Wranydark",
-"Olajyre",
-"Genbella",
-"Yelxalim",
-"Preslee",
-"Zinsalor",
-"Zylran",
-"Yelzorwyn",
-"Wynlamin",
-"Inahorn",
-"Perwynn",
-"Leohorn",
-"Petkas",
-"Yllaceran",
-"Leoqirelle",
-"Wranvaris",
-"Wranroris",
-"Wysaphine",
-"Hergolor",
-"Herstina",
-"Balpeiros",
-"Yesdi",
-"Perna",
-"Venlamin",
-"Virwynn",
-"Vabanise",
-"Vanelis",
-"Holanelis",
-"Aephyra",
-"Chaegolor",
-"Olomys",
-"Urikalyn",
-"Heletoris",
-"Ianzumin",
-"Addan",
-"Persatra",
-"Naetoris",
-"Keymoira",
-"Keabanise",
-"Genran",
-"Eilyarus",
-"Krisbella",
-"Yllasys",
-"Oladan",
-"Chaemenor",
-"Heisatra",
-"Yinrie",
-"Keakian",
-"Iarnan",
-"Nerirona",
-"Yelleth",
-"Miawynn",
-"Lorahice",
-"Ilibalar",
-"Leovaris",
-"Olozeiros",
-"Shatoris",
-"Gretumal",
-"Therie",
-"Nerinan",
-"Iligolor",
-"Bihana",
-"Trisfiel",
-"Zumlee",
-"Vara",
-"Qican",
-"Fasalor",
-"Glynrie",
-"Cravaris",
-"Lucan",
-"Torfina",
-"Yellar",
-"Wranlee",
-"Gilbella",
-"Glyngeiros",
-"Phicyne",
-"Umeleth",
-"Reylen",
-"Elavaris",
-"Bryren",
-"Fenbanise",
-"Zylvaris",
-"Umethana",
-"Nerinala",
-"Gilcan",
-"Faesys",
-"Keadithas",
-"Presran",
-"Leothana",
-"Preslamin",
-"Trazeiros",
-"Perxidor",
-"Keazumin",
-"Balpetor"
+  "Zumyra",
+  "Farfina",
+  "Fenmaris",
+  "Valhice",
+  "Dagwyn",
+  "Wranydark",
+  "Olajyre",
+  "Genbella",
+  "Yelxalim",
+  "Preslee",
+  "Zinsalor",
+  "Zylran",
+  "Yelzorwyn",
+  "Wynlamin",
+  "Inahorn",
+  "Perwynn",
+  "Leohorn",
+  "Petkas",
+  "Yllaceran",
+  "Leoqirelle",
+  "Wranvaris",
+  "Wranroris",
+  "Wysaphine",
+  "Hergolor",
+  "Herstina",
+  "Balpeiros",
+  "Yesdi",
+  "Perna",
+  "Venlamin",
+  "Virwynn",
+  "Vabanise",
+  "Vanelis",
+  "Holanelis",
+  "Aephyra",
+  "Chaegolor",
+  "Olomys",
+  "Urikalyn",
+  "Heletoris",
+  "Ianzumin",
+  "Addan",
+  "Persatra",
+  "Naetoris",
+  "Keymoira",
+  "Keabanise",
+  "Genran",
+  "Eilyarus",
+  "Krisbella",
+  "Yllasys",
+  "Oladan",
+  "Chaemenor",
+  "Heisatra",
+  "Yinrie",
+  "Keakian",
+  "Iarnan",
+  "Nerirona",
+  "Yelleth",
+  "Miawynn",
+  "Lorahice",
+  "Ilibalar",
+  "Leovaris",
+  "Olozeiros",
+  "Shatoris",
+  "Gretumal",
+  "Therie",
+  "Nerinan",
+  "Iligolor",
+  "Bihana",
+  "Trisfiel",
+  "Zumlee",
+  "Vara",
+  "Qican",
+  "Fasalor",
+  "Glynrie",
+  "Cravaris",
+  "Lucan",
+  "Torfina",
+  "Yellar",
+  "Wranlee",
+  "Gilbella",
+  "Glyngeiros",
+  "Phicyne",
+  "Umeleth",
+  "Reylen",
+  "Elavaris",
+  "Bryren",
+  "Fenbanise",
+  "Zylvaris",
+  "Umethana",
+  "Nerinala",
+  "Gilcan",
+  "Faesys",
+  "Keadithas",
+  "Presran",
+  "Leothana",
+  "Preslamin",
+  "Trazeiros",
+  "Perxidor",
+  "Keazumin",
+  "Balpetor"
 ];
-
 
 /////////////* HALF-ORC */////////////
 
@@ -972,7 +967,7 @@ const femaleHalfOrcNames = [
   "Tinsa",
   "Tlahra",
   "Uzifsula",
-  "Zahoua",
+  "Zahoua"
 ];
 
 // MALE
@@ -1057,7 +1052,6 @@ const halfOrcSurnames = [
   "Elraglok",
   "Zongi"
 ];
-
 
 /////////////* HALFLING */////////////
 
@@ -1147,7 +1141,6 @@ const halflingSurnames = [
   "Tosscobble",
   "Underbough"
 ];
-
 
 /////////////* HUMAN */////////////
 
@@ -1757,7 +1750,6 @@ const humanSurnames = [
   "Mascia"
 ];
 
-
 /////////////* TIEFLING */////////////
 
 // FEMALE
@@ -1814,7 +1806,7 @@ const maleTieflingNames = [
   "Lokelech",
   "Eternal",
   "Rolnon",
-  "Valthus ",
+  "Valthus",
   "Meichar",
   "Thynemenos",
   "Kilrus",
@@ -1824,14 +1816,14 @@ const maleTieflingNames = [
   "Valakas",
   "Zhermos",
   "Malenon",
-  "Zorlius ",
+  "Zorlius",
   "Barilius",
   "Mavchar",
   "Nephmeros",
   "Killius",
   "Ekreus",
   "Carlech",
-  "Arrai ",
+  "Arrai",
   "Dokuc",
   "Yinry",
   "Adriath",
@@ -1846,22 +1838,22 @@ const maleTieflingNames = [
 
 // SURNAME
 const tieflingSurnames = [
-  "Vervend ",
-  "Brotaebae ",
-  "Tovos ",
-  "Zegraki ",
-  "Shama ",
-  "Toldris ",
-  "Rova ",
-  "Ecorvot ",
-  "Drardim ",
-  "Shagrerat ",
-  "Mokot ",
-  "Nirvad ",
-  "Sashakeand ",
-  "Fondre ",
-  "Letevri ",
-  "Veni ",
+  "Vervend",
+  "Brotaebae",
+  "Tovos",
+  "Zegraki",
+  "Shama",
+  "Toldris",
+  "Rova",
+  "Ecorvot",
+  "Drardim",
+  "Shagrerat",
+  "Mokot",
+  "Nirvad",
+  "Sashakeand",
+  "Fondre",
+  "Letevri",
+  "Veni",
   "Gibon",
   "Dobramia",
   "Nende",
@@ -1874,172 +1866,175 @@ const tieflingSurnames = [
   "Drorhiki"
 ];
 
-
-
 /////////////* SWITCH FUNCTION */////////////
 
-function returnRandomDragonbornName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleDragonbornNames),
-        lastName:utils.returnRandomArrayItem(dragonbornSurnames)
-      };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleDragonbornNames),
-        lastName:utils.returnRandomArrayItem(dragonbornSurnames)
-      };
-    }
-      return fullName;
+function returnRandomDragonbornName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleDragonbornNames),
+      lastName: utils.returnRandomArrayItem(dragonbornSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleDragonbornNames),
+      lastName: utils.returnRandomArrayItem(dragonbornSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomDwarfName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleDwarfNames),
-        lastName:utils.returnRandomArrayItem(dwarfSurnames)
-      };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleDwarfNames),
-        lastName:utils.returnRandomArrayItem(dwarfSurnames)
-      };
-    }
-      return fullName;
+function returnRandomDwarfName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleDwarfNames),
+      lastName: utils.returnRandomArrayItem(dwarfSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleDwarfNames),
+      lastName: utils.returnRandomArrayItem(dwarfSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomElfName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleElfNames),
-        lastName:utils.returnRandomArrayItem(elfSurnames)
-      };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleElfNames),
-        lastName:utils.returnRandomArrayItem(elfSurnames)
-      };
-    }
-      return fullName;
+function returnRandomElfName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleElfNames),
+      lastName: utils.returnRandomArrayItem(elfSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleElfNames),
+      lastName: utils.returnRandomArrayItem(elfSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomGnomeName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleGnomeNames),
-        lastName:utils.returnRandomArrayItem(gnomeSurnames)
-      };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleGnomeNames),
-        lastName:utils.returnRandomArrayItem(gnomeSurnames)
-      };
-    }
-      return fullName;
+function returnRandomGnomeName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleGnomeNames),
+      lastName: utils.returnRandomArrayItem(gnomeSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleGnomeNames),
+      lastName: utils.returnRandomArrayItem(gnomeSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomHalfElfName(gender){
-
-    if(gender === "male"){
-      fullName =
-      {
-        firstName:utils.returnRandomArrayItem(maleHalfElfNames.concat(maleHumanNames)),
-        lastName:utils.returnRandomArrayItem(halfElfSurnames.concat(humanSurnames))
-      };
-    }else{
-      fullName =
-      {
-        firstName:utils.returnRandomArrayItem(maleHalfElfNames.concat(femaleHumanNames)),
-        lastName:utils.returnRandomArrayItem(halfElfSurnames.concat(humanSurnames))
-      };
-    }
-      return fullName;
+function returnRandomHalfElfName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(
+        maleHalfElfNames.concat(maleHumanNames)
+      ),
+      lastName: utils.returnRandomArrayItem(
+        halfElfSurnames.concat(humanSurnames)
+      )
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(
+        maleHalfElfNames.concat(femaleHumanNames)
+      ),
+      lastName: utils.returnRandomArrayItem(
+        halfElfSurnames.concat(humanSurnames)
+      )
+    };
+  }
+  return fullName;
 }
 
-function returnRandomHalfOrcName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleHalfOrcNames),
-        lastName:utils.returnRandomArrayItem(halfOrcSurnames)
-      };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleHalfOrcNames),
-        lastName:utils.returnRandomArrayItem(halfOrcSurnames)
-      };
-    }
-      return fullName;
+function returnRandomHalfOrcName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleHalfOrcNames),
+      lastName: utils.returnRandomArrayItem(halfOrcSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleHalfOrcNames),
+      lastName: utils.returnRandomArrayItem(halfOrcSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomHumanName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleHumanNames),
-        lastName:utils.returnRandomArrayItem(humanSurnames)
-      };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleHumanNames),
-        lastName:utils.returnRandomArrayItem(humanSurnames)
-      };
-    }
-      return fullName;
+function returnRandomHumanName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleHumanNames),
+      lastName: utils.returnRandomArrayItem(humanSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleHumanNames),
+      lastName: utils.returnRandomArrayItem(humanSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomHalflingName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleHalflingNames),
-        lastName:utils.returnRandomArrayItem(halflingSurnames)
-       };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleHalflingNames),
-        lastName:utils.returnRandomArrayItem(halflingSurnames)
-       };
-    }
-      return fullName;
+function returnRandomHalflingName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleHalflingNames),
+      lastName: utils.returnRandomArrayItem(halflingSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleHalflingNames),
+      lastName: utils.returnRandomArrayItem(halflingSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomTieflingName(gender){
-
-    if(gender === "male"){
-      fullName = {
-        firstName:utils.returnRandomArrayItem(maleTieflingNames),
-        lastName:utils.returnRandomArrayItem(tieflingSurnames)
-      };
-    }else{
-      fullName = {
-        firstName:utils.returnRandomArrayItem(femaleTieflingNames),
-        lastName:utils.returnRandomArrayItem(tieflingSurnames)
-      };
-    }
-      return fullName;
+function returnRandomTieflingName(gender) {
+  if (gender === "male") {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(maleTieflingNames),
+      lastName: utils.returnRandomArrayItem(tieflingSurnames)
+    };
+  } else {
+    fullName = {
+      firstName: utils.returnRandomArrayItem(femaleTieflingNames),
+      lastName: utils.returnRandomArrayItem(tieflingSurnames)
+    };
+  }
+  return fullName;
 }
 
-function returnRandomName(race,gender){
+function returnRandomName(race, gender) {
   switch (true) {
-    case race === "dragonborn":return returnRandomDragonbornName(gender);
-    case race === "dwarf":return returnRandomDwarfName(gender);
-    case race === "elf":return returnRandomElfName(gender);
-    case race === "gnome":return returnRandomGnomeName(gender);
-    case race === "half-elf":return returnRandomHalfElfName(gender);
-    case race === "half-orc":return returnRandomHalfOrcName(gender);
-    case race === "halfling":return returnRandomHalflingName(gender);
-    case race === "human":return returnRandomHumanName(gender);
-    case race === "tiefling":return returnRandomTieflingName(gender);
+    case race === "dragonborn":
+      return returnRandomDragonbornName(gender);
+    case race === "dwarf":
+      return returnRandomDwarfName(gender);
+    case race === "elf":
+      return returnRandomElfName(gender);
+    case race === "gnome":
+      return returnRandomGnomeName(gender);
+    case race === "half-elf":
+      return returnRandomHalfElfName(gender);
+    case race === "half-orc":
+      return returnRandomHalfOrcName(gender);
+    case race === "halfling":
+      return returnRandomHalflingName(gender);
+    case race === "human":
+      return returnRandomHumanName(gender);
+    case race === "tiefling":
+      return returnRandomTieflingName(gender);
 
-    default:return "Fell through switch case returnRandomName in names.js";
-
+    default:
+      return "Fell through switch case returnRandomName in names.js";
   }
 }
-
 
 exports.returnRandomName = returnRandomName;
