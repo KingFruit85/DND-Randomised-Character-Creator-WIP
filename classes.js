@@ -534,22 +534,22 @@ function createFighter() {
 }
 
 function createPaladin() {
-  (this.name = "paladin"),
-    (this.primaryAbility = ["str", "cha"]),
-    (this.hitDie = 10),
-    (this.savingThrows = ["wis", "cha"]),
-    (this.armorProficiencies = [
-      "light armor",
-      "medium armor",
-      "heavy armor",
-      "shields"
-    ]),
-    (this.weaponProficiencies = ["simple weapons", "martial weapons"]),
-    (this.toolProficiencies = ["none"]),
-    (this.skillProficiencies = returnRandomProficiencies(
-      paladinSkillProficiencies,
-      2
-    ));
+  this.name = "paladin";
+  this.primaryAbility = ["str", "cha"];
+  this.hitDie = 10;
+  this.savingThrows = ["wis", "cha"];
+  this.armorProficiencies = [
+    "light armor",
+    "medium armor",
+    "heavy armor",
+    "shields"
+  ];
+  this.weaponProficiencies = ["simple weapons", "martial weapons"];
+  this.toolProficiencies = ["none"];
+  this.skillProficiencies = returnRandomProficiencies(
+    paladinSkillProficiencies,
+    2
+  );
 
   this.equipment = {
     primaryWeapon: [],
