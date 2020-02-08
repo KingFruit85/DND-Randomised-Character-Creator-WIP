@@ -1217,52 +1217,33 @@ for (let j = 0; j < process.argv.length; j++) {
 
 //First attempt at a bit more aesthetically pleasing cli output
 function drawTipBox() {
-  let line = "\u2554";
-  let line2 = "\u2560";
-  let line3 = "\u2560";
-
-  for (x = 0; x < 60; x++) {
-    line += "\u2550";
-  }
-  line += "\u2557";
-
-  for (x = 0; x < 60; x++) {
-    line2 += "\u2550";
-  }
-  line2 += "\u2563";
-
-  for (x = 0; x < 60; x++) {
-    line3 += "\u2550";
-  }
-  line3 += "\u2563";
+  let line = "\u2554" + "\u2550".repeat(60) + "\u2557";
+  let line2 = "\u2560" + "\u2550".repeat(60) + "\u2563";
+  let line3 = "\u2560" + "\u2550".repeat(60) + "\u2563";
 
   console.log(line);
 
-  console.log(
-    "\u2551",
-    "Command line switches                                     ",
-    "\u2551"
-  );
+  console.log("\u2551" + "Command line switches" + " ".repeat(39) + "\u2551");
   console.log(line2);
   console.log(
-    "\u2551",
-    "'-n x' Sets the number of character sheets to be returned ",
-    "\u2551"
+    "\u2551" +
+      "'-n x' Sets the number of character sheets to be returned   " +
+      "\u2551"
   );
   console.log(
-    "\u2551",
-    "'-c x' Sets the class to be returned                      ",
-    "\u2551"
+    "\u2551" +
+      "'-c x' Sets the class to be returned" +
+      " ".repeat(24) +
+      "\u2551"
   );
   console.log(
-    "\u2551",
-    "'-r x' Sets the race to be returned                       ",
-    "\u2551"
+    "\u2551" + "'-r x' Sets the race to be returned" + " ".repeat(25) + "\u2551"
   );
   console.log(
-    "\u2551",
-    "'-g x' Sets the gender to be returned                     ",
-    "\u2551"
+    "\u2551" +
+      "'-g x' Sets the gender to be returned" +
+      " ".repeat(23) +
+      "\u2551"
   );
 
   console.log(line3);
@@ -1270,11 +1251,7 @@ function drawTipBox() {
 
 function drawOutput() {
   let line = "\u2560";
-  console.log(
-    "\u2551",
-    "Output                                                    ",
-    "\u2551"
-  );
+  console.log("\u2551" + "Output" + " ".repeat(54) + "\u2551");
 
   for (x = 0; x < 60; x++) {
     line += "\u2550";
