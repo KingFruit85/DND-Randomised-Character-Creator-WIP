@@ -1,5 +1,32 @@
 const utils = require("./utils.js");
 
+const personality = {
+    one: {
+        description: "I idolize a particular hero of my faith, and constantly refer to that person’s deeds and example."
+    },
+    two: {
+        description: "I can find common ground between the fiercest enemies, empathizing with them and always working toward peace."
+    },
+    three: {
+        description: "I see omens in every event and action. The gods try to speak to us, we just need to listen."
+    },
+    four: {
+        description: "Nothing can shake my optimistic attitude."
+    },
+    five: {
+        description: "I quote (or misquote) sacred texts and proverbs in almost every situation."
+    },
+    six: {
+        description: "I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods."
+    },
+    seven: {
+        description: "I’ve enjoyed fine food, drink, and high society among my temple’s elite. Rough living grates on me."
+    },
+    eight: {
+        description: "I’ve spent so long in the temple that I have little practical experience dealing with people in the outside world."
+    }
+}, 
+
 const ideal = {
     one: {
         description: "Tradition. The ancient traditions of worship and sacrifice must be preserved and upheld. (Lawful)"
