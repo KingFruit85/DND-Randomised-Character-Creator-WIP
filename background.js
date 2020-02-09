@@ -38,3 +38,17 @@ const flaw = [
     'I am suspicious of strangers and expect the worst of them.',
     'Once I pick a goal, I become obsessed with it to the detriment of everything else in my life.'
     ]
+
+    function returnRandomPersonality(personality, ideal, bond, flaw) {
+        personalityTraits = {
+            personality: utils.returnRandomArrayItem(personality),
+            ideal: utils.returnRandomArrayItem(ideal),
+            bond: utils.returnRandomArrayItem(bond),
+            flaw: utils.returnRandomArrayItem(flaw)
+        };
+
+        return personalityTraits;
+
+    }
+
+    exports.returnRandomPersonality = returnRandomPersonality;
