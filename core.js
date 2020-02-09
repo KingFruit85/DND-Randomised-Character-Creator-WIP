@@ -1145,7 +1145,7 @@ function NewCharacter() {
   this.spellSlots = calculateSpellslots(this.characterClass.name);
   this.characterClass.initiative = this.abilityScores.dexMod;
 
-  this.personalityTraits = returnRandomPersonality();
+  this.personalityTraits = background.returnRandomPersonality();
 
   this.characterClass.equipment.armor = armors.assignArmor(this);
   this.armorClass = calculateArmorClass(this);

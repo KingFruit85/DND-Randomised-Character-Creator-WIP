@@ -39,7 +39,7 @@ const flaw = [
     'Once I pick a goal, I become obsessed with it to the detriment of everything else in my life.'
     ]
 
-    function returnRandomPersonality(personality, ideal, bond, flaw) {
+    function returnRandomPersonality() {
         personalityTraits = {
             personality: utils.returnRandomArrayItem(personality),
             ideal: utils.returnRandomArrayItem(ideal),
