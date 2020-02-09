@@ -1,5 +1,26 @@
 const utils = require("./utils.js");
 
+const ideal = {
+    one: {
+        description: "Tradition. The ancient traditions of worship and sacrifice must be preserved and upheld. (Lawful)"
+    },
+    two: {
+        description: "	Charity. I always try to help those in need, no matter what the personal cost. (Good)"
+    },
+    three: {
+        description: "Change. We must help bring about the changes the gods are constantly working in the world. (Chaotic)"
+    },
+    four: {
+        description: "Power. I hope to one day rise to the top of my faith’s religious hierarchy. (Lawful)"
+    },
+    five: {
+        description: "Faith. I trust that my deity will guide my actions. I have faith that if I work hard, things will go well. (Lawful)"
+    },
+    six: {
+        description: "Aspiration. I seek to prove myself worthy of my god’s favor by matching my actions against his or her teachings"
+    },
+}, 
+
 const bond = {
     one: {
         description: "I would die to recover an ancient relic of my faith that was lost long ago."
@@ -17,7 +38,7 @@ const bond = {
         description: "I will do anything to protect the temple where I served."
     },
     six: {
-        description: "	I seek to preserve a sacred text that my enemies consider heretical and seek to destroy"
+        description: "I seek to preserve a sacred text that my enemies consider heretical and seek to destroy"
     },
 }, 
 
