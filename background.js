@@ -20,3 +20,24 @@ const bond = {
         description: "	I seek to preserve a sacred text that my enemies consider heretical and seek to destroy"
     },
 }, 
+
+const flaw = {
+    one: {
+        description: "I judge others harshly, and myself even more severely."
+    },
+    two: {
+        description: "I put too much trust in those who wield power within my temple’s hierarchy."
+    },
+    three: {
+        description: "My piety sometimes leads me to blindly trust those that profess faith in my god."
+    },
+    four: {
+        description: "I am inflexible in my thinking."
+    },
+    five: {
+        description: "I am suspicious of strangers and expect the worst of them."
+    },
+    six: {
+        description: "Once I pick a goal, I become obsessed with it to the detriment of everything else in my life."
+    },
+}, 
