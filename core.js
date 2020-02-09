@@ -6,6 +6,7 @@ const names = require("./names.js");
 const feats = require("./feats.js");
 const armors = require("./armor");
 const fs = require("fs");
+const background = require("./background.js");
 
 const validClassList = [
   "bard",
@@ -1143,6 +1144,8 @@ function NewCharacter() {
   );
   this.spellSlots = calculateSpellslots(this.characterClass.name);
   this.characterClass.initiative = this.abilityScores.dexMod;
+
+  this.personalityTraits = background.returnRandomPersonality();
 
   this.characterClass.equipment.armor = armors.assignArmor(this);
   this.armorClass = calculateArmorClass(this);
