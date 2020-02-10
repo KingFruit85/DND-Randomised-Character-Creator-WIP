@@ -7,6 +7,7 @@ const feats = require("./feats.js");
 const armors = require("./armor");
 const fs = require("fs");
 const background = require("./background.js");
+const personBuilder = require("./personBuilder.js");
 
 const validClassList = [
   "bard",
@@ -1146,6 +1147,11 @@ function NewCharacter() {
   this.characterClass.initiative = this.abilityScores.dexMod;
 
   this.personalityTraits = background.returnRandomPersonality();
+  this.physicalDescription = personBuilder.physicalDescription(
+    this.fullname.firstName,
+    this.gender,
+    this.race
+  );
 
   this.characterClass.equipment.armor = armors.assignArmor(this);
   this.armorClass = calculateArmorClass(this);
