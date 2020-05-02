@@ -21,7 +21,7 @@ const validClassList = [
   "sorcerer",
   "warlock",
   "wizard",
-  "druid"
+  "druid",
 ];
 
 const validRaceList = [
@@ -33,7 +33,7 @@ const validRaceList = [
   "half-orc",
   "halfling",
   "human",
-  "tiefling"
+  "tiefling",
 ];
 
 // TODO: refactor, must be a cleaner way to do this
@@ -83,7 +83,7 @@ function returnHeightAndWeight(height, weight) {
     "Chaotic Neutral",
     "Lawful Evil",
     "Neutral Evil",
-    "Chaotic Evil"
+    "Chaotic Evil",
   ]);
 } //------------------------------------------------------------------------------
 
@@ -224,56 +224,56 @@ function returnDragonbornFeatures(draconicAncestry) {
     {
       colour: "Black",
       damageType: "Acid",
-      breathWeapon: "5 ft by 30 ft line (Dex save)"
+      breathWeapon: "5 ft by 30 ft line (Dex save)",
     },
     {
       colour: "Blue",
       damageType: "Lightning",
-      breathWeapon: "5 ft by 30 ft line (Dex save)"
+      breathWeapon: "5 ft by 30 ft line (Dex save)",
     },
     {
       colour: "Brass",
       damageType: "Fire",
-      breathWeapon: "5 ft by 30 ft line (Dex save)"
+      breathWeapon: "5 ft by 30 ft line (Dex save)",
     },
     {
       colour: "Bronze",
       damageType: "Lightning",
-      breathWeapon: "5 ft by 30 ft line (Dex save)"
+      breathWeapon: "5 ft by 30 ft line (Dex save)",
     },
     {
       colour: "Copper",
       damageType: "Acid",
-      breathWeapon: "5 ft by 30 ft line (Dex save)"
+      breathWeapon: "5 ft by 30 ft line (Dex save)",
     },
     {
       colour: "Gold",
       damageType: "Fire",
-      breathWeapon: "15 ft cone (Dex save)"
+      breathWeapon: "15 ft cone (Dex save)",
     },
     {
       colour: "Green",
       damageType: "Poison",
-      breathWeapon: "15 ft cone (Con save)"
+      breathWeapon: "15 ft cone (Con save)",
     },
     {
       colour: "Red",
       damageType: "Fire",
-      breathWeapon: "15 ft cone (Dex save)"
+      breathWeapon: "15 ft cone (Dex save)",
     },
     {
       colour: "Silver",
       damageType: "Cold",
-      breathWeapon: "15 ft cone (Con save)"
+      breathWeapon: "15 ft cone (Con save)",
     },
     {
       colour: "White",
       damageType: "Cold",
-      breathWeapon: "15 ft cone (Con save)"
-    }
+      breathWeapon: "15 ft cone (Con save)",
+    },
   ];
 
-  var ancestryDetails = draconicAncestryFeatures.filter(arrayObject => {
+  var ancestryDetails = draconicAncestryFeatures.filter((arrayObject) => {
     return arrayObject.colour === draconicAncestry;
   });
 
@@ -294,7 +294,7 @@ function applyDragonbornRaceBonuses() {
     "Green",
     "Red",
     "Silver",
-    "White"
+    "White",
   ]);
   character.resistances = returnDragonbornFeatures(
     character.draconicAncestry
@@ -508,7 +508,7 @@ function returnRandomLanguage() {
     "Primordial",
     "Sylvan",
     "Terran",
-    "Undercommon"
+    "Undercommon",
   ]);
 }
 
@@ -725,28 +725,28 @@ function calculateSavingThrowScores(
   let savingThrows = {
     strength: {
       modifier: abilityScores.strMod,
-      proficient: savingThrowProficiencies.includes("str")
+      proficient: savingThrowProficiencies.includes("str"),
     },
     dexterity: {
       modifier: abilityScores.dexMod,
-      proficient: savingThrowProficiencies.includes("dex")
+      proficient: savingThrowProficiencies.includes("dex"),
     },
     constitution: {
       modifier: abilityScores.conMod,
-      proficient: savingThrowProficiencies.includes("con")
+      proficient: savingThrowProficiencies.includes("con"),
     },
     intelligence: {
       modifier: abilityScores.intMod,
-      proficient: savingThrowProficiencies.includes("int")
+      proficient: savingThrowProficiencies.includes("int"),
     },
     wisdom: {
       modifier: abilityScores.wisMod,
-      proficient: savingThrowProficiencies.includes("wis")
+      proficient: savingThrowProficiencies.includes("wis"),
     },
     charasma: {
       modifier: abilityScores.chaMod,
-      proficient: savingThrowProficiencies.includes("cha")
-    }
+      proficient: savingThrowProficiencies.includes("cha"),
+    },
   };
 
   if (savingThrows.strength.proficient === true) {
@@ -779,72 +779,72 @@ function calculateSkillScores(
   let skillScores = {
     athletics: {
       modifier: abilityScores.strMod,
-      proficient: skillProficiencies.includes("athletics")
+      proficient: skillProficiencies.includes("athletics"),
     },
     acrobatics: {
       modifier: abilityScores.dexMod,
-      proficient: skillProficiencies.includes("acrobatics")
+      proficient: skillProficiencies.includes("acrobatics"),
     },
     sleightOfHand: {
       modifier: abilityScores.dexMod,
-      proficient: skillProficiencies.includes("sleight of hand")
+      proficient: skillProficiencies.includes("sleight of hand"),
     },
     arcana: {
       modifier: abilityScores.intMod,
-      proficient: skillProficiencies.includes("arcana")
+      proficient: skillProficiencies.includes("arcana"),
     },
     stealth: {
       modifier: abilityScores.dexMod,
-      proficient: skillProficiencies.includes("stealth")
+      proficient: skillProficiencies.includes("stealth"),
     },
     history: {
       modifier: abilityScores.wisMod,
-      proficient: skillProficiencies.includes("history")
+      proficient: skillProficiencies.includes("history"),
     },
     nature: {
       modifier: abilityScores.intMod,
-      proficient: skillProficiencies.includes("nature")
+      proficient: skillProficiencies.includes("nature"),
     },
     religion: {
       modifier: abilityScores.wisMod,
-      proficient: skillProficiencies.includes("religion")
+      proficient: skillProficiencies.includes("religion"),
     },
     animalHandling: {
       modifier: abilityScores.wisMod,
-      proficient: skillProficiencies.includes("animal handling")
+      proficient: skillProficiencies.includes("animal handling"),
     },
     insight: {
       modifier: abilityScores.wisMod,
-      proficient: skillProficiencies.includes("insight")
+      proficient: skillProficiencies.includes("insight"),
     },
     medicine: {
       modifier: abilityScores.wisMod,
-      proficient: skillProficiencies.includes("medicine")
+      proficient: skillProficiencies.includes("medicine"),
     },
     perception: {
       modifier: abilityScores.wisMod,
-      proficient: skillProficiencies.includes("perception")
+      proficient: skillProficiencies.includes("perception"),
     },
     survival: {
       modifier: abilityScores.wisMod,
-      proficient: skillProficiencies.includes("survival")
+      proficient: skillProficiencies.includes("survival"),
     },
     deception: {
       modifier: abilityScores.chaMod,
-      proficient: skillProficiencies.includes("deception")
+      proficient: skillProficiencies.includes("deception"),
     },
     intimidation: {
       modifier: abilityScores.chaMod,
-      proficient: skillProficiencies.includes("intimidation")
+      proficient: skillProficiencies.includes("intimidation"),
     },
     performance: {
       modifier: abilityScores.chaMod,
-      proficient: skillProficiencies.includes("performance")
+      proficient: skillProficiencies.includes("performance"),
     },
     persuasion: {
       modifier: abilityScores.chaMod,
-      proficient: skillProficiencies.includes("persuasion")
-    }
+      proficient: skillProficiencies.includes("persuasion"),
+    },
   };
 
   if (skillScores.athletics.proficient === true) {
@@ -957,12 +957,12 @@ function calculateArmorClass(char) {
 
   if (shield !== undefined) {
     if (
-      shield.some(item => item.name === "Shield") &&
+      shield.some((item) => item.name === "Shield") &&
       armorProf.includes("shields")
     ) {
       AC += 2;
     } else if (
-      shield.some(item => item.name === "Wooden Shield") &&
+      shield.some((item) => item.name === "Wooden Shield") &&
       armorProf.includes("shields")
     ) {
       AC += 2;
@@ -984,7 +984,7 @@ function calculateSpellslots(characterClass) {
     sixthLevel: { avalible: 0, spells: [] },
     seventhLevel: { avalible: 0, spells: [] },
     eighthLevel: { avalible: 0, spells: [] },
-    ninthLevel: { avalible: 0, spells: [] }
+    ninthLevel: { avalible: 0, spells: [] },
   };
 
   if (characterClass === "bard") {
@@ -1108,13 +1108,30 @@ function calculateSpellslots(characterClass) {
   return spellSlots;
 }
 
+//returns the characters proficiency bonus
+//TODO: some character get a bonus to this based on class abilities(i think?)
+function getProficiencyModifier(level) {
+  switch (true) {
+    case level <= 4:
+      return 2;
+    case level >= 4 && level <= 8:
+      return 3;
+    case level >= 9 && level <= 12:
+      return 4;
+    case level >= 13 && level <= 16:
+      return 5;
+    case level >= 17:
+      return 6;
+  }
+}
+
 var chartype; //set by -c commandline arguement
 var raceType; //set by the -r commandline arguement
 
 //NewCharacter Construtor
 function NewCharacter() {
   this.level = 1; // TODO: add level scaling
-  this.proficiencyModifier = 2; //TODO: this should be derived from the charcter level
+  this.proficiencyModifier = getProficiencyModifier(this.level);
   this.characterClass = returnRandomCharacterClass(chartype);
   this.characterClassAbilities = classes.addClassFeatures(
     this.characterClass.name
@@ -1221,6 +1238,21 @@ for (let j = 0; j < process.argv.length; j++) {
       ); //If argument isn't a string or a valid class
     }
   }
+
+  //Started writing this but ran into a lot of issues, would rather write something native.
+  //
+  // if (
+  //   process.argv[j] === "-clear" ||
+  //   process.argv[j] === "-CLEAR" ||
+  //   process.argv[j] === "Clear"
+  // ) {
+  //   //check for the argument -clear, if found clears the exports folder
+  //   let path = "./Exports";
+
+  //   fs.rmdirSync(path, { recursive: true });
+  //   console.log("Export folder deleted");
+  // }
+
   // console.log(j + ' -> ' + (process.argv[j])); //used to print all arguments on screen for testing
 }
 
@@ -1260,7 +1292,7 @@ function drawTipBox() {
 
 function drawOutput() {
   let line = "\u2560";
-  console.log("\u2551" + "Output" + " ".repeat(54) + "\u2551");
+  console.log("\u2551" + "Characters Created" + " ".repeat(42) + "\u2551");
 
   for (x = 0; x < 60; x++) {
     line += "\u2550";
@@ -1335,7 +1367,7 @@ for (var k = 0; k < charQty; k++) {
       x.characterClass.name +
       ".JSON",
     JsonExport,
-    function(err) {
+    function (err) {
       if (err) {
         return console.log(err);
       }
