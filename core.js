@@ -67,7 +67,7 @@ function returnHeightAndWeight(height, weight) {
   heightWeight.push(heightWeight[0] * sumOfRolls);
 
   return heightWeight;
-} //------------------------------------------------------------------------------
+}
 
 /**-------------------------------------------------------------------------------
  * @description Returns a random alignment
@@ -85,13 +85,15 @@ function returnHeightAndWeight(height, weight) {
     "Neutral Evil",
     "Chaotic Evil",
   ]);
-} //------------------------------------------------------------------------------
+}
 
-/**-------------------------------------------------------------------------------
+/**
  * @description Calculates a random character age based on the provided race type
  * @param {String} race - the character race
  * @returns {Number} the calculated age as a whole number
- */ function returnCharacterAge(race) {
+ */
+
+function returnCharacterAge(race) {
   switch (true) {
     case race === "dragonborn":
       return utils.returnRandomNumberInRange(15, 80);
@@ -114,13 +116,15 @@ function returnHeightAndWeight(height, weight) {
     default:
       return "Fell though switch case [returnCharacterAge()]";
   }
-} //------------------------------------------------------------------------------
+}
 
-/**-------------------------------------------------------------------------------
+/**
  * @description Applies racial bonuses to the character object based on race
  * @param {Object} char - the character object
  * @returns {Object} the ammended character object
- */ function applySubraceBonuses(char) {
+ */
+
+function applySubraceBonuses(char) {
   character = char;
 
   switch (true) {
@@ -219,6 +223,12 @@ function returnCharacterHeight(race) {
   return heightAndWeight;
 }
 
+/**
+ * @description Returns a dragonborns's ancestry details based on the colour provided as a param
+ * @param {Object} draconicAncestry - the colour value provided as a string
+ * @returns {Object} and object containing the colour/damageType/breathWeapon details
+ */
+
 function returnDragonbornFeatures(draconicAncestry) {
   let draconicAncestryFeatures = [
     {
@@ -273,7 +283,7 @@ function returnDragonbornFeatures(draconicAncestry) {
     },
   ];
 
-  var ancestryDetails = draconicAncestryFeatures.filter((arrayObject) => {
+  let ancestryDetails = draconicAncestryFeatures.filter((arrayObject) => {
     return arrayObject.colour === draconicAncestry;
   });
 
@@ -1183,7 +1193,7 @@ var genderType;
 for (let j = 0; j < process.argv.length; j++) {
   //loops all arguments
 
-  if (process.argv[j] === "-n" || process.argv[j] === "-N") {
+  if (process.argv[j].toLowerCase() === "-n") {
     //check for the argument -n, if 'true' user wants several chars
     var isnum = /^\d+$/.test(process.argv[j + 1]); //checks if the next argument is a number
     if (isnum == true) {
@@ -1191,7 +1201,7 @@ for (let j = 0; j < process.argv.length; j++) {
     }
   }
 
-  if (process.argv[j] === "-c" || process.argv[j] === "-C") {
+  if (process.argv[j].toLowerCase() === "-c") {
     //check for the argument -c, if true user wants to force a specific class
     if (
       typeof process.argv[j + 1] != "undefined" &&
@@ -1207,7 +1217,7 @@ for (let j = 0; j < process.argv.length; j++) {
     }
   }
 
-  if (process.argv[j] === "-r" || process.argv[j] === "-R") {
+  if (process.argv[j].toLowerCase() === "-r") {
     //check for the argument -r, if true user wants to force a specific race
     if (
       typeof process.argv[j + 1] != "undefined" &&
@@ -1222,7 +1232,7 @@ for (let j = 0; j < process.argv.length; j++) {
     }
   }
 
-  if (process.argv[j] === "-g" || process.argv[j] === "-G") {
+  if (process.argv[j].toLowerCase() === "-g") {
     //check for the argument -g, if true user wants to force a specific gender
     let genderProvided = process.argv[j + 1];
     if (
