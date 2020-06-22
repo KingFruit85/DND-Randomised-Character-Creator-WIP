@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #242333;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Lato", "sans-serif";
+  margin: 0;
+}
+
+.topRow{
+
+  width: 100%;
+  display: flex;
+
+}
+
+.leftColumn{
+padding-right:90%;
+}
+
+.row {
+  border-color: black;
+  border-style: solid;
+  padding: 5px 5px 5px 5px;
+  border-radius: 10px;
+}
+
+.abilityScores {
+
+  padding: 5px 5px 5px 5px;
+}
+
+.characterName{
+
+height: 100px;
+width:40%;
+background-color: whitesmoke;
+border-style: solid;
+border-color: rgb(0, 0, 0);
+border-radius: 10px;
+color: black;
+
+}
+.name{
+
+  font-size: 30px;
+  height: 100%;
+  text-align: center;
+  padding-top: 30px;
+
+}
+
+.basicInfo{
+
+  padding:5px 5px 5px 5px;
+  width:60%;
+}
+
+.basicInfoTop{
+
+  display: flex;
+}
+.basicInfoBottom{
+
+  display: flex;
+}
+
+.infoBox{
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  width:35%;
+}
+
+.Strength {
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  height: 90px;
+  width: 85px;
+  margin: 3px;
+  font-size: 15px;
+  text-align: center;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.Dexterity {
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  height: 90px;
+  width: 85px;
+  margin: 3px;
+  font-size: 15px;
+  text-align: center;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.Constitution {
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  height: 90px;
+  width: 85px;
+  margin: 3px;
+  font-size: 15px;
+  text-align: center;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.Intelligence {
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  height: 90px;
+  width: 85px;
+  margin: 3px;
+  font-size: 15px;
+  text-align: center;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.Wisdom {
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  height: 90px;
+  width: 85px;
+  margin: 3px;
+  font-size: 15px;
+  text-align: center;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.Charisma {
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  height: 90px;
+  width: 85px;
+  margin: 3px;
+  font-size: 15px;
+  text-align: center;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
