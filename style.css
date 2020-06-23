@@ -5,26 +5,81 @@
 body {
   background-color: #242333;
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   font-family: "Lato", "sans-serif";
-  margin: 0;
 }
 
 .topRow{
 
   width: 100%;
   display: flex;
-
+  padding-top: 10px;
 }
 
 .leftColumn{
 display:table-row;
-
+float: left;
+/* border-style: dashed;
+border-color: blue; */
 }
+
+.inspiration{
+  border-style: solid;
+  border-color: black;
+  background: whitesmoke;
+  color: black;
+  border-radius: 10px;
+  text-align: center;
+  height: 40px;
+  padding-top: 10px;
+}
+
+.inspirationBox{
+  border-style: solid;
+  border-color: black;
+  color: black;
+  background: whitesmoke;
+  width: 40px;
+  height:40px;
+  float: left;
+  text-align: center;
+  padding-top: 2px;
+  font-size: 50px;
+}
+.proficiencyBonusScore{
+  border-style: solid;
+  border-color: black;
+  color: black;
+  background: whitesmoke;
+  width: 40px;
+  height:40px;
+  float: left;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 25px;
+}
+
+.wrapper{
+  padding: 10px 0px 10px 0px;
+  display:block;
+}
+
+.spacer15{
+  height: 15px;
+}
+
+.proficiencyBonus{
+  border-style: solid;
+  border-color: black;
+  background: whitesmoke;
+  color: black;
+  border-radius: 10px;
+  text-align: center;
+  height: 40px;
+  padding-top: 10px;
+}
+
 .skills{
   text-align: center;
   border-color: black;
@@ -40,6 +95,7 @@ display:table-row;
 }
 .skillsColumn{
   float: right;
+  padding: 5px 5px 5px 5px;
 }
 
 .row {
@@ -47,33 +103,30 @@ display:table-row;
   border-style: solid;
   padding: 5px 5px 5px 5px;
   border-radius: 10px;
+  background-color: grey;
 }
 
 .abilityScores {
-
   padding: 5px 5px 5px 5px;
   float: left;
   height: 100%;
 }
 
 .characterName{
-
-height: 100px;
-width:40%;
-background-color: whitesmoke;
-border-style: solid;
-border-color: rgb(0, 0, 0);
-border-radius: 10px;
-color: black;
-
+  height: 100px;
+  width:40%;
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  color: black;
 }
-.name{
 
+.name{
   font-size: 30px;
   height: 100%;
   text-align: center;
   padding-top: 30px;
-
 }
 
 .basicInfo{
@@ -101,81 +154,35 @@ color: black;
   width:35%;
 }
 
-.Strength {
+.abilityScore {
   background-color: whitesmoke;
   border-style: solid;
-  border-color: rgb(0, 0, 0);
-  height: 90px;
-  width: 85px;
-  margin: 3px;
+  border-color:black;
+  height: 100px;
+  width: 95px;
+  margin: 15px;
   font-size: 15px;
   text-align: center;
   color: black;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.Dexterity {
-  background-color: whitesmoke;
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
-  height: 90px;
-  width: 85px;
-  margin: 3px;
-  font-size: 15px;
-  text-align: center;
-  color: black;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+
+.abilityScoreBig{
+  font-size: 35px;
+  padding-top: 10px;
 }
-.Constitution {
-  background-color: whitesmoke;
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
-  height: 90px;
-  width: 85px;
-  margin: 3px;
-  font-size: 15px;
-  text-align: center;
-  color: black;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.Intelligence {
-  background-color: whitesmoke;
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
-  height: 90px;
-  width: 85px;
-  margin: 3px;
-  font-size: 15px;
-  text-align: center;
-  color: black;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.Wisdom {
-  background-color: whitesmoke;
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
-  height: 90px;
-  width: 85px;
-  margin: 3px;
-  font-size: 15px;
-  text-align: center;
-  color: black;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.Charisma {
-  background-color: whitesmoke;
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
-  height: 90px;
-  width: 85px;
-  margin: 3px;
-  font-size: 15px;
-  text-align: center;
-  color: black;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+
+.abilityScoreMod{
+  border-style:solid;
+  border-color: black;
+  border-radius: 40px;
+  font-weight: bolder;
+  width: 50px;
+  height: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  padding-top: 5px;
+  background-color: inherit;
 }
