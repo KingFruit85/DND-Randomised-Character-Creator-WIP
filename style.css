@@ -22,7 +22,24 @@ body {
 }
 
 .leftColumn{
-padding-right:90%;
+display:table-row;
+
+}
+.skills{
+  text-align: center;
+  border-color: black;
+  border-style: solid;
+  background: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  padding-right: 15px;
+}
+.skillList{
+  text-align: left;
+  list-style-type:circle;
+}
+.skillsColumn{
+  float: right;
 }
 
 .row {
@@ -35,6 +52,8 @@ padding-right:90%;
 .abilityScores {
 
   padding: 5px 5px 5px 5px;
+  float: left;
+  height: 100%;
 }
 
 .characterName{
