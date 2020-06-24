@@ -3,6 +3,8 @@
 }
 
 body {
+  /* display: flex;
+  flex-direction: column; */
   background-color: #242333;
   color: #ffffff;
   height: 100vh;
@@ -19,8 +21,9 @@ body {
 .leftColumn{
 display:table-row;
 float: left;
-/* border-style: dashed;
-border-color: blue; */
+position: relative;
+border-style: dashed;
+border-color: blue;
 }
 
 .inspiration{
@@ -60,6 +63,20 @@ border-color: blue; */
   font-size: 25px;
 }
 
+.passivePerceptionScore{
+  border-style: solid;
+  border-color: black;
+  color: black;
+  background: whitesmoke;
+  width: 40px;
+  height:40px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 25px;
+}
+
+
 .wrapper{
   padding: 10px 0px 10px 0px;
   display:block;
@@ -67,6 +84,42 @@ border-color: blue; */
 
 .spacer15{
   height: 15px;
+}
+
+.bottomLeft{
+  border-style:dashed;
+  border-color: blue;
+  display:flex;
+
+}
+
+.pageMain{
+  border-style:double;
+  border-color: white;
+  display:flex;
+  justify-content:space-evenly;
+}
+
+.leftside{
+  display:flex;
+  flex-direction:column;
+  border-style: dashed;
+  border-color: red;
+  width:100%;
+}
+
+.middle{
+  /* border-style:dashed;
+  border-color: green; */
+  background-color: grey;
+  border-radius: 10px;
+  width:100%;
+}
+
+.rightSide{
+  border-style:dashed;
+  border-color: white;
+width:100%;
 }
 
 .proficiencyBonus{
@@ -78,6 +131,18 @@ border-color: blue; */
   text-align: center;
   height: 40px;
   padding-top: 10px;
+}
+
+.passivePerception{
+  border-style: solid;
+  border-color: black;
+  background: whitesmoke;
+  color: black;
+  border-radius: 10px;
+  text-align: center;
+  height: 40px;
+  padding-top: 10px;
+  align-content: stretch;
 }
 
 .skills{
@@ -94,7 +159,10 @@ border-color: blue; */
   list-style-type:circle;
 }
 .skillsColumn{
-  float: right;
+  float: left;
+  border-color: purple;
+  width:69%;
+  border-style: solid;
   padding: 5px 5px 5px 5px;
 }
 
@@ -109,7 +177,7 @@ border-color: blue; */
 .abilityScores {
   padding: 5px 5px 5px 5px;
   float: left;
-  height: 100%;
+
 }
 
 .characterName{
@@ -185,4 +253,55 @@ border-color: blue; */
   font-size: 20px;
   padding-top: 5px;
   background-color: inherit;
+}
+
+.ACIS{
+  display: flex;
+  text-align: center;
+  border-style: solid;
+  border-color: pink;
+  justify-content: space-evenly;
+
+}
+.acisBox{
+  height: 25%;
+  width: 95px;
+  margin: 15px;
+  border-style: solid;
+  border-color: black;
+  background-color: whitesmoke;
+  color: black;
+  line-height: 100px;
+  border-radius: 10px;
+  font-size: 35px;
+}
+
+.currentHitPoints{
+  border-style: solid;
+  border-color: black;
+  color: black;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 15px;
+  height: 25%;
+  background: whitesmoke;
+  border-radius: 20px;
+}
+
+.tempHitPoints{
+  border-style: solid;
+  border-color: black;
+  color: black;
+  height: 25%;
+  font-size: 15px;
+  height: 25%;
+  background: whitesmoke;
+  border-radius: 20px;
+}
+
+.hitDiceAndDeathSaves{
+  border-style: solid;
+  border-color: orange;
+  height: 25%;
 }
