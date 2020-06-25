@@ -12,18 +12,14 @@ body {
 }
 
 .topRow{
-
   width: 100%;
   display: flex;
   padding-top: 10px;
 }
 
 .leftColumn{
-display:table-row;
-float: left;
-position: relative;
-border-style: dashed;
-border-color: blue;
+  display:table-row;
+  float: left;
 }
 
 .inspiration{
@@ -87,39 +83,61 @@ border-color: blue;
 }
 
 .bottomLeft{
-  border-style:dashed;
-  border-color: blue;
   display:flex;
 
 }
 
 .pageMain{
-  border-style:double;
-  border-color: white;
   display:flex;
   justify-content:space-evenly;
+
 }
 
 .leftside{
   display:flex;
   flex-direction:column;
-  border-style: dashed;
-  border-color: red;
   width:100%;
 }
 
 .middle{
-  /* border-style:dashed;
-  border-color: green; */
-  background-color: grey;
   border-radius: 10px;
   width:100%;
 }
 
 .rightSide{
-  border-style:dashed;
-  border-color: white;
-width:100%;
+  width:100%;
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rightSideTop{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.rightSideBottom{
+
+}
+
+.PTIBF{
+  border-color: black;
+  border-style: solid;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+}
+
+.PTIBFDetails{
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .proficiencyBonus{
@@ -160,9 +178,9 @@ width:100%;
 }
 .skillsColumn{
   float: left;
-  border-color: purple;
   width:69%;
-  border-style: solid;
+  /* border-color: purple;
+  border-style: solid; */
   padding: 5px 5px 5px 5px;
 }
 
@@ -258,8 +276,8 @@ width:100%;
 .ACIS{
   display: flex;
   text-align: center;
-  border-style: solid;
-  border-color: pink;
+  /* border-style: solid;
+  border-color: pink; */
   justify-content: space-evenly;
 
 }
@@ -267,13 +285,22 @@ width:100%;
   height: 25%;
   width: 95px;
   margin: 15px;
-  border-style: solid;
+  border-style:solid;
   border-color: black;
   background-color: whitesmoke;
   color: black;
-  line-height: 100px;
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
+  font-size: 15px;
+
+
+}
+
+.acisTitle{
   font-size: 35px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .currentHitPoints{
@@ -284,9 +311,11 @@ width:100%;
   padding-left: 10px;
   padding-top: 10px;
   font-size: 15px;
-  height: 25%;
+  height: 33.3%;
   background: whitesmoke;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .tempHitPoints{
@@ -301,7 +330,34 @@ width:100%;
 }
 
 .hitDiceAndDeathSaves{
-  border-style: solid;
-  border-color: orange;
   height: 25%;
+  display: flex;
+}
+
+.hitDice{
+  border-style: solid;
+  border-color: black;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  width: 50%;
+}
+.deathSaves{
+  border-style: solid;
+  border-color: black;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  width: 50%;
+}
+
+.boxValue{
+  text-align: center;
+  font-size: 30px;
+  height: 33.3%;
+}
+
+.boxTitle{
+  text-align: center;
+  height: 33.3%;
 }
