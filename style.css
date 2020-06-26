@@ -11,18 +11,18 @@ body {
   font-family: "Lato", "sans-serif";
 }
 
-.topRow{
+.topRow {
   width: 100%;
   display: flex;
   padding-top: 10px;
 }
 
-.leftColumn{
-  display:table-row;
+.leftColumn {
+  display: table-row;
   float: left;
 }
 
-.inspiration{
+.inspiration {
   border-style: solid;
   border-color: black;
   background: whitesmoke;
@@ -33,25 +33,24 @@ body {
   padding-top: 10px;
 }
 
-.inspirationBox{
+.inspirationBox {
   border-style: solid;
   border-color: black;
   color: black;
   background: whitesmoke;
   width: 40px;
-  height:40px;
+  height: 40px;
   float: left;
   text-align: center;
-  padding-top: 2px;
-  font-size: 50px;
+  font-size: 40px;
 }
-.proficiencyBonusScore{
+.proficiencyBonusScore {
   border-style: solid;
   border-color: black;
   color: black;
   background: whitesmoke;
   width: 40px;
-  height:40px;
+  height: 40px;
   float: left;
   border-radius: 10px;
   text-align: center;
@@ -59,88 +58,89 @@ body {
   font-size: 25px;
 }
 
-.passivePerceptionScore{
+.passivePerceptionScore {
   border-style: solid;
   border-color: black;
   color: black;
   background: whitesmoke;
   width: 40px;
-  height:40px;
+  height: 40px;
   border-radius: 10px;
   text-align: center;
   padding-top: 5px;
   font-size: 25px;
 }
 
-
-.wrapper{
+.wrapper {
   padding: 10px 0px 10px 0px;
-  display:block;
+  display: block;
 }
 
-.spacer15{
+.spacer15 {
   height: 15px;
 }
 
-.bottomLeft{
-  display:flex;
-
-}
-
-.pageMain{
-  display:flex;
-  justify-content:space-evenly;
-
-}
-
-.leftside{
-  display:flex;
-  flex-direction:column;
-  width:100%;
-}
-
-.middle{
-  border-radius: 10px;
-  width:100%;
-}
-
-.rightSide{
-  width:100%;
-  padding: 20px 20px 20px 20px;
+.bottomLeft {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-.rightSideTop{
-
+.pageMain {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
 }
 
-.rightSideBottom{
-
+.leftside {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.PTIBF{
+.middle {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.rightSide {
+  width: 100%;
+  padding: 0px 30px 0px 30px;
+  display: flex;
+  flex-direction: column;
+  /* border-style: double;
+  border-color: aqua; */
+}
+
+.rightSideTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  background-color: gray;
+  border-radius: 10px;
+}
+
+.rightSideBottom {
+  border-style: solid;
+  border-color: white;
+}
+
+.PTIBF {
   border-color: black;
   border-style: solid;
   background-color: whitesmoke;
   border-radius: 10px;
   color: black;
   text-align: center;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-.PTIBFDetails{
+.PTIBFDetails {
   text-align: center;
   padding-top: 40px;
   padding-bottom: 40px;
 }
 
-.proficiencyBonus{
+.proficiencyBonus {
   border-style: solid;
   border-color: black;
   background: whitesmoke;
@@ -151,7 +151,7 @@ body {
   padding-top: 10px;
 }
 
-.passivePerception{
+.passivePerception {
   border-style: solid;
   border-color: black;
   background: whitesmoke;
@@ -163,7 +163,7 @@ body {
   align-content: stretch;
 }
 
-.skills{
+.skills {
   text-align: center;
   border-color: black;
   border-style: solid;
@@ -172,13 +172,13 @@ body {
   color: black;
   padding-right: 15px;
 }
-.skillList{
+.skillList {
   text-align: left;
-  list-style-type:circle;
+  list-style-type: circle;
 }
-.skillsColumn{
+.skillsColumn {
   float: left;
-  width:69%;
+  width: 69%;
   /* border-color: purple;
   border-style: solid; */
   padding: 5px 5px 5px 5px;
@@ -195,12 +195,11 @@ body {
 .abilityScores {
   padding: 5px 5px 5px 5px;
   float: left;
-
 }
 
-.characterName{
+.characterName {
   height: 100px;
-  width:40%;
+  width: 40%;
   background-color: whitesmoke;
   border-style: solid;
   border-color: rgb(0, 0, 0);
@@ -208,42 +207,39 @@ body {
   color: black;
 }
 
-.name{
+.name {
   font-size: 30px;
   height: 100%;
   text-align: center;
   padding-top: 30px;
 }
 
-.basicInfo{
-
-  padding:5px 5px 5px 5px;
-  width:60%;
+.basicInfo {
+  padding: 5px 5px 5px 5px;
+  width: 60%;
 }
 
-.basicInfoTop{
-
+.basicInfoTop {
   display: flex;
 }
-.basicInfoBottom{
-
+.basicInfoBottom {
   display: flex;
 }
 
-.infoBox{
+.infoBox {
   background-color: whitesmoke;
   border-style: solid;
   border-color: black;
   border-radius: 10px;
   color: black;
   padding: 10px;
-  width:35%;
+  width: 35%;
 }
 
 .abilityScore {
   background-color: whitesmoke;
   border-style: solid;
-  border-color:black;
+  border-color: black;
   height: 100px;
   width: 95px;
   margin: 15px;
@@ -254,13 +250,13 @@ body {
   border-top-right-radius: 10px;
 }
 
-.abilityScoreBig{
+.abilityScoreBig {
   font-size: 35px;
   padding-top: 10px;
 }
 
-.abilityScoreMod{
-  border-style:solid;
+.abilityScoreMod {
+  border-style: solid;
   border-color: black;
   border-radius: 40px;
   font-weight: bolder;
@@ -273,19 +269,18 @@ body {
   background-color: inherit;
 }
 
-.ACIS{
+.ACIS {
   display: flex;
   text-align: center;
   /* border-style: solid;
   border-color: pink; */
   justify-content: space-evenly;
-
 }
-.acisBox{
+.acisBox {
   height: 25%;
   width: 95px;
   margin: 15px;
-  border-style:solid;
+  border-style: solid;
   border-color: black;
   background-color: whitesmoke;
   color: black;
@@ -293,17 +288,15 @@ body {
   flex-direction: column;
   border-radius: 10px;
   font-size: 15px;
-
-
 }
 
-.acisTitle{
+.acisTitle {
   font-size: 35px;
   padding-top: 20px;
   padding-bottom: 10px;
 }
 
-.currentHitPoints{
+.currentHitPoints {
   border-style: solid;
   border-color: black;
   color: black;
@@ -318,7 +311,7 @@ body {
   flex-direction: column;
 }
 
-.tempHitPoints{
+.tempHitPoints {
   border-style: solid;
   border-color: black;
   color: black;
@@ -329,12 +322,12 @@ body {
   border-radius: 20px;
 }
 
-.hitDiceAndDeathSaves{
+.hitDiceAndDeathSaves {
   height: 25%;
   display: flex;
 }
 
-.hitDice{
+.hitDice {
   border-style: solid;
   border-color: black;
   background-color: whitesmoke;
@@ -342,7 +335,7 @@ body {
   color: black;
   width: 50%;
 }
-.deathSaves{
+.deathSaves {
   border-style: solid;
   border-color: black;
   background-color: whitesmoke;
@@ -351,13 +344,13 @@ body {
   width: 50%;
 }
 
-.boxValue{
+.boxValue {
   text-align: center;
   font-size: 30px;
   height: 33.3%;
 }
 
-.boxTitle{
+.boxTitle {
   text-align: center;
   height: 33.3%;
 }
