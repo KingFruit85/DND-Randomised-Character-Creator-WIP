@@ -394,22 +394,47 @@ body {
 
 .acisBox {
   width: 95px;
+  height: 105px;
   margin: 15px;
   border-color: black;
   border-style: double;
-  border-width: 5px;
+  border-width: 6px;
   border-radius: 10px;
   background-color: whitesmoke;
   color: black;
   display: flex;
   flex-direction: column;
-  font-size: 15px;
+  font-size: 10px;
+}
+
+.ACBox {
+  width: 95px;
+  height: 120px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 
 .acisTitle {
   font-size: 35px;
   padding-top: 20px;
   padding-bottom: 10px;
+}
+
+.acText {
+  font-size: 35px;
+  position: absolute;
+  padding-left: 32px;
+  padding-bottom: 35px;
+}
+
+.acTitle {
+  position: absolute;
+  padding-left: 45px;
+  padding-top: 40px;
+  font-size: 10px;
 }
 
 .currentHitPoints {
