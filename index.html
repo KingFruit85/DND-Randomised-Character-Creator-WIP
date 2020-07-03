@@ -7,9 +7,10 @@
   <body>
 
     <div class="topRow">
+      <button type="button" onclick="populatePage()">Refresh</button>
       <div class="characterNameWrapper">
         <div class="characterName">
-          <div class="name">Jeff Cloakman</div>
+          <div class="name" id = "charName">Jeff Cloakman</div>
         </div>
       </div>
       <div class="basicInfoWrapper">
@@ -18,7 +19,7 @@
             <div id="class&level" class="infoBox">Bard 7</div>
 
             <div id="background" class="infoBox">Hermit</div>
-            <div id="playerName" class="infoBox">Chris</div>
+            <div id="playerName" class="infoBox"></div>
           </div>
           <hr></hr>  
           <div class="basicInfoTopSubTitles">
@@ -30,7 +31,7 @@
           <div class="basicInfoBottom">
             <div id="race" class="infoBox">Human</div>
             <div id="alignment" class="infoBox">Lawful Good</div>
-            <div id="xp" class="infoBox">75000</div>
+            <div id="xp" class="infoBox">0</div>
           </div>
           <hr></hr>  
           <div class="basicInfoBottomSubTitles">
@@ -52,48 +53,48 @@
 
               <div id="Strength" class="abilityScore">
                 <div><b>STRENGTH</b></div>
-                <div class="abilityScoreBig">+2</div>
-                <div class="abilityScoreMod">14</div>
+                <div class="abilityScoreBig" id="strMod">+2</div>
+                <div class="abilityScoreMod" id="str">14</div>
               </div>
 
               <div class="spacer15"></div>
 
               <div id="Dexterity" class="abilityScore">
                 <div><b>DEXTERITY</b></div>
-                <div class="abilityScoreBig">+3</div>
-                <div class="abilityScoreMod">16</div>
+                <div class="abilityScoreBig" id="dexMod">+3</div>
+                <div class="abilityScoreMod" id="dex">16</div>
               </div>
 
               <div class="spacer15"></div>
 
               <div id="Constitution" class="abilityScore">
                 <div><b>CONSTITUTION</b></div>
-                <div class="abilityScoreBig">+2</div>
-                <div class="abilityScoreMod">15</div>
+                <div class="abilityScoreBig" id="conMod">+2</div>
+                <div class="abilityScoreMod" id="con">15</div>
               </div>
 
               <div class="spacer15"></div>
 
               <div id="Intelligence" class="abilityScore">
                 <div><b>INTELLIGENCE</b></div>
-                <div class="abilityScoreBig">+0</div>
-                <div class="abilityScoreMod">11</div>
+                <div class="abilityScoreBig" id="intMod">+0</div>
+                <div class="abilityScoreMod" id="int">11</div>
               </div>
 
               <div class="spacer15"></div>
 
               <div id="Wisdom" class="abilityScore">
                 <div><b>WISDOM</b></div>
-                <div class="abilityScoreBig">+1</div>
-                <div class="abilityScoreMod">13</div>
+                <div class="abilityScoreBig" id="wisMod">+1</div>
+                <div class="abilityScoreMod" id="wis">13</div>
               </div>
 
               <div class="spacer15"></div>
 
               <div id="Charisma" class="abilityScore">
                 <div><b>CHARISMA</b></div>
-                <div class="abilityScoreBig">-1</div>
-                <div class="abilityScoreMod">9</div>
+                <div class="abilityScoreBig" id="chaMod">-1</div>
+                <div class="abilityScoreMod" id="cha">9</div>
               </div>
               <div class="spacer15"></div>
               <div class="spacer15"></div>
@@ -102,102 +103,175 @@
 
           <div class="skillsColumn">
             <div class="wrapper">
-              <div class="inspirationBox">*</div>
+              <div class="inspirationBox"></div>
               <div class="inspiration">INSPIRATION</div>
               <div class="spacer15"></div>
-              <div class="proficiencyBonusScore">3</div>
+              <div class="proficiencyBonusScore" id="proficiencyBonusScore">3</div>
               <div class="proficiencyBonus">PROFICIENCY BONUS</div>
             </div>
 
             <div class="skills">
-              <ul class="skillList">
-                <li>
-                  <pre><u> 5 </u>  Strength</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Dexterity</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Constitution</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Intelligence</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Wisdom</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Charisma</pre>
-                </li>
-              </ul>
-              <b>SAVING THROWS</b>
+              <div class="skillList">
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="strSavingThrow"> 5 </div>
+                  <div class="savingThrowTitle"> Strength</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="dexSavingThrow"> 5 </div>
+                  <div class="savingThrowTitle">Dexterity</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="conSavingThrow"> 5 </div>
+                  <div class="savingThrowTitle">Constitution</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="intSavingThrow"> 5 </div>  
+                  <div class="savingThrowTitle">Intelligence</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="wisSavingThrow"> 5 </div>  
+                  <div class="savingThrowTitle">Wisdom</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="chaSavingThrow"> 5 </div>  
+                  <div class="savingThrowTitle">Charisma</div>
+                </div>
+              </div>
+              <div class="boxTitle">SAVING THROWS</div>
             </div>
             <div class="spacer15"></div>
 
             <div class="skills">
-              <ul class="skillList">
-                <li>
-                  <pre><u> 5 </u>  Acrobatics (Dex)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Animal Handling (Wis)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Arcana (Int)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Athletics (Str)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Deception (Cha)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  History (Int)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Insight (Wis)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Intimidation (Cha)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Investigation (Int)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Medicine (Wis)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Nature (Int)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Perception (Wis)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Performance (Cha)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Persuasion (Cha)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Religion (Int)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Sleight of Hand (Dex)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Stealth (Dex)</pre>
-                </li>
-                <li>
-                  <pre><u> 5 </u>  Survival (Wis)</pre>
-                </li>
-              </ul>
-              <b>SKILLS</b>
+              <div class="skillList">
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="acrobatics"> 5 </div>  
+                  <div class="savingThrowTitle">Acrobatics (Dex)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="animalHandling"> 5 </div>  
+                  <div class="savingThrowTitle">Animal Handling (Wis)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="arcana"> 5 </div>  
+                  <div class="savingThrowTitle">Arcana (Int)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="athletics"> 5 </div>  
+                  <div class="savingThrowTitle">Athletics (Str)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="deception"> 5 </div>  
+                  <div class="savingThrowTitle">Deception (Cha)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="history"> 5 </div>  
+                  <div class="savingThrowTitle">History (Int)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="insight"> 5 </div>  
+                  <div class="savingThrowTitle">Insight (Wis)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="intimidation"> 5 </div>  
+                  <div class="savingThrowTitle">Intimidation (Cha)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="investigation"> 5 </div>  
+                  <div class="savingThrowTitle">Investigation (Int)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="medicine"> 5 </div>  
+                  <div class="savingThrowTitle">Medicine (Wis)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="nature"> 5 </div>  
+                  <div class="savingThrowTitle">Nature (Int)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="perception"> 5 </div>  
+                  <div class="savingThrowTitle">Perception (Wis)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="performance"> 5 </div>  
+                  <div class="savingThrowTitle">Performance (Cha)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="persuasion"> 5 </div>  
+                  <div class="savingThrowTitle">Persuasion (Cha)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="religion"> 5 </div>  
+                  <div class="savingThrowTitle">Religion (Int)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="sleightOfHand"> 5 </div>  
+                  <div class="savingThrowTitle">Sleight of Hand (Dex)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="stealth"> 5 </div>  
+                  <div class="savingThrowTitle">Stealth (Dex)</div>
+                </div>
+
+                <div class="savingThrowLine">
+                  <div class="savingThrowProf">&#x25CB</div>
+                  <div class="savingThrowScore" id="survival"> 5 </div>  
+                  <div class="savingThrowTitle">Survival (Wis)</div>
+                </div>
+
+              </div>
+              <div class="boxTitle">SKILLS</div>
             </div>
           </div>
         </div>
         <div class="leftsideBottom">
           <div class="passivePerceptionContainer">
-            <div class="passivePerceptionScore">3</div>
+            <div class="passivePerceptionScore" id="passivePerception">3</div>
             <div class="passivePerception">
               PASSIVE WISDOM (PERCEPTION)
             </div>
@@ -214,8 +288,8 @@
       <div class="middle">
         <div class="middleTop">
           <div class="ACIS">
-            <div id="armorClass" class="ACBox">
-              <div class="acText">10</div>
+            <div class="ACBox">
+              <div class="acText" id="armorClass">10</div>
               <svg height="120" width="100">
                 <polygon points="50,5 85,15 95,30 95,50 80,75 70,85 60,95 50,100
                                  40,95 30,85 20,75 5,50 5,30 15,15" 
@@ -224,19 +298,22 @@
                                  <div class="acTitle">AC</div>
                                
             </div>
-            <div id="initiative" class="acisBox">
-              <div class="acisTitle">10</div>
+            <div class="acisBox">
+              <div class="acisTitle" id="initiative" >10</div>
               INITIATIVE
             </div>
-            <div id="speed" class="acisBox">
-              <div class="acisTitle">10</div>
+            <div class="acisBox">
+              <div class="acisTitle"  id="speed">10</div>
               SPEED
             </div>
           </div>
 
           <div class="currentHitPoints">
-            <pre>Hit Point Maximum <u>         50         </u></pre>
-            <div class="boxValue">50</div>
+            <div class="hitPointWrapper">
+            <div class = "hitPointMax">Hit Point Maximum </div>
+            <div class="hitPointMaxValue" id="hitPointMaxValue">50</div>
+          </div>
+            <div class="currentHitPoint" id="currentHitPoints">50</div>
             <div class="boxTitle">CURRENT HIT POINTS</div>
           </div>
           <div class="spacer15"></div>
@@ -244,11 +321,17 @@
             <div class="boxValue">0</div>
             <div class="boxTitle">TEMPORARY HIT POINTS</div>
           </div>
+
           <div class="spacer15"></div>
+
           <div class="hitDiceAndDeathSaves">
             <div class="hitDice">
-              <pre> Total <u>   1d10   </u></pre>
-              <div class="boxTitle"><b>Hit Dice</b></div>
+              <div class="hitDieWrapper">
+                <div class="hitDie">Total</div>
+                <div class="hitDiceValue" id="hitDiceValue">1d10</div>
+              </div>
+              <div class="boxValue2">1</div>
+              <div class="boxTitle2"><b>HIT DICE</b></div>
             </div>
 
             <div class="deathSaves">
@@ -264,7 +347,7 @@
                 <input type="radio" />
                 <input type="radio" />
               </div>
-              <div class="boxTitle"><b>Death Saves</b></div>
+              <div class="boxTitle"><b>DEATH SAVES</b></div>
             </div>
           </div>
           <div class="spacer15"></div>
@@ -312,7 +395,7 @@
       <div class="rightSide">
         <div class="rightSideTop">
           <div class="PTIBF">
-            <div class="PTIBFDetails">
+            <div class="PTIBFDetails" id="personalityTraits">
               I once ran twenty-five miles without stopping to warn my clan of
               an approaching orc horde. I'd do it again if I had to.
             </div>
@@ -320,7 +403,7 @@
           </div>
           <div class="spacer15"></div>
           <div class="PTIBF">
-            <div class="PTIBFDetails">
+            <div class="PTIBFDetails" id="ideals">
               Greater Good. It is each person's responsibility to make the most
               happiness for the whole tribe. (Good)
             </div>
@@ -328,7 +411,7 @@
           </div>
           <div class="spacer15"></div>
           <div class="PTIBF">
-            <div class="PTIBFDetails">
+            <div class="PTIBFDetails" id="bonds">
               I will bring terrible wrath down on the evildoers who destroyed my
               homeland.
             </div>
@@ -336,7 +419,7 @@
           </div>
           <div class="spacer15"></div>
           <div class="PTIBF">
-            <div class="PTIBFDetails">
+            <div class="PTIBFDetails" id="flaws">
               Violence is my answer to almost any challenge.
             </div>
             FLAWS
@@ -367,17 +450,9 @@
         </div>
       </div>
     </div>
-
-    <svg height="120" width="100">
-      <polygon points="50,5 85,15 95,30 95,50 80,75 70,85 60,95 50,100
-                       40,95 30,85 20,75 5,50 5,30 15,15" 
-                       style="fill:none;stroke:black;stroke-width:3" />
-        <polygon points="50,10 85,20 90,30 90,50 70,75 70,75 60,95 50,100
-        40,95 30,85 20,75 5,50 5,30 15,15" 
-        style="fill:none;stroke:black;stroke-width:3" />
-                       
-      Sorry, your browser does not support inline SVG.
-    </svg>
+    
+    <script src="core.js"></script>
+    
 
   </body>
 </html>

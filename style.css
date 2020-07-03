@@ -23,7 +23,8 @@ body {
   border-radius: 10px;
   text-align: center;
   height: 40px;
-  padding-top: 10px;
+  padding-top: 8px;
+  font-size: small;
 }
 
 .inspirationBox {
@@ -37,6 +38,7 @@ body {
   text-align: center;
   font-size: 40px;
 }
+
 .proficiencyBonusScore {
   border-style: solid;
   border-color: black;
@@ -47,8 +49,8 @@ body {
   float: left;
   border-radius: 10px;
   text-align: center;
-  padding-top: 5px;
-  font-size: 25px;
+  padding-top: 6px;
+  font-size: 20px;
 }
 
 .wrapper {
@@ -210,7 +212,8 @@ body {
   border-radius: 10px;
   text-align: center;
   height: 40px;
-  padding-top: 10px;
+  padding-top: 8px;
+  font-size: small;
 }
 
 .passivePerceptionContainer {
@@ -244,20 +247,53 @@ body {
   font-size: 25px;
 }
 
-.skills {
+.savingThrowProf {
+  padding-left: 10px;
+}
+
+.savingThrowLine {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  width: 200px;
+  font-size: 15px;
+}
+
+.savingThrowTitle {
+  padding-left: 10px;
+}
+
+.savingThrowScore {
   text-align: center;
+  border: 0;
+  border-bottom: 2px solid black;
+  padding: 0px 5px 0px 5px;
+  width: 20px;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
   border-color: black;
   border-style: double;
   border-width: 5px;
   background: whitesmoke;
   border-radius: 10px;
   color: black;
-  padding-right: 15px;
+  padding-right: 5px;
+  padding-top: 15px;
+  justify-content: left;
+  /* border-color: violet;
+  border-style: solid; */
 }
+
 .skillList {
-  text-align: left;
-  list-style-type: circle;
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px 20px 10px 20px; */
 }
+
 .skillsColumn {
   padding: 5px 10px 5px 5px;
 }
@@ -492,8 +528,67 @@ body {
   padding-bottom: 10px;
 }
 
+.boxValue2 {
+  text-align: center;
+  font-size: 20px;
+  padding: 5px 0px 5px 0px;
+}
+
 .boxTitle {
   text-align: center;
   padding-top: 10px;
   font-weight: 900;
+  font-size: small;
+}
+
+.boxTitle2 {
+  text-align: center;
+  font-weight: 900;
+  font-size: small;
+}
+
+.hitPointWrapper {
+  display: flex;
+}
+
+.hitPointMax {
+  display: flex;
+  font-size: small;
+  color: grey;
+  padding: 10px 0px 0px 3px;
+  width: 40%;
+}
+
+.hitPointMaxValue {
+  width: 55%;
+  border-bottom: 1px solid grey;
+  padding-top: 8px;
+  text-align: left;
+}
+
+.currentHitPoint {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px 0px 5px 0px;
+}
+
+.hitDieWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.hitDie {
+  display: flex;
+  font-size: small;
+  color: grey;
+  padding: 10px 0px 0px 3px;
+  width: 20%;
+}
+
+.hitDiceValue {
+  width: 65%;
+  border-bottom: 1px solid grey;
+  padding: 8px 0px 0px 5px;
+  text-align: left;
 }

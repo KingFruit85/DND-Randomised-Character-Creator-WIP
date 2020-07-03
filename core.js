@@ -7163,6 +7163,10 @@ function calculateSkillScores(
       modifier: abilityScores.chaMod,
       proficient: skillProficiencies.includes("intimidation"),
     },
+    investigation: {
+      modifier: abilityScores.intMod,
+      proficient: skillProficiencies.includes("investigation"),
+    },
     performance: {
       modifier: abilityScores.chaMod,
       proficient: skillProficiencies.includes("performance"),
@@ -7461,7 +7465,7 @@ function NewCharacter() {
   this.characterClass = returnRandomCharacterClass(chartype);
   this.characterClassAbilities = addClassFeatures(this.characterClass.name);
   this.race = returnRandomRace(raceType);
-  this.gender = returnRandomGender(genderType);
+  this.gender = returnRandomGender();
   this.fullname = returnRandomName(this.race, this.gender);
 
   this.alignment = returnRandomAlignment();
@@ -7500,191 +7504,315 @@ function NewCharacter() {
   return this;
 }
 
-var charQty = 1;
-var raceType;
-var genderType;
+function populatePage() {
+  char = new NewCharacter();
+  console.log(char);
+  document.getElementById("charName").innerHTML =
+    char.fullname.firstName + " " + char.fullname.lastName;
 
-for (let j = 0; j < process.argv.length; j++) {
-  //loops all arguments
+  document.getElementById("race").innerHTML = char.race;
+  document.getElementById("alignment").innerHTML = char.alignment;
+  document.getElementById("class&level").innerHTML = char.characterClass.name;
+  document.getElementById("background").innerHTML = "Not implimented!";
 
-  if (process.argv[j].toLowerCase() === "-n") {
-    //check for the argument -n, if 'true' user wants several chars
-    var isnum = /^\d+$/.test(process.argv[j + 1]); //checks if the next argument is a number
-    if (isnum == true) {
-      charQty = process.argv[j + 1];
-    }
-  }
+  document.getElementById("str").innerHTML = char.abilityScores.str;
+  document.getElementById("strMod").innerHTML = char.abilityScores.strMod;
 
-  if (process.argv[j].toLowerCase() === "-c") {
-    //check for the argument -c, if true user wants to force a specific class
-    if (
-      typeof process.argv[j + 1] != "undefined" &&
-      validClassList.includes(process.argv[j + 1].toLowerCase())
-    ) {
-      //checks to make sure arguement is valid class
-      chartype = process.argv[j + 1].toLowerCase();
-    } else {
-      chartype = "undefined";
-      console.log(
-        "ERROR:Provided class arguement is not a valid class - class will be random"
-      );
-    }
-  }
+  document.getElementById("dex").innerHTML = char.abilityScores.dex;
+  document.getElementById("dexMod").innerHTML = char.abilityScores.dexMod;
 
-  if (process.argv[j].toLowerCase() === "-r") {
-    //check for the argument -r, if true user wants to force a specific race
-    if (
-      typeof process.argv[j + 1] != "undefined" &&
-      validRaceList.includes(process.argv[j + 1].toLowerCase())
-    ) {
-      //checks to make sure arguement is valid race
-      raceType = process.argv[j + 1].toLowerCase();
-    } else {
-      console.log(
-        "ERROR: The provided race arguement isn't valid - race will be random"
-      ); //If argument isn't a string or a valid class
-    }
-  }
+  document.getElementById("con").innerHTML = char.abilityScores.con;
+  document.getElementById("conMod").innerHTML = char.abilityScores.conMod;
 
-  if (process.argv[j].toLowerCase() === "-g") {
-    //check for the argument -g, if true user wants to force a specific gender
-    let genderProvided = process.argv[j + 1];
-    if (
-      typeof genderProvided != "undefined" &&
-      (genderProvided.toLowerCase() === "male" ||
-        genderProvided.toLowerCase() === "female")
-    ) {
-      genderType = process.argv[j + 1].toLowerCase();
-    } else {
-      genderType = "undefined";
-      console.log(
-        "ERROR: The provided gender arguement isn't valid - gender will be random"
-      ); //If argument isn't a string or a valid class
-    }
-  }
+  document.getElementById("int").innerHTML = char.abilityScores.int;
+  document.getElementById("intMod").innerHTML = char.abilityScores.intMod;
 
-  // console.log(j + ' -> ' + (process.argv[j])); //used to print all arguments on screen for testing
+  document.getElementById("wis").innerHTML = char.abilityScores.wis;
+  document.getElementById("wisMod").innerHTML = char.abilityScores.wisMod;
+
+  document.getElementById("cha").innerHTML = char.abilityScores.cha;
+  document.getElementById("chaMod").innerHTML = char.abilityScores.chaMod;
+
+  document.getElementById("proficiencyBonusScore").innerHTML =
+    char.proficiencyModifier;
+
+  document.getElementById("strSavingThrow").innerHTML =
+    char.savingThrowScores.strength.modifier;
+  document.getElementById("dexSavingThrow").innerHTML =
+    char.savingThrowScores.dexterity.modifier;
+  document.getElementById("conSavingThrow").innerHTML =
+    char.savingThrowScores.constitution.modifier;
+  document.getElementById("intSavingThrow").innerHTML =
+    char.savingThrowScores.intelligence.modifier;
+  document.getElementById("wisSavingThrow").innerHTML =
+    char.savingThrowScores.wisdom.modifier;
+  document.getElementById("chaSavingThrow").innerHTML =
+    char.savingThrowScores.charasma.modifier;
+
+  document.getElementById("acrobatics").innerHTML =
+    char.skillScores.acrobatics.modifier;
+
+  document.getElementById("animalHandling").innerHTML =
+    char.skillScores.animalHandling.modifier;
+
+  document.getElementById("arcana").innerHTML =
+    char.skillScores.arcana.modifier;
+
+  document.getElementById("athletics").innerHTML =
+    char.skillScores.athletics.modifier;
+
+  document.getElementById("deception").innerHTML =
+    char.skillScores.deception.modifier;
+
+  document.getElementById("history").innerHTML =
+    char.skillScores.history.modifier;
+
+  document.getElementById("insight").innerHTML =
+    char.skillScores.insight.modifier;
+
+  document.getElementById("intimidation").innerHTML =
+    char.skillScores.intimidation.modifier;
+
+  document.getElementById("medicine").innerHTML =
+    char.skillScores.medicine.modifier;
+
+  document.getElementById("nature").innerHTML =
+    char.skillScores.nature.modifier;
+
+  document.getElementById("perception").innerHTML =
+    char.skillScores.perception.modifier;
+
+  document.getElementById("performance").innerHTML =
+    char.skillScores.performance.modifier;
+
+  document.getElementById("persuasion").innerHTML =
+    char.skillScores.persuasion.modifier;
+
+  document.getElementById("religion").innerHTML =
+    char.skillScores.religion.modifier;
+
+  document.getElementById("sleightOfHand").innerHTML =
+    char.skillScores.sleightOfHand.modifier;
+
+  document.getElementById("stealth").innerHTML =
+    char.skillScores.stealth.modifier;
+
+  document.getElementById("survival").innerHTML =
+    char.skillScores.survival.modifier;
+
+  document.getElementById("investigation").innerHTML =
+    char.skillScores.investigation.modifier;
+
+  //TODO this should be calculated in character creation, may be additional bonues to factor in
+  document.getElementById("passivePerception").innerHTML =
+    10 + char.abilityScores.wisMod;
+
+  document.getElementById("armorClass").innerHTML = char.armorClass;
+  document.getElementById("initiative").innerHTML =
+    char.characterClass.initiative;
+  document.getElementById("speed").innerHTML = char.speed;
+
+  document.getElementById("hitPointMaxValue").innerHTML = char.hitPoints;
+  document.getElementById("currentHitPoints").innerHTML = char.hitPoints;
+
+  document.getElementById("hitDiceValue").innerHTML =
+    "1d" + char.characterClass.hitDie;
+
+  document.getElementById("personalityTraits").innerHTML =
+    char.personalityTraits.personality;
+
+  document.getElementById("ideals").innerHTML = char.personalityTraits.ideal;
+
+  document.getElementById("bonds").innerHTML = char.personalityTraits.bond;
+
+  document.getElementById("flaws").innerHTML = char.personalityTraits.flaw;
 }
+
+// var charQty = 1;
+// var raceType;
+// var genderType;
+
+// for (let j = 0; j < process.argv.length; j++) {
+//   //loops all arguments
+
+//   if (process.argv[j].toLowerCase() === "-n") {
+//     //check for the argument -n, if 'true' user wants several chars
+//     var isnum = /^\d+$/.test(process.argv[j + 1]); //checks if the next argument is a number
+//     if (isnum == true) {
+//       charQty = process.argv[j + 1];
+//     }
+//   }
+
+//   if (process.argv[j].toLowerCase() === "-c") {
+//     //check for the argument -c, if true user wants to force a specific class
+//     if (
+//       typeof process.argv[j + 1] != "undefined" &&
+//       validClassList.includes(process.argv[j + 1].toLowerCase())
+//     ) {
+//       //checks to make sure arguement is valid class
+//       chartype = process.argv[j + 1].toLowerCase();
+//     } else {
+//       chartype = "undefined";
+//       console.log(
+//         "ERROR:Provided class arguement is not a valid class - class will be random"
+//       );
+//     }
+//   }
+
+//   if (process.argv[j].toLowerCase() === "-r") {
+//     //check for the argument -r, if true user wants to force a specific race
+//     if (
+//       typeof process.argv[j + 1] != "undefined" &&
+//       validRaceList.includes(process.argv[j + 1].toLowerCase())
+//     ) {
+//       //checks to make sure arguement is valid race
+//       raceType = process.argv[j + 1].toLowerCase();
+//     } else {
+//       console.log(
+//         "ERROR: The provided race arguement isn't valid - race will be random"
+//       ); //If argument isn't a string or a valid class
+//     }
+//   }
+
+//   if (process.argv[j].toLowerCase() === "-g") {
+//     //check for the argument -g, if true user wants to force a specific gender
+//     let genderProvided = process.argv[j + 1];
+//     if (
+//       typeof genderProvided != "undefined" &&
+//       (genderProvided.toLowerCase() === "male" ||
+//         genderProvided.toLowerCase() === "female")
+//     ) {
+//       genderType = process.argv[j + 1].toLowerCase();
+//     } else {
+//       genderType = "undefined";
+//       console.log(
+//         "ERROR: The provided gender arguement isn't valid - gender will be random"
+//       ); //If argument isn't a string or a valid class
+//     }
+//   }
+
+//   // console.log(j + ' -> ' + (process.argv[j])); //used to print all arguments on screen for testing
+// }
 
 //First attempt at a bit more aesthetically pleasing cli output
-function drawTipBox() {
-  let line = "\u2554" + "\u2550".repeat(60) + "\u2557";
-  let line2 = "\u2560" + "\u2550".repeat(60) + "\u2563";
-  let line3 = "\u2560" + "\u2550".repeat(60) + "\u2563";
+// function drawTipBox() {
+//   let line = "\u2554" + "\u2550".repeat(60) + "\u2557";
+//   let line2 = "\u2560" + "\u2550".repeat(60) + "\u2563";
+//   let line3 = "\u2560" + "\u2550".repeat(60) + "\u2563";
 
-  console.log(line);
+//   console.log(line);
 
-  console.log("\u2551" + "Command line switches" + " ".repeat(39) + "\u2551");
-  console.log(line2);
-  console.log(
-    "\u2551" +
-      "'-n x' Sets the number of character sheets to be returned   " +
-      "\u2551"
-  );
-  console.log(
-    "\u2551" +
-      "'-c x' Sets the class to be returned" +
-      " ".repeat(24) +
-      "\u2551"
-  );
-  console.log(
-    "\u2551" + "'-r x' Sets the race to be returned" + " ".repeat(25) + "\u2551"
-  );
-  console.log(
-    "\u2551" +
-      "'-g x' Sets the gender to be returned" +
-      " ".repeat(23) +
-      "\u2551"
-  );
+//   console.log("\u2551" + "Command line switches" + " ".repeat(39) + "\u2551");
+//   console.log(line2);
+//   console.log(
+//     "\u2551" +
+//       "'-n x' Sets the number of character sheets to be returned   " +
+//       "\u2551"
+//   );
+//   console.log(
+//     "\u2551" +
+//       "'-c x' Sets the class to be returned" +
+//       " ".repeat(24) +
+//       "\u2551"
+//   );
+//   console.log(
+//     "\u2551" + "'-r x' Sets the race to be returned" + " ".repeat(25) + "\u2551"
+//   );
+//   console.log(
+//     "\u2551" +
+//       "'-g x' Sets the gender to be returned" +
+//       " ".repeat(23) +
+//       "\u2551"
+//   );
 
-  console.log(line3);
-}
+//   console.log(line3);
+// }
 
-function drawOutput() {
-  let line = "\u2560";
-  console.log("\u2551" + "Characters Created" + " ".repeat(42) + "\u2551");
+// function drawOutput() {
+//   let line = "\u2560";
+//   console.log("\u2551" + "Characters Created" + " ".repeat(42) + "\u2551");
 
-  for (x = 0; x < 60; x++) {
-    line += "\u2550";
-  }
-  line += "\u2563";
-  console.log(line);
-}
+//   for (x = 0; x < 60; x++) {
+//     line += "\u2550";
+//   }
+//   line += "\u2563";
+//   console.log(line);
+// }
 
-drawTipBox();
-drawOutput();
+// drawTipBox();
+// drawOutput();
 
-for (var k = 0; k < charQty; k++) {
-  //loop to create several characters in a row
+// for (var k = 0; k < charQty; k++) {
+//   //loop to create several characters in a row
 
-  let x = new NewCharacter();
+//   let x = new NewCharacter();
 
-  let lineLength =
-    "\u2551 " +
-    "\u2705 " +
-    x.fullname.firstName +
-    " " +
-    x.fullname.lastName +
-    " " +
-    "the " +
-    x.race +
-    " " +
-    x.characterClass.name;
+//   let lineLength =
+//     "\u2551 " +
+//     "\u2705 " +
+//     x.fullname.firstName +
+//     " " +
+//     x.fullname.lastName +
+//     " " +
+//     "the " +
+//     x.race +
+//     " " +
+//     x.characterClass.name;
 
-  let remainingCharacters = 57 - lineLength.length;
+//   let remainingCharacters = 57 - lineLength.length;
 
-  let genderIcon = "";
-  if (x.gender === "male") {
-    genderIcon = "\u2642";
-  } else {
-    genderIcon = "\u2640";
-  }
+//   let genderIcon = "";
+//   if (x.gender === "male") {
+//     genderIcon = "\u2642";
+//   } else {
+//     genderIcon = "\u2640";
+//   }
 
-  console.log(
-    "\u2551" +
-      " \u2705 " +
-      genderIcon +
-      " " +
-      x.fullname.firstName +
-      " " +
-      x.fullname.lastName +
-      " " +
-      "the " +
-      x.race +
-      " " +
-      x.characterClass.name +
-      " " +
-      " ".repeat(remainingCharacters) +
-      "\u2551"
-  );
+//   console.log(
+//     "\u2551" +
+//       " \u2705 " +
+//       genderIcon +
+//       " " +
+//       x.fullname.firstName +
+//       " " +
+//       x.fullname.lastName +
+//       " " +
+//       "the " +
+//       x.race +
+//       " " +
+//       x.characterClass.name +
+//       " " +
+//       " ".repeat(remainingCharacters) +
+//       "\u2551"
+//   );
 
-  JsonExport = JSON.stringify(x, undefined, 2);
+//   JsonExport = JSON.stringify(x, undefined, 2);
 
-  // var dir = "./Exports";
+// var dir = "./Exports";
 
-  // if (!fs.existsSync(dir)) {
-  //   fs.mkdirSync(dir);
-  // }
+// if (!fs.existsSync(dir)) {
+//   fs.mkdirSync(dir);
+// }
 
-  // fs.writeFile(
-  //   "./exports/" +
-  //     x.fullname.firstName +
-  //     " " +
-  //     x.fullname.lastName +
-  //     "- " +
-  //     x.race +
-  //     " " +
-  //     x.characterClass.name +
-  //     ".JSON",
-  //   JsonExport,
-  //   function (err) {
-  //     if (err) {
-  //       return console.log(err);
-  //     }
-  //   }
-  // );
-}
-console.log("\u255A" + "\u2550".repeat(60) + "\u255D");
+// fs.writeFile(
+//   "./exports/" +
+//     x.fullname.firstName +
+//     " " +
+//     x.fullname.lastName +
+//     "- " +
+//     x.race +
+//     " " +
+//     x.characterClass.name +
+//     ".JSON",
+//   JsonExport,
+//   function (err) {
+//     if (err) {
+//       return console.log(err);
+//     }
+//   }
+// );
+// }
+// console.log("\u255A" + "\u2550".repeat(60) + "\u255D");
 
 // exports.musicalInstruments = musicalInstruments;
 // exports.returnRandomInstrument = returnRandomInstrument;
