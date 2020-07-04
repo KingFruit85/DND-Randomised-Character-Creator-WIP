@@ -7631,6 +7631,50 @@ function populatePage() {
 
   document.getElementById("flaws").innerHTML = char.personalityTraits.flaw;
 
+  //Converts all the character spells to a single array of objects
+
+  function cantripsToString() {
+    let str = "";
+    let cantrips = "";
+
+    cantrips = char.spellSlots.cantrips.spells[0];
+
+    if (cantrips === undefined) {
+      return;
+    } else {
+      Object.keys(cantrips).forEach(function (key) {
+        str += cantrips[key].name;
+        str += ", ";
+      });
+    }
+
+    str = `&nbsp <b>Cantrips</b>. You know ${str}and can cast them at will.<br>`;
+
+    return str;
+  }
+
+  function spellSlotsToString() {
+    let slots = "";
+
+    if (char.spellSlots.firstLevel.avalible === 1) {
+      slots = "one";
+    }
+    if (char.spellSlots.firstLevel.avalible === 2) {
+      slots = "two";
+    }
+    if (char.spellSlots.firstLevel.avalible === 3) {
+      slots = "three";
+    }
+    if (char.spellSlots.firstLevel.avalible === 4) {
+      slots = "four";
+    }
+    if (char.spellSlots.firstLevel.avalible === 5) {
+      slots = "five";
+    }
+
+    return `&nbsp <b>Spell Slots</b> You have ${slots} 1st-level spell slots you can use to cast your prepared spells`;
+  }
+
   //Converts all the characters weapons to a single array of objects
   function weaponsToArray() {
     let arr = [];
@@ -7694,8 +7738,8 @@ function populatePage() {
     tbl.appendChild(tr);
   }
 
-  //Creates and populates
-  function populateAttacksAndSpellcasting() {
+  //Creates and populates weapons
+  function addWeapons() {
     createTable();
 
     let weapons = weaponsToArray();
@@ -7710,7 +7754,21 @@ function populatePage() {
       );
     }
   }
-  populateAttacksAndSpellcasting();
+
+  function addSpellDetails() {
+    let cantrips = cantripsToString();
+    let spellSlots = spellSlotsToString();
+
+    if (cantrips === undefined) {
+      return;
+    } else {
+      document.getElementById("spellDetails").innerHTML = cantrips;
+      document.getElementById("spellDetails").innerHTML += spellSlots;
+    }
+  }
+
+  addWeapons();
+  addSpellDetails();
 }
 
 // var charQty = 1;
