@@ -592,3 +592,13 @@ body {
   padding: 8px 0px 0px 5px;
   text-align: left;
 }
+
+th {
+  font-size: xx-small;
+}
+
+td {
+  width: 38%;
+  border-radius: 5px;
+  background-color: rgba(160, 158, 158, 0.5);
+}

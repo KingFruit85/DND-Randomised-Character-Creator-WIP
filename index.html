@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>5E Random Character</title>
   </head>
-  <body>
+  <body onload="populatePage()">
 
     <div class="topRow">
       <button type="button" onclick="populatePage()">Refresh</button>
@@ -355,36 +355,26 @@
         <div class="AAS">
           <div class="AASDetails">
             
-            <div class="AAStitles">
+            <!-- <div class="AAStitles">
               <div class="infoSubTitle">NAME</div>
               <div class="infoSubTitle">ATK BONUS</div>
-              <div class="infoSubTitle">DAMAGE/TYPE POINTS</div>
+              <div class="infoSubTitle">DAMAGE/TYPE</div>
             </div>
-            <div class="spacer5"></div>
-            <div class="AASLine">
-              <div class="spacer5"></div>
-              <div class="weaponBox">Greatsword</div>
-              <div class="atkBonusBox">+4</div>
-              <div class="damageTypeBox">2d6 +2 slashing</div>
-            </div>
-            <div class="spacer5"></div>
-            <div class="AASLine">
+            <div class="spacer5"></div> -->
+            
+
+            <table class="attacksAndSpellCasting" id="attacksAndSpellCasting">
+
+
               
-              <div class="weaponBox">Longbow</div>
-              <div class="atkBonusBox">+7</div>
-              <div class="damageTypeBox">1d8 +3 piercing</div>
-            </div>
-            <div class="spacer5"></div>
-            <div class="AASLine">
-              
-              <div class="weaponBox">. </div>
-              <div class="atkBonusBox">. </div>
-              <div class="damageTypeBox">. </div>
-            </div>
+            </table>
+            
+
 
           </div>
           <b>ATTACKS & SPELLCASTING</b>
         </div>
+
         <div class="spacer15"></div>
         <div class="PTIBF">
           <div class="PTIBFDetails"></div>

@@ -7507,6 +7507,10 @@ function NewCharacter() {
 function populatePage() {
   char = new NewCharacter();
   console.log(char);
+
+  //clears the weapons and spell casting table
+  document.getElementById("attacksAndSpellCasting").innerHTML = "";
+
   document.getElementById("charName").innerHTML =
     char.fullname.firstName + " " + char.fullname.lastName;
 
@@ -7626,6 +7630,87 @@ function populatePage() {
   document.getElementById("bonds").innerHTML = char.personalityTraits.bond;
 
   document.getElementById("flaws").innerHTML = char.personalityTraits.flaw;
+
+  //Converts all the characters weapons to a single array of objects
+  function weaponsToArray() {
+    let arr = [];
+    let arrLength = void 0;
+    let primaryWeapon = char.characterClass.equipment.primaryWeapon;
+    let additionalWeapons = char.characterClass.equipment.additionalWeapons;
+
+    if (primaryWeapon.name) {
+      arr.push({
+        name: primaryWeapon.name,
+        atkBonus: "",
+        damageType: primaryWeapon.damage,
+      });
+    }
+
+    if (additionalWeapons.length > 0 || additionalWeapons != undefined) {
+      Object.keys(additionalWeapons).forEach(function (key) {
+        arr.push({
+          name: additionalWeapons[key].name,
+          atkBonus: "",
+          damageType: additionalWeapons[key].damage,
+        });
+      });
+    }
+
+    return arr;
+  }
+
+  //Creates table headers
+  function createTable() {
+    let itemName = document.createElement("TH");
+    let itemNameText = document.createTextNode("NAME");
+    let atkBonus = document.createElement("TH");
+    let atkBonusText = document.createTextNode("ATK BONUS");
+    let damageType = document.createElement("TH");
+    let damageTypeText = document.createTextNode("DAMAGE/TYPE");
+
+    itemName.appendChild(itemNameText);
+    document.getElementById("attacksAndSpellCasting").appendChild(itemName);
+    atkBonus.appendChild(atkBonusText);
+    document.getElementById("attacksAndSpellCasting").appendChild(atkBonus);
+    damageType.appendChild(damageTypeText);
+    document.getElementById("attacksAndSpellCasting").appendChild(damageType);
+  }
+
+  function addCell(tr, val) {
+    let td = document.createElement("td");
+
+    td.innerHTML = val;
+
+    tr.appendChild(td);
+  }
+
+  function addRow(tbl, val_1, val_2, val_3) {
+    let tr = document.createElement("tr");
+
+    addCell(tr, val_1);
+    addCell(tr, val_2);
+    addCell(tr, val_3);
+
+    tbl.appendChild(tr);
+  }
+
+  //Creates and populates
+  function populateAttacksAndSpellcasting() {
+    createTable();
+
+    let weapons = weaponsToArray();
+    let table = document.getElementById("attacksAndSpellCasting");
+
+    for (let i = 0; i < weapons.length; i++) {
+      addRow(
+        table,
+        weapons[i].name,
+        weapons[i].atkBonus,
+        weapons[i].damageType
+      );
+    }
+  }
+  populateAttacksAndSpellcasting();
 }
 
 // var charQty = 1;
