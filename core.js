@@ -1,4 +1,4 @@
-const musicalInstruments = [
+const musicalInstrumentsInfo = [
   { name: "Bagpipes", cost: "30 gp", weight: "6 lb." },
   { name: "Drum", cost: "6 gp", weight: "3 lb." },
   { name: "Dulcimer", cost: "25 gp", weight: "10 lb." },
@@ -9,6 +9,19 @@ const musicalInstruments = [
   { name: "Pan Flute", cost: "12 gp", weight: "2 lb." },
   { name: "Shawm", cost: "2 gp", weight: "1 lb." },
   { name: "Viol", cost: "30 gp", weight: "1 lb" },
+];
+
+const musicalInstruments = [
+  "Bagpipes",
+  "Drum",
+  "Dulcimer",
+  "Flute",
+  "Lute",
+  "Lyre",
+  "Horn",
+  "Pan Flute",
+  "Shawm",
+  "Viol",
 ];
 
 const equipmentPacks = [
@@ -5751,7 +5764,7 @@ function createMonk() {
   this.primaryAbility = "dex";
   this.hitDie = 8;
   this.savingThrows = ["str", "dex"];
-  this.armorProficiencies = ["none"];
+  this.armorProficiencies = [];
   this.weaponProficiencies = ["simple weapons", "shortswords"];
   this.toolProficiencies = returnRandomInstrument(); //add artisan tools to the selection
   this.skillProficiencies = returnRandomProficiencies(
@@ -5788,7 +5801,7 @@ function createCleric() {
   this.savingThrows = ["wis", "cha"];
   this.armorProficiencies = ["light armor", "medium armor", "shields"];
   this.weaponProficiencies = ["simple weapons"];
-  this.toolProficiencies = ["none"];
+  this.toolProficiencies = [];
   this.skillProficiencies = returnRandomProficiencies(
     clericSkillProficiencies,
     2
@@ -5893,7 +5906,7 @@ function createFighter() {
     "shields",
   ];
   this.weaponProficiencies = ["simple weapons", "martial weapons"];
-  this.toolProficiencies = ["none"];
+  this.toolProficiencies = [];
   //TODO test this, noticed it can return null
   this.skillProficiencies = returnRandomProficiencies(
     fighterSkillProficiencies,
@@ -5954,7 +5967,7 @@ function createPaladin() {
     "shields",
   ];
   this.weaponProficiencies = ["simple weapons", "martial weapons"];
-  this.toolProficiencies = ["none"];
+  this.toolProficiencies = [];
   this.skillProficiencies = returnRandomProficiencies(
     paladinSkillProficiencies,
     2
@@ -6006,7 +6019,7 @@ function createRanger() {
   this.savingThrows = ["dex", "str"];
   this.armorProficiencies = ["light armor", "medium armor", "shields"];
   this.weaponProficiencies = ["simple weapons", "martial weapons"];
-  this.toolProficiencies = ["none"];
+  this.toolProficiencies = [];
   this.skillProficiencies = returnRandomProficiencies(
     rangerSkillProficiencies,
     2
@@ -6373,7 +6386,7 @@ function returnRandomInstruments(count) {
   let instruments = [];
 
   for (i = 0; i < count; i++) {
-    let pickedInstrument = returnRandomArrayItem(musicalInstruments).name;
+    let pickedInstrument = returnRandomArrayItem(musicalInstruments);
 
     if (instruments.includes(pickedInstrument) === false) {
       instruments.push(pickedInstrument);
@@ -7460,7 +7473,7 @@ var raceType; //set by the -r commandline arguement
 
 //NewCharacter Construtor
 function NewCharacter() {
-  this.level = 1; // TODO: add level scaling
+  this.level = 1;
   this.proficiencyModifier = getProficiencyModifier(this.level);
   this.characterClass = returnRandomCharacterClass(chartype);
   this.characterClassAbilities = addClassFeatures(this.characterClass.name);
@@ -7505,6 +7518,14 @@ function NewCharacter() {
 }
 
 function populatePage() {
+  //checks for testing params
+  let charDropDown = document.getElementById("races");
+  let charClass = charDropDown.options[charDropDown.selectedIndex].value;
+
+  if (charClass != "Choose A Class") {
+    chartype = charClass;
+  }
+
   char = new NewCharacter();
   console.log(char);
 
@@ -7611,6 +7632,47 @@ function populatePage() {
   document.getElementById("passivePerception").innerHTML =
     10 + char.abilityScores.wisMod;
 
+  function PopulateProficienciesAndLanguages() {
+    let profs = [];
+    let armor = char.characterClass.armorProficiencies;
+    let skill = char.characterClass.skillProficiencies;
+    let tool = char.characterClass.toolProficiencies;
+    let weapon = char.characterClass.weaponProficiencies;
+
+    if (armor.length > 0 || armor != undefined) {
+      profs.push(char.characterClass.armorProficiencies);
+    }
+
+    if (skill.length > 0 || skill != undefined) {
+      profs.push(char.characterClass.skillProficiencies);
+    }
+
+    if (tool.length > 0 || tool != undefined) {
+      profs.push(char.characterClass.toolProficiencies);
+    }
+
+    if (weapon.length > 0 || weapon != undefined) {
+      profs.push(char.characterClass.weaponProficiencies);
+    }
+
+    profs = profs.toString();
+
+    // Removes the "," at profs[0] caused by empty armor profs
+    if (profs[0] == ",") {
+      profs = profs.substring(1);
+    }
+
+    let languages = char.languages;
+
+    document.getElementById(
+      "ProficienciesAndLanguages"
+    ).innerHTML = `<b>Proficiencies.</b> ${profs}
+      <br>
+      <b>Languages.</b> ${languages.toString()}`;
+  }
+
+  PopulateProficienciesAndLanguages();
+
   document.getElementById("armorClass").innerHTML = char.armorClass;
   document.getElementById("initiative").innerHTML =
     char.characterClass.initiative;
@@ -7648,7 +7710,7 @@ function populatePage() {
       });
     }
 
-    str = `&nbsp <b>Cantrips</b>. You know ${str}and can cast them at will.<br>`;
+    str = `&nbsp <b>Cantrips</b></br>. You know ${str}and can cast them at will.<br>`;
 
     return str;
   }
@@ -7672,7 +7734,7 @@ function populatePage() {
       slots = "five";
     }
 
-    return `&nbsp <b>Spell Slots</b> You have ${slots} 1st-level spell slots you can use to cast your prepared spells`;
+    return `&nbsp <b>Spell Slots</b> You have ${slots} 1st-level spell slots you can use to cast your prepared spells.`;
   }
 
   //Converts all the characters weapons to a single array of objects
@@ -7760,7 +7822,7 @@ function populatePage() {
     let spellSlots = spellSlotsToString();
 
     if (cantrips === undefined) {
-      return;
+      document.getElementById("spellDetails").innerHTML = "";
     } else {
       document.getElementById("spellDetails").innerHTML = cantrips;
       document.getElementById("spellDetails").innerHTML += spellSlots;

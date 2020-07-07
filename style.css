@@ -73,6 +73,12 @@ body {
   padding-right: 500px;
 }
 
+.leftWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
 .leftside {
   display: flex;
   flex-direction: column;
@@ -83,14 +89,18 @@ body {
 .leftsideTop {
   display: flex;
   float: left;
+  width: inherit;
 }
 
 .leftsideBottom {
   display: flex;
   flex-direction: column;
+  width: inherit;
 }
 
 .middle {
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   width: 370px;
   height: 950px;
@@ -148,10 +158,28 @@ body {
   flex-direction: column;
 }
 
+.PTIBFsquareEdge {
+  border-color: black;
+  border-style: double;
+  border-width: 5px;
+  background-color: whitesmoke;
+  color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .PTIBFDetails {
   text-align: center;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.profAndLang {
+  text-align: left;
+  padding: 10px 10px 20px 10px;
+  width: 100%;
+  overflow-wrap: break-word;
 }
 
 .AAS {

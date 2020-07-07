@@ -7,10 +7,26 @@
   <body onload="populatePage()">
 
     <div class="topRow">
-      <button type="button" onclick="populatePage()">Refresh</button>
+      
       <div class="characterNameWrapper">
         <div class="characterName">
-          <div class="name" id = "charName">Jeff Cloakman</div>
+          <button type="button" onclick="populatePage()">Refresh</button>
+          <select id="races" name="races">
+            <option value="chooseAClass">Choose A Class</option>
+            <option value="bard">bard</option>
+            <option value="barbarian">barbarian</option>
+            <option value="monk">monk</option>
+            <option value="cleric">cleric</option>
+            <option value="druid">druid</option>
+            <option value="fighter">fighter</option>
+            <option value="paladin">paladin</option>
+            <option value="ranger">ranger</option>
+            <option value="rogue">rogue</option>
+            <option value="sorcerer">sorcerer</option>
+            <option value="warlock">warlock</option>
+            <option value="wizard">wizard</option>
+          </select>
+          <div class="name" id = "charName"></div>
         </div>
       </div>
       <div class="basicInfoWrapper">
@@ -44,231 +60,235 @@
     </div>
     <div class="spacer15"></div>
     <div class="pageMain">
-      <div class="leftside">
-        <div class="leftsideTop">
-          <div class="abilityScores">
-            <div class="row">
-              <div class="spacer15"></div>
-              <div class="spacer15"></div>
-
-              <div id="Strength" class="abilityScore">
-                <div><b>STRENGTH</b></div>
-                <div class="abilityScoreBig" id="strMod">+2</div>
-                <div class="abilityScoreMod" id="str">14</div>
+      <div class="leftWrapper">
+        <div class="leftside">
+          <div class="leftsideTop">
+            <div class="abilityScores">
+              <div class="row">
+                <div class="spacer15"></div>
+                <div class="spacer15"></div>
+  
+                <div id="Strength" class="abilityScore">
+                  <div><b>STRENGTH</b></div>
+                  <div class="abilityScoreBig" id="strMod">+2</div>
+                  <div class="abilityScoreMod" id="str">14</div>
+                </div>
+  
+                <div class="spacer15"></div>
+  
+                <div id="Dexterity" class="abilityScore">
+                  <div><b>DEXTERITY</b></div>
+                  <div class="abilityScoreBig" id="dexMod">+3</div>
+                  <div class="abilityScoreMod" id="dex">16</div>
+                </div>
+  
+                <div class="spacer15"></div>
+  
+                <div id="Constitution" class="abilityScore">
+                  <div><b>CONSTITUTION</b></div>
+                  <div class="abilityScoreBig" id="conMod">+2</div>
+                  <div class="abilityScoreMod" id="con">15</div>
+                </div>
+  
+                <div class="spacer15"></div>
+  
+                <div id="Intelligence" class="abilityScore">
+                  <div><b>INTELLIGENCE</b></div>
+                  <div class="abilityScoreBig" id="intMod">+0</div>
+                  <div class="abilityScoreMod" id="int">11</div>
+                </div>
+  
+                <div class="spacer15"></div>
+  
+                <div id="Wisdom" class="abilityScore">
+                  <div><b>WISDOM</b></div>
+                  <div class="abilityScoreBig" id="wisMod">+1</div>
+                  <div class="abilityScoreMod" id="wis">13</div>
+                </div>
+  
+                <div class="spacer15"></div>
+  
+                <div id="Charisma" class="abilityScore">
+                  <div><b>CHARISMA</b></div>
+                  <div class="abilityScoreBig" id="chaMod">-1</div>
+                  <div class="abilityScoreMod" id="cha">9</div>
+                </div>
+                <div class="spacer15"></div>
+                <div class="spacer15"></div>
               </div>
-
-              <div class="spacer15"></div>
-
-              <div id="Dexterity" class="abilityScore">
-                <div><b>DEXTERITY</b></div>
-                <div class="abilityScoreBig" id="dexMod">+3</div>
-                <div class="abilityScoreMod" id="dex">16</div>
+            </div>
+  
+            <div class="skillsColumn">
+              <div class="wrapper">
+                <div class="inspirationBox"></div>
+                <div class="inspiration">INSPIRATION</div>
+                <div class="spacer15"></div>
+                <div class="proficiencyBonusScore" id="proficiencyBonusScore">3</div>
+                <div class="proficiencyBonus">PROFICIENCY BONUS</div>
               </div>
-
-              <div class="spacer15"></div>
-
-              <div id="Constitution" class="abilityScore">
-                <div><b>CONSTITUTION</b></div>
-                <div class="abilityScoreBig" id="conMod">+2</div>
-                <div class="abilityScoreMod" id="con">15</div>
+  
+              <div class="skills">
+                <div class="skillList">
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="strSavingThrow"> 5 </div>
+                    <div class="savingThrowTitle"> Strength</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="dexSavingThrow"> 5 </div>
+                    <div class="savingThrowTitle">Dexterity</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="conSavingThrow"> 5 </div>
+                    <div class="savingThrowTitle">Constitution</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="intSavingThrow"> 5 </div>  
+                    <div class="savingThrowTitle">Intelligence</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="wisSavingThrow"> 5 </div>  
+                    <div class="savingThrowTitle">Wisdom</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="chaSavingThrow"> 5 </div>  
+                    <div class="savingThrowTitle">Charisma</div>
+                  </div>
+                </div>
+                <div class="boxTitle">SAVING THROWS</div>
               </div>
-
               <div class="spacer15"></div>
-
-              <div id="Intelligence" class="abilityScore">
-                <div><b>INTELLIGENCE</b></div>
-                <div class="abilityScoreBig" id="intMod">+0</div>
-                <div class="abilityScoreMod" id="int">11</div>
+  
+              <div class="skills">
+                <div class="skillList">
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="acrobatics"> 5 </div>  
+                    <div class="savingThrowTitle">Acrobatics (Dex)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="animalHandling"> 5 </div>  
+                    <div class="savingThrowTitle">Animal Handling (Wis)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="arcana"> 5 </div>  
+                    <div class="savingThrowTitle">Arcana (Int)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="athletics"> 5 </div>  
+                    <div class="savingThrowTitle">Athletics (Str)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="deception"> 5 </div>  
+                    <div class="savingThrowTitle">Deception (Cha)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="history"> 5 </div>  
+                    <div class="savingThrowTitle">History (Int)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="insight"> 5 </div>  
+                    <div class="savingThrowTitle">Insight (Wis)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="intimidation"> 5 </div>  
+                    <div class="savingThrowTitle">Intimidation (Cha)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="investigation"> 5 </div>  
+                    <div class="savingThrowTitle">Investigation (Int)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="medicine"> 5 </div>  
+                    <div class="savingThrowTitle">Medicine (Wis)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="nature"> 5 </div>  
+                    <div class="savingThrowTitle">Nature (Int)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="perception"> 5 </div>  
+                    <div class="savingThrowTitle">Perception (Wis)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="performance"> 5 </div>  
+                    <div class="savingThrowTitle">Performance (Cha)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="persuasion"> 5 </div>  
+                    <div class="savingThrowTitle">Persuasion (Cha)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="religion"> 5 </div>  
+                    <div class="savingThrowTitle">Religion (Int)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="sleightOfHand"> 5 </div>  
+                    <div class="savingThrowTitle">Sleight of Hand (Dex)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="stealth"> 5 </div>  
+                    <div class="savingThrowTitle">Stealth (Dex)</div>
+                  </div>
+  
+                  <div class="savingThrowLine">
+                    <div class="savingThrowProf">&#x25CB</div>
+                    <div class="savingThrowScore" id="survival"> 5 </div>  
+                    <div class="savingThrowTitle">Survival (Wis)</div>
+                  </div>
+  
+                </div>
+                <div class="boxTitle">SKILLS</div>
               </div>
-
-              <div class="spacer15"></div>
-
-              <div id="Wisdom" class="abilityScore">
-                <div><b>WISDOM</b></div>
-                <div class="abilityScoreBig" id="wisMod">+1</div>
-                <div class="abilityScoreMod" id="wis">13</div>
-              </div>
-
-              <div class="spacer15"></div>
-
-              <div id="Charisma" class="abilityScore">
-                <div><b>CHARISMA</b></div>
-                <div class="abilityScoreBig" id="chaMod">-1</div>
-                <div class="abilityScoreMod" id="cha">9</div>
-              </div>
-              <div class="spacer15"></div>
-              <div class="spacer15"></div>
             </div>
           </div>
+      </div>
+      
 
-          <div class="skillsColumn">
-            <div class="wrapper">
-              <div class="inspirationBox"></div>
-              <div class="inspiration">INSPIRATION</div>
-              <div class="spacer15"></div>
-              <div class="proficiencyBonusScore" id="proficiencyBonusScore">3</div>
-              <div class="proficiencyBonus">PROFICIENCY BONUS</div>
-            </div>
-
-            <div class="skills">
-              <div class="skillList">
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="strSavingThrow"> 5 </div>
-                  <div class="savingThrowTitle"> Strength</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="dexSavingThrow"> 5 </div>
-                  <div class="savingThrowTitle">Dexterity</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="conSavingThrow"> 5 </div>
-                  <div class="savingThrowTitle">Constitution</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="intSavingThrow"> 5 </div>  
-                  <div class="savingThrowTitle">Intelligence</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="wisSavingThrow"> 5 </div>  
-                  <div class="savingThrowTitle">Wisdom</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="chaSavingThrow"> 5 </div>  
-                  <div class="savingThrowTitle">Charisma</div>
-                </div>
-              </div>
-              <div class="boxTitle">SAVING THROWS</div>
-            </div>
-            <div class="spacer15"></div>
-
-            <div class="skills">
-              <div class="skillList">
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="acrobatics"> 5 </div>  
-                  <div class="savingThrowTitle">Acrobatics (Dex)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="animalHandling"> 5 </div>  
-                  <div class="savingThrowTitle">Animal Handling (Wis)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="arcana"> 5 </div>  
-                  <div class="savingThrowTitle">Arcana (Int)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="athletics"> 5 </div>  
-                  <div class="savingThrowTitle">Athletics (Str)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="deception"> 5 </div>  
-                  <div class="savingThrowTitle">Deception (Cha)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="history"> 5 </div>  
-                  <div class="savingThrowTitle">History (Int)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="insight"> 5 </div>  
-                  <div class="savingThrowTitle">Insight (Wis)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="intimidation"> 5 </div>  
-                  <div class="savingThrowTitle">Intimidation (Cha)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="investigation"> 5 </div>  
-                  <div class="savingThrowTitle">Investigation (Int)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="medicine"> 5 </div>  
-                  <div class="savingThrowTitle">Medicine (Wis)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="nature"> 5 </div>  
-                  <div class="savingThrowTitle">Nature (Int)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="perception"> 5 </div>  
-                  <div class="savingThrowTitle">Perception (Wis)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="performance"> 5 </div>  
-                  <div class="savingThrowTitle">Performance (Cha)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="persuasion"> 5 </div>  
-                  <div class="savingThrowTitle">Persuasion (Cha)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="religion"> 5 </div>  
-                  <div class="savingThrowTitle">Religion (Int)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="sleightOfHand"> 5 </div>  
-                  <div class="savingThrowTitle">Sleight of Hand (Dex)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="stealth"> 5 </div>  
-                  <div class="savingThrowTitle">Stealth (Dex)</div>
-                </div>
-
-                <div class="savingThrowLine">
-                  <div class="savingThrowProf">&#x25CB</div>
-                  <div class="savingThrowScore" id="survival"> 5 </div>  
-                  <div class="savingThrowTitle">Survival (Wis)</div>
-                </div>
-
-              </div>
-              <div class="boxTitle">SKILLS</div>
-            </div>
-          </div>
-        </div>
         <div class="leftsideBottom">
           <div class="passivePerceptionContainer">
             <div class="passivePerceptionScore" id="passivePerception">3</div>
@@ -278,11 +298,12 @@
           </div>
 
           <div class="spacer15"></div>
-          <div class="PTIBF">
-            <div class="PTIBFDetails"></div>
+          <div class="PTIBFsquareEdge">
+            <div id="ProficienciesAndLanguages" class="profAndLang"></div>
             <b>OTHER PROFICIENCIES & LANGUAGES</b>
           </div>
         </div>
+        
       </div>
 
       <div class="middle">
