@@ -5703,12 +5703,15 @@ function createBard() {
     shield: [],
   };
 
-  this.equipment.primaryWeapon = returnRandomArrayItem([
-    martialMeleeWeapons.rapier,
-    martialMeleeWeapons.longsword,
-  ]);
+  this.equipment.primaryWeapon.push(
+    returnRandomArrayItem([
+      martialMeleeWeapons.rapier,
+      martialMeleeWeapons.longsword,
+    ])
+  );
 
   this.equipment.additionalWeapons.push(simpleWeapons.dagger);
+
   this.equipment.tools = returnRandomArrayItem([
     returnEquipmentPack("Diplomat's Pack"),
     returnEquipmentPack("Entertainer's Pack"),
@@ -5738,10 +5741,12 @@ function createBarbarian() {
 
   this.equipment.tools = returnEquipmentPack("Explorer's Pack");
 
-  this.equipment.primaryWeapon = returnRandomArrayItem([
-    martialMeleeWeapons.greataxe,
-    returnRandomWeaponsFromCollection(martialMeleeWeapons, 1),
-  ]);
+  this.equipment.primaryWeapon.push(
+    returnRandomArrayItem([
+      martialMeleeWeapons.greataxe,
+      returnRandomWeaponsFromCollection(martialMeleeWeapons, 1),
+    ])
+  );
 
   this.equipment.additionalWeapons.push(simpleWeapons.javelin);
   this.equipment.additionalWeapons.push(simpleWeapons.javelin);
@@ -5780,10 +5785,12 @@ function createMonk() {
     shield: [],
   };
 
-  this.equipment.primaryWeapon = returnRandomArrayItem([
-    martialMeleeWeapons.shortsword,
-    returnRandomWeaponFromCollection(simpleWeapons),
-  ]);
+  this.equipment.primaryWeapon.push(
+    returnRandomArrayItem([
+      martialMeleeWeapons.shortsword,
+      returnRandomWeaponFromCollection(simpleWeapons),
+    ])
+  );
 
   this.equipment.tools = returnRandomArrayItem([
     returnEquipmentPack("Dungeoneer's Pack"),
@@ -5821,7 +5828,7 @@ function createCleric() {
     shield: [],
   };
 
-  this.equipment.primaryWeapon = simpleWeapons.mace;
+  this.equipment.primaryWeapon.push(simpleWeapons.mace);
 
   if (returnRandomNumberInRange(0, 1) === 0) {
     this.equipment.additionalWeapons.push(
@@ -5836,13 +5843,11 @@ function createCleric() {
 
   this.equipment.shield.push(shields.shield);
 
-  this.equipment.tools.push(
-    returnRandomArrayItem([
-      returnEquipmentPack("Explorer's Pack"),
-      returnEquipmentPack("Priest's Pack"),
-    ])
-  );
-  this.equipment.tools.push("Holy Symbol");
+  this.equipment.tools = returnRandomArrayItem([
+    returnEquipmentPack("Explorer's Pack"),
+    returnEquipmentPack("Priest's Pack"),
+  ]);
+  this.equipment.tools.push({ name: "Holy Symbol" });
 }
 
 function createDruid() {
@@ -5877,10 +5882,12 @@ function createDruid() {
     shield: [],
   };
 
-  this.equipment.primaryWeapon = returnRandomArrayItem([
-    martialMeleeWeapons.scimitar,
-    returnRandomWeaponFromCollection(simpleWeapons),
-  ]);
+  this.equipment.primaryWeapon.push(
+    returnRandomArrayItem([
+      martialMeleeWeapons.scimitar,
+      returnRandomWeaponFromCollection(simpleWeapons),
+    ])
+  );
 
   if (returnRandomNumberInRange(0, 1) === 0) {
     this.equipment.additionalWeapons.push(
@@ -5890,8 +5897,8 @@ function createDruid() {
     this.equipment.shield.push(shields.woodenShield);
   }
 
-  this.equipment.tools.push(returnEquipmentPack("Explorer's Pack"));
-  this.equipment.tools.push("Druidic Focus");
+  this.equipment.tools = returnEquipmentPack("Explorer's Pack");
+  this.equipment.tools.push({ name: "Druidic Focus" });
 }
 
 function createFighter() {
@@ -5922,13 +5929,14 @@ function createFighter() {
   };
   if (returnRandomNumberInRange(0, 1) === 0) {
     //// TODO: Change this to only select weapons that can be used in one hand, or both.
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      martialMeleeWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(martialMeleeWeapons)
     );
+
     this.equipment.shield.push(shields.shield);
   } else {
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      martialMeleeWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(martialMeleeWeapons)
     );
     this.equipment.additionalWeapons.push(
       returnRandomWeaponFromCollection(martialMeleeWeapons)
@@ -5983,16 +5991,16 @@ function createPaladin() {
 
   if (returnRandomNumberInRange(0, 1) === 0) {
     //// TODO: maybe change this to only select weapons that can be used in one hand, or both.
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      martialMeleeWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(martialMeleeWeapons)
     );
     this.equipment.shield.push(shields.shield);
   } else {
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      martialMeleeWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(martialMeleeWeapons)
     );
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      martialMeleeWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(martialMeleeWeapons)
     );
   }
 
@@ -6033,12 +6041,13 @@ function createRanger() {
     shield: [],
   };
 
+  //If this is change to bother weapons being added to primary, equipmentToString() will have to be updated accordingly
   if (returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.primaryWeapon = martialMeleeWeapons.shortsword;
+    this.equipment.primaryWeapon.push(martialMeleeWeapons.shortsword);
     this.equipment.additionalWeapons.push(martialMeleeWeapons.shortsword);
   } else {
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      simpleWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(simpleWeapons)
     );
     this.equipment.additionalWeapons.push(
       returnRandomWeaponFromCollection(simpleWeapons)
@@ -6082,11 +6091,11 @@ function createRogue() {
   };
 
   if (returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.primaryWeapon = martialMeleeWeapons.shortsword;
+    this.equipment.primaryWeapon.push(martialMeleeWeapons.shortsword);
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
   } else {
-    this.equipment.primaryWeapon = martialMeleeWeapons.rapier;
+    this.equipment.primaryWeapon.push(martialMeleeWeapons.rapier);
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
   }
@@ -6098,15 +6107,13 @@ function createRogue() {
     this.equipment.additionalWeapons.push(addAmmunition("arrows", 20));
   }
 
-  this.equipment.tools.push("thieves tools");
+  this.equipment.tools = returnRandomArrayItem([
+    returnEquipmentPack("Dungeoneer's Pack"),
+    returnEquipmentPack("Explorer's Pack"),
+    returnEquipmentPack("Burglar's Pack"),
+  ]);
 
-  this.equipment.tools.push(
-    returnRandomArrayItem([
-      returnEquipmentPack("Dungeoneer's Pack"),
-      returnEquipmentPack("Explorer's Pack"),
-      returnEquipmentPack("Burglar's Pack"),
-    ])
-  );
+  this.equipment.tools.push({ name: "thieves tools" });
 }
 
 function createSorcerer() {
@@ -6136,28 +6143,26 @@ function createSorcerer() {
   if (returnRandomNumberInRange(0, 1) === 0) {
     this.equipment.additionalWeapons.push(simpleRangedWeapons.lightCrossbow);
     this.equipment.additionalWeapons.push(addAmmunition("bolts", 20));
-    this.equipment.primaryWeapon = simpleWeapons.dagger;
+    this.equipment.primaryWeapon.push(simpleWeapons.dagger);
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
   } else {
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      simpleWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(simpleWeapons)
     );
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
   }
 
-  if (returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.tools.push("component pouch");
-  } else {
-    this.equipment.tools.push("arcane focus");
-  }
+  this.equipment.tools = returnRandomArrayItem([
+    returnEquipmentPack("Dungeoneer's Pack"),
+    returnEquipmentPack("Explorer's Pack"),
+  ]);
 
-  this.equipment.tools.push(
-    returnRandomArrayItem([
-      returnEquipmentPack("Dungeoneer's Pack"),
-      returnEquipmentPack("Explorer's Pack"),
-    ])
-  );
+  if (returnRandomNumberInRange(0, 1) === 0) {
+    this.equipment.tools.push({ name: "component pouch" });
+  } else {
+    this.equipment.tools.push({ name: "arcane focus" });
+  }
 }
 
 function createWarlock() {
@@ -6187,8 +6192,8 @@ function createWarlock() {
       returnRandomWeaponFromCollection(simpleWeapons)
     );
   } else {
-    this.equipment.primaryWeapon = returnRandomWeaponFromCollection(
-      simpleWeapons
+    this.equipment.primaryWeapon.push(
+      returnRandomWeaponFromCollection(simpleWeapons)
     );
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
     this.equipment.additionalWeapons.push(simpleWeapons.dagger);
@@ -6197,18 +6202,16 @@ function createWarlock() {
     );
   }
 
-  if (returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.tools.push("component pouch");
-  } else {
-    this.equipment.tools.push("arcane focus");
-  }
+  this.equipment.tools = returnRandomArrayItem([
+    returnEquipmentPack("Dungeoneer's Pack"),
+    returnEquipmentPack("Scholar's Pack"),
+  ]);
 
-  this.equipment.tools.push(
-    returnRandomArrayItem([
-      returnEquipmentPack("Dungeoneer's Pack"),
-      returnEquipmentPack("Scholar's Pack"),
-    ])
-  );
+  if (returnRandomNumberInRange(0, 1) === 0) {
+    this.equipment.tools.push({ name: "component pouch" });
+  } else {
+    this.equipment.tools.push({ name: "arcane focus" });
+  }
 }
 
 function createWizard() {
@@ -6236,25 +6239,23 @@ function createWizard() {
   };
 
   if (returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.primaryWeapon = simpleWeapons.quarterstaff;
+    this.equipment.primaryWeapon.push(simpleWeapons.quarterstaff);
   } else {
-    this.equipment.primaryWeapon = simpleWeapons.dagger;
+    this.equipment.primaryWeapon.push(simpleWeapons.dagger);
   }
 
   if (returnRandomNumberInRange(0, 1) === 0) {
-    this.equipment.tools.push("component pouch");
+    this.equipment.tools.push({ name: "component pouch" });
   } else {
-    this.equipment.tools.push("arcane focus");
+    this.equipment.tools.push({ name: "arcane focus" });
   }
 
-  this.equipment.tools.push(
-    returnRandomArrayItem([
-      returnEquipmentPack("Explorer's Pack"),
-      returnEquipmentPack("Scholar's Pack"),
-    ])
-  );
+  this.equipment.tools = returnRandomArrayItem([
+    returnEquipmentPack("Explorer's Pack"),
+    returnEquipmentPack("Scholar's Pack"),
+  ]);
 
-  this.equipment.tools.push("spellbook");
+  this.equipment.tools.push({ name: "spellbook" });
 }
 
 classList = [
@@ -6295,13 +6296,12 @@ function returnRandomObjectPropertiesAndValues(collection, ammount) {
   let spells = [];
 
   for (i = 0; i < ammount; i++) {
-    spells.push(
-      Object.values(collection)[
-        returnRandomNumberInRange(0, Object.values(collection).length)
-      ]
+    let rand = returnRandomNumberInRange(
+      0,
+      Object.values(collection).length - 1
     );
+    spells.push(Object.values(collection)[rand]);
   }
-
   return spells;
 }
 
@@ -6367,14 +6367,13 @@ function returnHeightAndWeight(height, weight) {
 
 // Returns a random equipment pack, or a specific one specified in the argument
 function returnEquipmentPack(pack) {
-  if (pack === "undefined") {
-    return returnRandomArrayItem(equipmentPacks);
+  let randItem = void 0;
+  if (pack == undefined) {
+    randItem = returnRandomArrayItem(equipmentPacks);
   } else {
-    let result = equipmentPacks.filter((obj) => {
-      return obj.name === pack;
-    });
-    return result;
+    randItem = equipmentPacks.filter((obj) => obj.name === pack);
   }
+  return randItem;
 }
 
 function returnRandomInstrument() {
@@ -7518,6 +7517,8 @@ function NewCharacter() {
 }
 
 function populatePage() {
+  //clears last console.log
+  console.clear();
   //checks for testing params
   let charDropDown = document.getElementById("races");
   let charClass = charDropDown.options[charDropDown.selectedIndex].value;
@@ -7662,6 +7663,9 @@ function populatePage() {
       profs = profs.substring(1);
     }
 
+    //Removes double commas caused by empty collections
+    profs = profs.replace(",,", ",");
+
     let languages = char.languages;
 
     document.getElementById(
@@ -7670,8 +7674,6 @@ function populatePage() {
       <br>
       <b>Languages.</b> ${languages.toString()}`;
   }
-
-  PopulateProficienciesAndLanguages();
 
   document.getElementById("armorClass").innerHTML = char.armorClass;
   document.getElementById("initiative").innerHTML =
@@ -7694,7 +7696,6 @@ function populatePage() {
   document.getElementById("flaws").innerHTML = char.personalityTraits.flaw;
 
   //Converts all the character spells to a single array of objects
-
   function cantripsToString() {
     let str = "";
     let cantrips = "";
@@ -7765,6 +7766,38 @@ function populatePage() {
     return arr;
   }
 
+  //Adds all character equipment to a string
+
+  function equipmentToString() {
+    let characterEquipment = char.characterClass.equipment;
+    let tools = characterEquipment.tools;
+    let additionalWeapons = characterEquipment.additionalWeapons;
+
+    let equipmentStr = "";
+
+    if (characterEquipment.armor) {
+      equipmentStr += characterEquipment.armor.name + ", ";
+    }
+
+    if (characterEquipment.primaryWeapon !== undefined) {
+      equipmentStr += characterEquipment.primaryWeapon[0].name + ", ";
+    }
+
+    if (characterEquipment.shield[0]) {
+      equipmentStr += characterEquipment.shield[0].name + ", ";
+    }
+
+    for (let i = 0; i < tools.length; i++) {
+      equipmentStr += tools[i].name + ", ";
+    }
+
+    for (let i = 0; i < additionalWeapons.length; i++) {
+      equipmentStr += additionalWeapons[i].name + ", ";
+    }
+
+    document.getElementById("equipment").innerHTML = equipmentStr;
+  }
+
   //Creates table headers
   function createTable() {
     let itemName = document.createElement("TH");
@@ -7831,6 +7864,8 @@ function populatePage() {
 
   addWeapons();
   addSpellDetails();
+  PopulateProficienciesAndLanguages();
+  equipmentToString();
 }
 
 // var charQty = 1;

@@ -11,6 +11,7 @@ body {
   display: flex;
   padding-top: 10px;
   padding-left: 400px;
+  width: 100%;
   padding-right: 400px;
 }
 
@@ -625,8 +626,6 @@ th {
   font-size: xx-small;
 }
 
-tr {
-}
 td {
   text-align: center;
   border-radius: 5px;
