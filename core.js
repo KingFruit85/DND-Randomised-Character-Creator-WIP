@@ -1,3 +1,14 @@
+const standardLanguages = [
+  // "Common",All characters get common
+  "Dwarvish",
+  "Elven",
+  "Giant",
+  "Gnomish",
+  "Goblin",
+  "Halfling",
+  "Orc",
+];
+
 const musicalInstrumentsInfo = [
   { name: "Bagpipes", cost: "30 gp", weight: "6 lb." },
   { name: "Drum", cost: "6 gp", weight: "3 lb." },
@@ -12,16 +23,16 @@ const musicalInstrumentsInfo = [
 ];
 
 const musicalInstruments = [
-  "Bagpipes",
-  "Drum",
-  "Dulcimer",
-  "Flute",
-  "Lute",
-  "Lyre",
-  "Horn",
-  "Pan Flute",
-  "Shawm",
-  "Viol",
+  { name: "Bagpipes" },
+  { name: "Drum" },
+  { name: "Dulcimer" },
+  { name: "Flute" },
+  { name: "Lute" },
+  { name: "Lyre" },
+  { name: "Horn" },
+  { name: "Pan Flute" },
+  { name: "Shawm" },
+  { name: "Viol" },
 ];
 
 const equipmentPacks = [
@@ -1107,41 +1118,48 @@ const clothes = [
   "zip",
 ];
 
-function physicalAttributes() {
-  this.hairColour = getRandomItem(colours);
-  this.hairLength = getRandomItem(hairLengths);
-  this.hairStyle = getRandomItem(hairStyles);
-  this.eyeColour = getRandomItem(colours);
-  this.facialHair = getRandomItem(facialHair);
-  this.facialHairColour = getRandomItem(colours);
-  this.eyeSize = getRandomItem(generalSizes);
-  this.skinColour = getRandomItem(colours);
-  this.armLength = getRandomItem(generalSizes);
-  this.legLength = getRandomItem(generalSizes);
-  this.facialExpression = getRandomItem(generalDescriptions);
-  this.dreamOccupation = getRandomItem(occupation);
-  this.favoriteItem = `${getRandomItem(colours)} ${getRandomItem(clothes)}`;
+function PhysicalAttributes() {
+  let attributes = {};
+
+  attributes.hairColour = getRandomItem(colours);
+  attributes.hairLength = getRandomItem(hairLengths);
+  attributes.hairStyle = getRandomItem(hairStyles);
+  attributes.eyeColour = getRandomItem(colours);
+  attributes.facialHair = getRandomItem(facialHair);
+  attributes.facialHairColour = getRandomItem(colours);
+  attributes.eyeSize = getRandomItem(generalSizes);
+  attributes.skinColour = getRandomItem(colours);
+  attributes.armLength = getRandomItem(generalSizes);
+  attributes.legLength = getRandomItem(generalSizes);
+  attributes.facialExpression = getRandomItem(generalDescriptions);
+  attributes.dreamOccupation = getRandomItem(occupation);
+  attributes.favoriteItem = `${getRandomItem(colours)} ${getRandomItem(
+    clothes
+  )}`;
+
+  return attributes;
 }
 
-function physicalDescription(name, gender, race) {
-  let x = new physicalAttributes();
-  let description = [
-    `${name} is a ${getRandomItem(generalSizes)} ${gender} ${
-      x.skinColour
-    } skinned ${race}. Their ${x.hairColour} coloured hair is styled in a ${
-      x.hairLength
-    } ${x.hairStyle}. They have ${x.eyeSize} ${
-      x.eyeColour
-    } coloured eyes that betray no thoughts. they have a ${getRandomItem(
-      generalSizes
-    )} ${x.facialHairColour} ${x.facialHair} that fits their ${
-      x.facialExpression
-    } facial expression well. they never leave home without their ${
-      x.favoriteItem
-    } and dream of one day becoming a ${x.dreamOccupation}`,
-  ];
-  return description;
-}
+// function physicalDescription() {
+//   let description = `
+
+//     ${this.fullname.firstName} is a ${getRandomItem(generalSizes)} ${
+//     this.gender
+//   } ${this.attributes.skinColour} skinned ${race}. Their ${
+//     x.hairColour
+//   } coloured hair is styled in a ${x.hairLength} ${x.hairStyle}. They have ${
+//     x.eyeSize
+//   } ${
+//     x.eyeColour
+//   } coloured eyes that betray no thoughts. they have a ${getRandomItem(
+//     generalSizes
+//   )} ${x.facialHairColour} ${x.facialHair} that fits their ${
+//     x.facialExpression
+//   } facial expression well. they never leave home without their ${
+//     x.favoriteItem
+//   } and dream of one day becoming a ${x.dreamOccupation}`;
+//   return description;
+// }
 
 allFeats = [
   (grappler = {
@@ -5771,11 +5789,13 @@ function createMonk() {
   this.savingThrows = ["str", "dex"];
   this.armorProficiencies = [];
   this.weaponProficiencies = ["simple weapons", "shortswords"];
-  this.toolProficiencies = returnRandomInstrument(); //add artisan tools to the selection
+  this.toolProficiencies = []; //add artisan tools to the selection
   this.skillProficiencies = returnRandomProficiencies(
     monkSkillProficiencies,
     2
   );
+
+  this.toolProficiencies.push(returnRandomInstrument());
 
   this.equipment = {
     primaryWeapon: [],
@@ -5843,10 +5863,12 @@ function createCleric() {
 
   this.equipment.shield.push(shields.shield);
 
-  this.equipment.tools = returnRandomArrayItem([
-    returnEquipmentPack("Explorer's Pack"),
-    returnEquipmentPack("Priest's Pack"),
-  ]);
+  this.equipment.tools.push(
+    returnRandomArrayItem([
+      returnEquipmentPack("Explorer's Pack"),
+      returnEquipmentPack("Priest's Pack"),
+    ])
+  );
   this.equipment.tools.push({ name: "Holy Symbol" });
 }
 
@@ -5868,7 +5890,7 @@ function createDruid() {
     "slings",
     "spears",
   ];
-  this.toolProficiencies = ["herbalism kit"];
+  this.toolProficiencies = [{ name: "herbalism kit" }];
   this.skillProficiencies = returnRandomProficiencies(
     druidSkillProficiencies,
     2
@@ -6057,10 +6079,12 @@ function createRanger() {
   this.equipment.additionalWeapons.push(martialRangedWeapons.longbow);
   this.equipment.additionalWeapons.push(addAmmunition("arrows", 20));
 
-  this.equipment.tools = returnRandomArrayItem([
-    returnEquipmentPack("Dungeoneer's Pack"),
-    returnEquipmentPack("Explorer's Pack"),
-  ]);
+  this.equipment.tools.push(
+    returnRandomArrayItem([
+      returnEquipmentPack("Dungeoneer's Pack"),
+      returnEquipmentPack("Explorer's Pack"),
+    ])
+  );
 }
 
 function createRogue() {
@@ -6076,7 +6100,7 @@ function createRogue() {
     "rapiers",
     "shortswords",
   ];
-  this.toolProficiencies = ["thieves' tools"];
+  this.toolProficiencies = [{ name: "thieves' tools" }];
   this.skillProficiencies = returnRandomProficiencies(
     rogueSkillProficiencies,
     4
@@ -6413,6 +6437,38 @@ function returnRandomInstruments(count) {
     "Neutral Evil",
     "Chaotic Evil",
   ]);
+}
+
+function returnCharacterBackground(char) {
+  //SRD only provides one background
+  let background = {
+    name: "acolyte",
+    additionalProficiencies: ["insight", "religion"],
+    additionalLanguages: [
+      returnRandomArrayItem(standardLanguages),
+      returnRandomArrayItem(standardLanguages),
+    ],
+    equipment: [
+      { name: "holy symbol" },
+      { name: "prayer book" },
+      { name: "prayer wheel" },
+      { name: "5 sticks of incense" },
+      { name: "vestments" },
+      { name: "common clothes" },
+    ],
+    money: { count: 15, type: "Gold" },
+  };
+
+  while (
+    background.additionalLanguages[0] === background.additionalLanguages[1]
+  ) {
+    background.additionalLanguages.pop();
+    background.additionalLanguages.push(
+      returnRandomArrayItem(standardLanguages)
+    );
+  }
+
+  return background;
 }
 
 /**
@@ -7479,6 +7535,7 @@ function NewCharacter() {
   this.race = returnRandomRace(raceType);
   this.gender = returnRandomGender();
   this.fullname = returnRandomName(this.race, this.gender);
+  this.background = returnCharacterBackground();
 
   this.alignment = returnRandomAlignment();
 
@@ -7504,11 +7561,7 @@ function NewCharacter() {
   this.characterClass.initiative = this.abilityScores.dexMod;
 
   this.personalityTraits = returnRandomPersonality();
-  this.physicalDescription = physicalDescription(
-    this.fullname.firstName,
-    this.gender,
-    this.race
-  );
+  this.physicalAttributes = PhysicalAttributes();
 
   this.characterClass.equipment.armor = assignArmor(this);
   this.armorClass = calculateArmorClass(this);
@@ -7539,7 +7592,7 @@ function populatePage() {
   document.getElementById("race").innerHTML = char.race;
   document.getElementById("alignment").innerHTML = char.alignment;
   document.getElementById("class&level").innerHTML = char.characterClass.name;
-  document.getElementById("background").innerHTML = "Not implimented!";
+  document.getElementById("background").innerHTML = char.background.name;
 
   document.getElementById("str").innerHTML = char.abilityScores.str;
   document.getElementById("strMod").innerHTML = char.abilityScores.strMod;
@@ -7639,23 +7692,37 @@ function populatePage() {
     let skill = char.characterClass.skillProficiencies;
     let tool = char.characterClass.toolProficiencies;
     let weapon = char.characterClass.weaponProficiencies;
+    let addProfs = char.background.additionalProficiencies;
 
     if (armor.length > 0 || armor != undefined) {
-      profs.push(char.characterClass.armorProficiencies);
+      for (let i = 0; i < armor.length; i++) {
+        profs.push(char.characterClass.armorProficiencies[i]);
+      }
     }
 
     if (skill.length > 0 || skill != undefined) {
-      profs.push(char.characterClass.skillProficiencies);
+      for (let i = 0; i < skill.length; i++) {
+        profs.push(char.characterClass.skillProficiencies[i]);
+      }
     }
 
     if (tool.length > 0 || tool != undefined) {
-      profs.push(char.characterClass.toolProficiencies);
+      for (let i = 0; i < tool.length; i++) {
+        profs.push(char.characterClass.toolProficiencies[i].name);
+      }
     }
 
     if (weapon.length > 0 || weapon != undefined) {
-      profs.push(char.characterClass.weaponProficiencies);
+      for (let i = 0; i < weapon.length; i++) {
+        profs.push(char.characterClass.weaponProficiencies[i]);
+      }
     }
 
+    for (let i = 0; i < addProfs.length; i++) {
+      profs.push(addProfs[i]);
+    }
+
+    profs = [...new Set(profs)];
     profs = profs.toString();
 
     // Removes the "," at profs[0] caused by empty armor profs
@@ -7667,6 +7734,14 @@ function populatePage() {
     profs = profs.replace(",,", ",");
 
     let languages = char.languages;
+    languages.push(char.background.additionalLanguages[0]);
+    languages.push(char.background.additionalLanguages[1]);
+
+    //Removes duplicates from languages
+    //https://medium.com/dailyjs/how-to-remove-array-duplicates-in-es6-5daa8789641c
+    languages = [...new Set(languages)];
+
+    [...new Set(languages)];
 
     document.getElementById(
       "ProficienciesAndLanguages"
@@ -7711,7 +7786,7 @@ function populatePage() {
       });
     }
 
-    str = `&nbsp <b>Cantrips</b></br>. You know ${str}and can cast them at will.<br>`;
+    str = `&nbsp <i><b>Cantrips</b>. You know ${str}and can cast them at will.</i><br>`;
 
     return str;
   }
@@ -7735,7 +7810,7 @@ function populatePage() {
       slots = "five";
     }
 
-    return `&nbsp <b>Spell Slots</b> You have ${slots} 1st-level spell slots you can use to cast your prepared spells.`;
+    return `&nbsp <i><b>Spell Slots</b> You have ${slots} 1st-level spell slots you can use to cast your prepared spells.</i>`;
   }
 
   //Converts all the characters weapons to a single array of objects
@@ -7793,6 +7868,10 @@ function populatePage() {
 
     for (let i = 0; i < additionalWeapons.length; i++) {
       equipmentStr += additionalWeapons[i].name + ", ";
+    }
+
+    for (let i = 0; i < char.background.equipment.length; i++) {
+      equipmentStr += char.background.equipment[i].name + ", ";
     }
 
     document.getElementById("equipment").innerHTML = equipmentStr;
